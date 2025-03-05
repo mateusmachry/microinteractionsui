@@ -1,0 +1,21 @@
+{
+    "$schema": "https://ui.shadcn.com/schema/registry.json",
+    "name": "microinteractionsui",
+    "homepage": "https://microinteractionsui.com",
+    "items": [
+      {
+        "name": "button1",
+        "type": "registry:component",
+        "title": "Button1",
+        "description": "Button1",
+        "registryDependencies": ["button"],
+        "dependencies": ["motion"],
+        "files": [
+          {
+            "path": "src/registry/button1/button1.tsx",
+            "type": "registry:component"
+          }
+        ]
+      }
+    ]
+}
