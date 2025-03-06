@@ -5,62 +5,165 @@ import { motion } from 'framer-motion';
 import React, { forwardRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
+export type AnimationDirection = 'from-top' | 'from-bottom';
+
 export type ButtonProps = {
     label: React.ReactNode,
     bgColorOnHover: string,
     textColorOnHover?: string,
     icon?: React.ReactNode,
+    animationDirection?: AnimationDirection,
     variant?: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost",
     size?: "default" | "sm" | "lg" | "icon",
     className?: string
 } & Omit<React.ComponentProps<"button">, "onMouseEnter" | "onMouseLeave">;
 
+const animationDirectionMap = {
+    'from-top': {
+        'background': {
+            initial: {
+                x: 0,
+                y: -50
+            },
+            hover: {
+                x: 0,
+                y: 0
+            },
+            exit: {
+                x: 0,
+                y: -50
+            }
+        },
+        'hoverContent': {
+            initial: {
+                x: 0,
+                y: -50
+            },
+            hover: {
+                x: 0,
+                y: 0
+            },
+            exit: {
+                x: 0,
+                y: -50
+            }
+        },
+        'defaultContent': {
+            initial: {
+                x: 0,
+                y: 0
+            },
+            hover: {
+                x: 0,
+                y: 50
+            },
+            exit: {
+                x: 0,
+                y: 0
+            }
+        }
+    },
+    'from-bottom': {
+        'background': {
+            initial: {
+                x: 0,
+                y: 50
+            },
+            hover: {
+                x: 0,
+                y: 0
+            },
+            exit: {
+                x: 0,
+                y: 50
+            }
+        },
+        'hoverContent': {
+            initial: {
+                x: 0,
+                y: 50
+            },
+            hover: {
+                x: 0,
+                y: 0
+            },
+            exit: {
+                x: 0,
+                y: 50
+            }
+        },
+        'defaultContent': {
+            initial: {
+                x: 0,
+                y: 0
+            },
+            hover: {
+                x: 0,
+                y: -50
+            },
+            exit: {
+                x: 0,
+                y: 0
+            }
+        }
+    },
+};
+
 const animationVariants = {
     background: {
-        initial: {
-            y: -50,
+        initial: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
+            y: animationDirectionMap[animationDirection].background.initial.y,
+            x: animationDirectionMap[animationDirection].background.initial.x,
             opacity: 0,
             backgroundColor: 'transparent'
-        },
-        hover: (bgColor: string) => ({
-            y: 0,
-            opacity: 1,
-            backgroundColor: bgColor
         }),
-        exit: {
-            y: -50,
+        hover: ({ bgColorOnHover, animationDirection }: { bgColorOnHover: string, animationDirection: AnimationDirection }) => ({
+            y: animationDirectionMap[animationDirection].background.hover.y,
+            x: animationDirectionMap[animationDirection].background.hover.x,
+            opacity: 1,
+            backgroundColor: bgColorOnHover
+        }),
+        exit: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
+            y: animationDirectionMap[animationDirection].background.exit.y,
+            x: animationDirectionMap[animationDirection].background.exit.x,
             opacity: 0,
             backgroundColor: 'transparent'
-        }
+        })
     },
     hoverContent: {
-        initial: {
-            y: -50,
+        initial: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
+            y: animationDirectionMap[animationDirection].hoverContent.initial.y,
+            x: animationDirectionMap[animationDirection].hoverContent.initial.x,
             opacity: 0
-        },
-        hover: (textColor: string) => ({
-            y: 0,
-            opacity: 1,
-            color: textColor
         }),
-        exit: {
-            y: -50,
+        hover: ({ textColorOnHover, animationDirection }: { textColorOnHover: string, animationDirection: AnimationDirection }) => ({
+            y: animationDirectionMap[animationDirection].hoverContent.hover.y,
+            x: animationDirectionMap[animationDirection].hoverContent.hover.x,
+            opacity: 1,
+            color: textColorOnHover
+        }),
+        exit: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
+            y: animationDirectionMap[animationDirection].hoverContent.exit.y,
+            x: animationDirectionMap[animationDirection].hoverContent.exit.x,
             opacity: 0
-        }
+        })
     },
     defaultContent: {
-        initial: {
-            y: 0,
+        initial: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
+            y: animationDirectionMap[animationDirection].defaultContent.initial.y,
+            x: animationDirectionMap[animationDirection].defaultContent.initial.x,
             opacity: 1
-        },
-        hover: {
-            y: 50,
+        }),
+        hover: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
+            y: animationDirectionMap[animationDirection].defaultContent.hover.y,
+            x: animationDirectionMap[animationDirection].defaultContent.hover.x,
             opacity: 0
-        },
-        exit: {
-            y: 0,
+        }),
+        exit: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
+            y: animationDirectionMap[animationDirection].defaultContent.exit.y,
+            x: animationDirectionMap[animationDirection].defaultContent.exit.x,
             opacity: 1
-        }
+        })
     }
 };
 
@@ -74,6 +177,7 @@ export const Button3 = forwardRef<HTMLButtonElement, ButtonProps>(({
     label,
     bgColorOnHover,
     icon,
+    animationDirection = "from-top",
     textColorOnHover = "var(--primary-foreground)",
     variant = "default",
     size = "lg",
@@ -97,7 +201,7 @@ export const Button3 = forwardRef<HTMLButtonElement, ButtonProps>(({
                 initial="initial"
                 animate={isHovered ? "hover" : "initial"}
                 variants={animationVariants.background}
-                custom={bgColorOnHover}
+                custom={{ bgColorOnHover: bgColorOnHover, animationDirection: animationDirection }}
                 transition={animationTransition}
             />
 
@@ -107,7 +211,7 @@ export const Button3 = forwardRef<HTMLButtonElement, ButtonProps>(({
                     initial="initial"
                     animate={isHovered ? "hover" : "initial"}
                     variants={animationVariants.hoverContent}
-                    custom={textColorOnHover}
+                    custom={{ textColorOnHover: textColorOnHover, animationDirection: animationDirection }}
                     transition={animationTransition}
                 >
                     {label}
@@ -119,6 +223,7 @@ export const Button3 = forwardRef<HTMLButtonElement, ButtonProps>(({
                     initial="initial"
                     animate={isHovered ? "hover" : "initial"}
                     variants={animationVariants.defaultContent}
+                    custom={{ animationDirection: animationDirection }}
                     transition={animationTransition}
                 >
                     {label}

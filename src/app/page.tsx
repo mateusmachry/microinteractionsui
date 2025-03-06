@@ -16,7 +16,7 @@ export default function Home() {
       <Button2 size={"lg"} variant={"default"} label={<span>Get started</span>} />
       <Button2 size={"lg"} variant={"outline"} label={<span>Get started</span>} iconColor="#0A0A0A" iconColorOnHover="#0A0A0A" iconBgColorOnHover="#F59E0B" />
 
-      <Button3 size={"lg"} variant={"outline"} bgColorOnHover={"#262626"} label={<span>Try for free</span>} icon={<MaterialSymbolsChevronRight />} />
+      <Button3 animationDirection={'from-top'} size={"lg"} variant={"outline"} bgColorOnHover={"#262626"} label={<span>Try for free</span>} icon={<MaterialSymbolsChevronRight />} />
 
       <Button4 className="text-base" label={<span>Get started</span>} />
 
