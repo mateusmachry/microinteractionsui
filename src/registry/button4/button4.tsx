@@ -7,13 +7,11 @@ import { cn } from "@/lib/utils";
 
 export type ButtonProps = {
     label: React.ReactNode,
-    size?: "default" | "sm" | "lg" | "icon",
     className?: string
 } & Omit<React.ComponentProps<"button">, "onMouseEnter" | "onMouseLeave">;
 
 export const Button4 = forwardRef<HTMLButtonElement, ButtonProps>(({
     label,
-    size = "lg",
     className,
     ...props
 }, ref) => {
@@ -24,7 +22,6 @@ export const Button4 = forwardRef<HTMLButtonElement, ButtonProps>(({
             {...props}
             ref={ref}
             variant={"link"}
-            size={size}
             className={cn(className, "cursor-pointer relative overflow-hidden hover:no-underline")}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}

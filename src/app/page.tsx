@@ -1,3 +1,4 @@
+import ProgressButton from "@/examples/buttons/progress-button";
 import { IconParkSolidApple } from "@/icons/apple";
 import { MaterialSymbolsChevronRight } from "@/icons/chevron-right";
 import { LogosGoogleIcon } from "@/icons/google";
@@ -17,7 +18,9 @@ export default function Home() {
 
       <Button3 size={"lg"} variant={"outline"} bgColorOnHover={"#262626"} label={<span>Try for free</span>} icon={<MaterialSymbolsChevronRight />} />
 
-      <Button4 className="text-sm" label={<span>Get started</span>} />
+      <Button4 className="text-base" label={<span>Get started</span>} />
+
+      <ProgressButton />
     </div>
   );
 }
