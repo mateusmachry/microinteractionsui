@@ -19,37 +19,6 @@ const ArrowForwardIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const iconVariants = {
-  initial: { opacity: 1 },
-  hover: (buttonWidth: number) => ({
-    x: -1 * buttonWidth,
-    opacity: 0,
-  }),
-};
-
-const labelVariants = {
-  initial: { x: '0%' },
-  hover: { x: '-20%' },
-};
-
-const arrowVariants = {
-  initial: {
-    position: 'absolute' as const,
-    x: '100%',
-    opacity: 0
-  },
-  hover: {
-    x: 0,
-    opacity: 1
-  },
-};
-
-const commonTransition = {
-  type: 'spring',
-  stiffness: 100,
-  damping: 20,
-};
-
 export const Button1 = forwardRef<HTMLButtonElement, ButtonProps>(({
   label,
   icon,
@@ -69,6 +38,37 @@ export const Button1 = forwardRef<HTMLButtonElement, ButtonProps>(({
       setButtonWidth(currentRef.getBoundingClientRect().width);
     }
   }, [buttonRef]);
+
+  const iconVariants = {
+    initial: { opacity: 1 },
+    hover: (buttonWidth: number) => ({
+      x: -1 * buttonWidth,
+      opacity: 0,
+    }),
+  };
+
+  const labelVariants = {
+    initial: { x: '0%' },
+    hover: { x: '-20%' },
+  };
+
+  const arrowVariants = {
+    initial: {
+      position: 'absolute' as const,
+      x: '100%',
+      opacity: 0
+    },
+    hover: {
+      x: 0,
+      opacity: 1
+    },
+  };
+
+  const commonTransition = {
+    type: 'spring',
+    stiffness: 100,
+    damping: 20,
+  };
 
   return (
     <Button
