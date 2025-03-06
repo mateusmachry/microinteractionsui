@@ -14,9 +14,9 @@ export default function ProgressButton() {
                     if (prev >= 100) {
                         clearInterval(interval);
                         setStartAnimation(false);
-                        return 0;
+                        return 100;
                     }
-                    return prev + 5;
+                    return prev + 10;
                 });
             }, 250);
             return () => clearInterval(interval);
@@ -28,12 +28,21 @@ export default function ProgressButton() {
         setStartAnimation(true);
     };
 
+    const handleComplete = () => {
+        setTimeout(() => {
+            setProgress(0);
+            setStartAnimation(false);
+        }, 200);
+    };
+
     return (
         <Button5
-            label="Buy now"
+            label="Pay with credit card"
             icon={<IcBaselinePayments />}
             progress={progress}
             onClick={() => runAnimation()}
+            onComplete={handleComplete}
+            completeAnimationDurationMs={2000}
         />
     );
 }

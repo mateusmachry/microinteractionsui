@@ -35,7 +35,7 @@ export const Button1 = forwardRef<HTMLButtonElement, ButtonProps>(({
   useEffect(() => {
     const currentRef = buttonRef.current;
     if (currentRef) {
-      setButtonWidth(currentRef.getBoundingClientRect().width);
+      setButtonWidth(currentRef.offsetWidth);
     }
   }, [buttonRef]);
 
