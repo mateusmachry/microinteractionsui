@@ -4,6 +4,7 @@ import { LogosGoogleIcon } from "@/icons/google";
 import { Button1 } from "@/registry/button1/button1";
 import { Button2 } from "@/registry/button2/button2";
 import { Button3 } from "@/registry/button3/button3";
+import { Button4 } from "@/registry/button4/button4";
 
 export default function Home() {
   return (
@@ -15,6 +16,8 @@ export default function Home() {
       <Button2 size={"lg"} variant={"outline"} label={<span>Get started</span>} iconColor="#0A0A0A" iconColorOnHover="#0A0A0A" iconBgColorOnHover="#F59E0B" />
 
       <Button3 size={"lg"} variant={"outline"} bgColorOnHover={"#262626"} label={<span>Try for free</span>} icon={<MaterialSymbolsChevronRight />} />
+
+      <Button4 className="text-sm" label={<span>Get started</span>} />
     </div>
   );
 }
