@@ -10,8 +10,8 @@ export type ButtonProps = {
     variant?: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost",
     size?: "default" | "sm" | "lg" | "icon",
     iconColor?: string,
-    iconHoverColor?: string,
-    iconHoverBgColor?: string,
+    iconColorOnHover?: string,
+    iconBgColorOnHover?: string,
     className?: string
 } & Omit<React.ComponentProps<"button">, "onMouseEnter" | "onMouseLeave">;
 
@@ -20,8 +20,8 @@ export const Button2 = forwardRef<HTMLButtonElement, ButtonProps>(({
     variant = "default",
     size = "lg",
     iconColor = "var(--primary-foreground)",
-    iconHoverColor = "var(--accent-foreground)",
-    iconHoverBgColor = "var(--accent)",
+    iconColorOnHover = "var(--accent-foreground)",
+    iconBgColorOnHover = "var(--accent)",
     className,
     ...props
 }, ref) => {
@@ -34,9 +34,9 @@ export const Button2 = forwardRef<HTMLButtonElement, ButtonProps>(({
             scale: 1
         },
         hover: {
-            color: iconHoverColor,
-            backgroundColor: iconHoverBgColor,
-            scale: 1.25
+            color: iconColorOnHover,
+            backgroundColor: iconBgColorOnHover,
+            scale: 1.15
         }
     });
     

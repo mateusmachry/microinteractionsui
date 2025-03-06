@@ -8,9 +8,9 @@ import { cn } from "@/lib/utils";
 export type ButtonProps = {
   label: React.ReactNode,
   icon?: React.ReactNode,
-  variant?: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost" | null | undefined,
-  size?: "default" | "sm" | "lg" | "icon" | null | undefined,
-  className?: string | null | undefined
+  variant?: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost",
+  size?: "default" | "sm" | "lg" | "icon",
+  className?: string
 } & Omit<React.ComponentProps<"button">, "onMouseEnter" | "onMouseLeave">;
 
 const ArrowForwardIcon = (props: SVGProps<SVGSVGElement>) => (
