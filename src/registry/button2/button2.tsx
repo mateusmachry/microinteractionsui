@@ -15,6 +15,31 @@ export type ButtonProps = {
     className?: string
 } & Omit<React.ComponentProps<"button">, "onMouseEnter" | "onMouseLeave">;
 
+
+const animationVariants = {
+    getIconContainerVariants: (iconColor: string, iconColorOnHover: string, iconBgColorOnHover: string) => ({
+        default: {
+            color: iconColor,
+            backgroundColor: "transparent",
+            scale: 1
+        },
+        hover: {
+            color: iconColorOnHover,
+            backgroundColor: iconBgColorOnHover,
+            scale: 1.15
+        }
+    }),
+    icon: {
+        default: { rotate: 0 },
+        hover: { rotate: -45 }
+    },
+};
+
+const animationTransition = {
+    ease: "linear",
+    duration: 0.3
+};
+
 export const Button2 = forwardRef<HTMLButtonElement, ButtonProps>(({
     label,
     variant = "default",
@@ -26,29 +51,6 @@ export const Button2 = forwardRef<HTMLButtonElement, ButtonProps>(({
     ...props
 }, ref) => {
     const [isHovered, setIsHovered] = useState(false);
-
-    const getIconContainerVariants = () => ({
-        default: {
-            color: iconColor,
-            backgroundColor: "transparent",
-            scale: 1
-        },
-        hover: {
-            color: iconColorOnHover,
-            backgroundColor: iconBgColorOnHover,
-            scale: 1.15
-        }
-    });
-    
-    const iconVariants = {
-        default: { rotate: 0 },
-        hover: { rotate: -45 }
-    };
-    
-    const transition = {
-        ease: "linear",
-        duration: 0.3
-    };
 
     return (
         <Button
@@ -62,15 +64,15 @@ export const Button2 = forwardRef<HTMLButtonElement, ButtonProps>(({
         >
             {label}
             <motion.div
-                variants={getIconContainerVariants()}
+                variants={animationVariants.getIconContainerVariants(iconColor, iconColorOnHover, iconBgColorOnHover)}
                 animate={isHovered ? "hover" : "default"}
-                transition={transition}
+                transition={animationTransition}
                 className="flex justify-center items-center rounded-full p-0.5"
             >
                 <motion.svg
-                    variants={iconVariants}
+                    variants={animationVariants.icon}
                     animate={isHovered ? "hover" : "default"}
-                    transition={transition}
+                    transition={animationTransition}
                     width="1em"
                     height="1em"
                     viewBox="0 0 24 24"

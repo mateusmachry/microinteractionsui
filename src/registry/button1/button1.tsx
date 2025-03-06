@@ -19,6 +19,37 @@ const ArrowForwardIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const animationVariants = {
+  icon: {
+    initial: { opacity: 1 },
+    hover: (buttonWidth: number) => ({
+      x: -1 * buttonWidth,
+      opacity: 0,
+    }),
+  },
+  label: {
+    initial: { x: '0%' },
+    hover: { x: '-20%' },
+  },
+  arrow: {
+    initial: {
+      position: 'absolute' as const,
+      x: '100%',
+      opacity: 0
+    },
+    hover: {
+      x: 0,
+      opacity: 1
+    },
+  }
+};
+
+const animationTransition = {
+  type: 'spring',
+  stiffness: 100,
+  damping: 20,
+};
+
 export const Button1 = forwardRef<HTMLButtonElement, ButtonProps>(({
   label,
   icon,
@@ -39,37 +70,6 @@ export const Button1 = forwardRef<HTMLButtonElement, ButtonProps>(({
     }
   }, [buttonRef]);
 
-  const iconVariants = {
-    initial: { opacity: 1 },
-    hover: (buttonWidth: number) => ({
-      x: -1 * buttonWidth,
-      opacity: 0,
-    }),
-  };
-
-  const labelVariants = {
-    initial: { x: '0%' },
-    hover: { x: '-20%' },
-  };
-
-  const arrowVariants = {
-    initial: {
-      position: 'absolute' as const,
-      x: '100%',
-      opacity: 0
-    },
-    hover: {
-      x: 0,
-      opacity: 1
-    },
-  };
-
-  const commonTransition = {
-    type: 'spring',
-    stiffness: 100,
-    damping: 20,
-  };
-
   return (
     <Button
       {...props}
@@ -82,9 +82,9 @@ export const Button1 = forwardRef<HTMLButtonElement, ButtonProps>(({
       {icon && <motion.div
         initial="initial"
         animate={isHovered ? "hover" : "initial"}
-        variants={iconVariants}
+        variants={animationVariants.icon}
         custom={buttonWidth}
-        transition={commonTransition}
+        transition={animationTransition}
       >
         {icon}
       </motion.div>}
@@ -92,8 +92,8 @@ export const Button1 = forwardRef<HTMLButtonElement, ButtonProps>(({
       <motion.div
         initial="initial"
         animate={isHovered ? "hover" : "initial"}
-        variants={labelVariants}
-        transition={commonTransition}
+        variants={animationVariants.label}
+        transition={animationTransition}
       >
         {label}
       </motion.div>
@@ -101,9 +101,9 @@ export const Button1 = forwardRef<HTMLButtonElement, ButtonProps>(({
       <motion.div
         initial="initial"
         animate={isHovered ? "hover" : "initial"}
-        variants={arrowVariants}
+        variants={animationVariants.arrow}
         transition={{
-          ...commonTransition,
+          ...animationTransition,
           delay: 0.1
         }}
         style={{

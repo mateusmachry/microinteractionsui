@@ -23,7 +23,7 @@ const LucideCheck = (props: SVGProps<SVGSVGElement>) => {
     )
 };
 
-const animations = {
+const animationVariants = {
     containerVariants: {
         normal: (width: number | null) => ({
             width: width ? width : 'auto',
@@ -45,8 +45,11 @@ const animations = {
     checkmarkVariants: {
         hidden: { scale: 0 },
         visible: { scale: 1.0 }
-    },
-    checkmarkTransitionDuration: 0.6,
+    }
+};
+
+const animationTransition = {
+    checkmarkTransitionDuration: 0.6
 };
 
 export const Button5 = forwardRef<HTMLButtonElement, ButtonProps>(({
@@ -91,7 +94,7 @@ export const Button5 = forwardRef<HTMLButtonElement, ButtonProps>(({
                     setAnimationState('complete');
                     if (onComplete) onComplete();
                 }, completeAnimationDurationMs);
-            }, animations.checkmarkTransitionDuration * 1000);
+            }, animationTransition.checkmarkTransitionDuration * 1000);
         }
         else if (clampedProgress < 100 && animationState !== 'progress') {
             if (completeTimeoutRef.current) {
@@ -107,10 +110,10 @@ export const Button5 = forwardRef<HTMLButtonElement, ButtonProps>(({
     return (
         <motion.div
             className="inline-block"
-            variants={animations.containerVariants}
+            variants={animationVariants.containerVariants}
             custom={buttonWidth}
             animate={isShowingCheckmarkAnimation ? 'compact' : 'normal'}
-            transition={{ duration: animations.checkmarkTransitionDuration, ease: "easeInOut" }}
+            transition={{ duration: animationTransition.checkmarkTransitionDuration, ease: "easeInOut" }}
         >
             <Button
                 {...props}
@@ -130,7 +133,7 @@ export const Button5 = forwardRef<HTMLButtonElement, ButtonProps>(({
                     style={{
                         backgroundColor: progressColor,
                     }}
-                    variants={animations.progressVariants}
+                    variants={animationVariants.progressVariants}
                     custom={clampedProgress}
                     initial="initial"
                     animate="animate"
@@ -140,7 +143,7 @@ export const Button5 = forwardRef<HTMLButtonElement, ButtonProps>(({
                 {/* Content container */}
                 <motion.div
                     className="relative z-20 flex items-center justify-center gap-3 w-full h-full"
-                    variants={animations.contentVariants}
+                    variants={animationVariants.contentVariants}
                     animate={isShowingCheckmarkAnimation ? 'hidden' : 'visible'}
                 >
                     {label}
@@ -150,7 +153,7 @@ export const Button5 = forwardRef<HTMLButtonElement, ButtonProps>(({
                 {/* Complete Checkmark */}
                 <motion.div
                     className="absolute inset-0 z-30 flex items-center justify-center gap-3"
-                    variants={animations.checkmarkVariants}
+                    variants={animationVariants.checkmarkVariants}
                     initial="hidden"
                     animate={isShowingCheckmarkAnimation ? 'visible' : 'hidden'}
                     transition={{ duration: 0.6, delay: 0.3 }}

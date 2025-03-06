@@ -15,6 +15,61 @@ export type ButtonProps = {
     className?: string
 } & Omit<React.ComponentProps<"button">, "onMouseEnter" | "onMouseLeave">;
 
+const animationVariants = {
+    background: {
+        initial: {
+            y: -50,
+            opacity: 0,
+            backgroundColor: 'transparent'
+        },
+        hover: (bgColor: string) => ({
+            y: 0,
+            opacity: 1,
+            backgroundColor: bgColor
+        }),
+        exit: {
+            y: -50,
+            opacity: 0,
+            backgroundColor: 'transparent'
+        }
+    },
+    hoverContent: {
+        initial: {
+            y: -50,
+            opacity: 0
+        },
+        hover: (textColor: string) => ({
+            y: 0,
+            opacity: 1,
+            color: textColor
+        }),
+        exit: {
+            y: -50,
+            opacity: 0
+        }
+    },
+    defaultContent: {
+        initial: {
+            y: 0,
+            opacity: 1
+        },
+        hover: {
+            y: 50,
+            opacity: 0
+        },
+        exit: {
+            y: 0,
+            opacity: 1
+        }
+    }
+};
+
+const animationTransition = {
+    type: 'tween',
+    ease: 'easeInOut',
+    duration: 0.5
+};
+
 export const Button3 = forwardRef<HTMLButtonElement, ButtonProps>(({
     label,
     bgColorOnHover,
@@ -26,61 +81,6 @@ export const Button3 = forwardRef<HTMLButtonElement, ButtonProps>(({
     ...props
 }, ref) => {
     const [isHovered, setIsHovered] = useState(false);
-
-    const animationVariants = {
-        background: {
-            initial: {
-                y: -50,
-                opacity: 0,
-                backgroundColor: 'transparent'
-            },
-            hover: (bgColor: string) => ({
-                y: 0,
-                opacity: 1,
-                backgroundColor: bgColor
-            }),
-            exit: {
-                y: -50,
-                opacity: 0,
-                backgroundColor: 'transparent'
-            }
-        },
-        hoverContent: {
-            initial: {
-                y: -50,
-                opacity: 0
-            },
-            hover: (textColor: string) => ({
-                y: 0,
-                opacity: 1,
-                color: textColor
-            }),
-            exit: {
-                y: -50,
-                opacity: 0
-            }
-        },
-        defaultContent: {
-            initial: {
-                y: 0,
-                opacity: 1
-            },
-            hover: {
-                y: 50,
-                opacity: 0
-            },
-            exit: {
-                y: 0,
-                opacity: 1
-            }
-        }
-    };
-
-    const transition = {
-        type: 'tween',
-        ease: 'easeInOut',
-        duration: 0.5
-    };
 
     return (
         <Button
@@ -98,7 +98,7 @@ export const Button3 = forwardRef<HTMLButtonElement, ButtonProps>(({
                 animate={isHovered ? "hover" : "initial"}
                 variants={animationVariants.background}
                 custom={bgColorOnHover}
-                transition={transition}
+                transition={animationTransition}
             />
 
             <div className="relative z-10 w-full h-full flex flex-row justify-center items-center">
@@ -108,7 +108,7 @@ export const Button3 = forwardRef<HTMLButtonElement, ButtonProps>(({
                     animate={isHovered ? "hover" : "initial"}
                     variants={animationVariants.hoverContent}
                     custom={textColorOnHover}
-                    transition={transition}
+                    transition={animationTransition}
                 >
                     {label}
                     {icon}
@@ -119,7 +119,7 @@ export const Button3 = forwardRef<HTMLButtonElement, ButtonProps>(({
                     initial="initial"
                     animate={isHovered ? "hover" : "initial"}
                     variants={animationVariants.defaultContent}
-                    transition={transition}
+                    transition={animationTransition}
                 >
                     {label}
                     {icon}
