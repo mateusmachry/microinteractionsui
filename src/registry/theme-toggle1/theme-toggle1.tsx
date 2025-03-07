@@ -8,7 +8,7 @@ export type Theme = 'light' | 'dark';
 
 export type ThemeToggleProps = {
     initialTheme: string | undefined,
-    size?: 'default' | 'lg';
+    size?: 'default' | 'lg' | 'xl';
     onChange?: (theme: Theme) => void;
 };
 
@@ -42,6 +42,70 @@ const Sun = (props: SVGProps<SVGSVGElement>) => {
     )
 };
 
+const toggleSizeMap = {
+    default: {
+        container: 'w-12 h-6',
+        checkbox: 'w-6 h-6',
+        icon: 'w-3 h-3',
+        offset: '24px',
+    },
+    lg: {
+        container: 'w-16 h-8',
+        checkbox: 'w-8 h-8',
+        icon: 'w-4 h-4',
+        offset: '32px',
+    },
+    xl: {
+        container: 'w-24 h-12',
+        checkbox: 'w-12 h-12',
+        icon: 'w-6 h-6',
+        offset: '48px',
+    },
+};
+
+const animationVariants = {
+    toggle: {
+        light: (offset: string) => ({
+            left: '0px',
+            right: offset,
+        }),
+        dark: (offset: string) => ({
+            left: offset,
+            right: '0px',
+        })
+    },
+    sun: {
+        light: {
+            y: '0%',
+            x: '0%',
+            opacity: 1
+        },
+        dark: {
+            y: '-100%',
+            x: '100%',
+            opacity: 0
+        }
+    },
+    moon: {
+        light: {
+            y: '-100%',
+            x: '-100%',
+            opacity: 0
+        },
+        dark: {
+            y: '0%',
+            x: '0%',
+            opacity: 1
+        }
+    }
+};
+
+const springTransition = {
+    type: "spring",
+    stiffness: 100,
+    damping: 30
+};
+
 export function ThemeToggle1({ initialTheme, onChange, size = 'default' }: ThemeToggleProps) {
     const [theme, setTheme] = useState<Theme | null>(null);
 
@@ -58,27 +122,10 @@ export function ThemeToggle1({ initialTheme, onChange, size = 'default' }: Theme
     };
 
     const isDark = theme === 'dark';
-
-    const sizeMap = {
-        default: {
-            container: 'w-12 h-6',
-            checkbox: 'w-6 h-6',
-            icon: 'w-3 h-3',
-            offset: '24px',
-        },
-        lg: {
-            container: 'w-16 h-8',
-            checkbox: 'w-8 h-8',
-            icon: 'w-4 h-4',
-            offset: '32px',
-        },
-    };
-    const currentSize = sizeMap[size];
+    const currentSize = toggleSizeMap[size];
 
     return (
-        <div
-            className="flex items-center justify-center"
-        >
+        <div className="flex items-center justify-center">
             <div
                 className={cn(
                     "relative rounded-full cursor-pointer",
@@ -101,59 +148,30 @@ export function ThemeToggle1({ initialTheme, onChange, size = 'default' }: Theme
                             "bg-gray-900 right-0 shadow-lg shadow-black/50" :
                             "bg-white left-0 shadow-lg shadow-white/50",
                     )}
-                    animate={{
-                        left: isDark ? currentSize.offset : '0px',
-                        right: isDark ? '0px' : currentSize.offset,
-                    }}
-                    transition={{
-                        type: "spring",
-                        stiffness: 100,
-                        damping: 30
-                    }}
+                    animate={isDark ? 'dark' : 'light'}
+                    variants={animationVariants.toggle}
+                    custom={currentSize.offset}
+                    transition={springTransition}
                 >
                     <motion.div
                         className="absolute"
-                        initial={{
-                            y: '0%',
-                            x: '0%'
-                        }}
-                        animate={{
-                            y: isDark ? '-100%' : '0%',
-                            x: isDark ? '100%' : '0%',
-                            opacity: isDark ? 0 : 1
-                        }}
-                        transition={{
-                            type: "spring",
-                            stiffness: 100,
-                            damping: 30
-                        }}
+                        initial="light"
+                        animate={isDark ? 'dark' : 'light'}
+                        variants={animationVariants.sun}
+                        transition={springTransition}
                     >
-                        <Sun
-                            className={cn(
-                                currentSize.icon,
-                            )}
-                        />
+                        <Sun className={currentSize.icon} />
                     </motion.div>
                     <motion.div
                         className="absolute"
-                        initial={{
-                            y: '0%',
-                            x: '0%'
-                        }}
-                        animate={{
-                            y: isDark ? '0%' : '-100%',
-                            x: isDark ? '0%' : '-100%',
-                            opacity: isDark ? 1 : 0
-                        }}
-                        transition={{
-                            type: "spring",
-                            stiffness: 100,
-                            damping: 30
-                        }}>
+                        initial="light"
+                        animate={isDark ? 'dark' : 'light'}
+                        variants={animationVariants.moon}
+                        transition={springTransition}
+                    >
                         <Moon
                             className={cn(
-                                currentSize.icon,
-                                isDark ? "opacity-100" : "opacity-0"
+                                currentSize.icon
                             )}
                         />
                     </motion.div>
