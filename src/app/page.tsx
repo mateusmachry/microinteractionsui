@@ -1,4 +1,5 @@
 import ProgressButton from "@/examples/buttons/progress-button";
+import { ThemeToggle1Example } from "@/examples/theme-toggle/theme-toggle1";
 import { IconParkSolidApple } from "@/icons/apple";
 import { MaterialSymbolsChevronRight } from "@/icons/chevron-right";
 import { LogosGoogleIcon } from "@/icons/google";
@@ -21,6 +22,8 @@ export default function Home() {
       <Button4 className="text-base" label={<span>Get started</span>} />
 
       <ProgressButton />
+
+      <ThemeToggle1Example />
     </div>
   );
 }
