@@ -10,16 +10,17 @@ export function Sidebar1Example() {
     return (
         <Sidebar1
             selectedItemKey={selectedItem}
+            onItemClick={(key) => setSelectedItem(key)}
             headerItems={[
                 { key: 'profile', element: <AvatarDemo />, tooltip: 'Profile', showActiveState: false },
-                { key: 'theme', element: <Moon onClick={() => setSelectedItem('theme')}/>, tooltip: 'Theme', showActiveState: true }
+                { key: 'theme', element: <Moon />, tooltip: 'Theme', showActiveState: true }
             ]}
             contentItems={[
-                { key: 'charts', element: <BarChart onClick={() => setSelectedItem('charts')}/>, tooltip: 'Charts', showActiveState: true },
-                { key: 'payment', element: <WalletIcon onClick={() => setSelectedItem('payment')}/>, tooltip: 'Payment', showActiveState: true }
+                { key: 'charts', element: <BarChart />, tooltip: 'Charts', showActiveState: true },
+                { key: 'payment', element: <WalletIcon />, tooltip: 'Payment', showActiveState: true }
             ]}
             footerItems={[
-                { key: 'settings', element: <Settings onClick={() => setSelectedItem('settings')}/>, tooltip: 'Settings', showActiveState: true }
+                { key: 'settings', element: <Settings />, tooltip: 'Settings', showActiveState: true }
             ]}
         />
     )
