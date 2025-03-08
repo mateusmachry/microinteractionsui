@@ -18,8 +18,8 @@ export type SidebarItem = {
 
 export type SidebarProps = {
     selectedItemKey: string,
-    selectBackgroundColor?: string,
-    selectBackgroundColorOnHover?: string,
+    selectedBackgroundColor?: string,
+    selectedBackgroundColorOnHover?: string,
     headerItems?: SidebarItem[],
     contentItems?: SidebarItem[],
     footerItems?: SidebarItem[],
@@ -29,8 +29,8 @@ export type SidebarProps = {
 
 export function Sidebar1({
     selectedItemKey,
-    selectBackgroundColor = "bg-blue-600",
-    selectBackgroundColorOnHover = "bg-blue-700",
+    selectedBackgroundColor = "bg-neutral-800",
+    selectedBackgroundColorOnHover = "bg-neutral-900",
     headerItems = [],
     contentItems = [],
     footerItems = [],
@@ -53,7 +53,7 @@ export function Sidebar1({
                             <AnimatePresence>
                                 {isSelected && (
                                     <motion.div
-                                        className={`absolute inset-0 ${selectBackgroundColor} hover:${selectBackgroundColorOnHover} rounded-lg`}
+                                        className={`absolute inset-0 ${selectedBackgroundColor} hover:${selectedBackgroundColorOnHover} rounded-lg`}
                                         initial={{ scale: 0 }}
                                         animate={{ scale: 1 }}
                                         exit={{ scale: 0, opacity: 0 }}

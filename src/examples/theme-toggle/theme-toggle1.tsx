@@ -7,6 +7,6 @@ export function ThemeToggle1Example() {
     const { resolvedTheme, setTheme } = useTheme();
 
     return (
-        <ThemeToggle1 size="default" initialTheme={resolvedTheme} onChange={(theme: Theme) => { setTheme(theme) }} />
+        <ThemeToggle1 size="lg" initialTheme={resolvedTheme} onChange={(theme: Theme) => { setTheme(theme) }} />
     )
 }

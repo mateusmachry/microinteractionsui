@@ -22,6 +22,8 @@ export function Sidebar1Example() {
             footerItems={[
                 { key: 'settings', element: <Settings />, tooltip: 'Settings', showActiveState: true }
             ]}
+            selectedBackgroundColor="bg-neutral-800"
+            selectedBackgroundColorOnHover="bg-neutral-900"
         />
     )
 }

@@ -28,8 +28,6 @@ export default function Home() {
         <ProgressButton />
 
         <ThemeToggle1Example />
-
-        <AnimationSequenceExample />
       </div>
     </div>
 
