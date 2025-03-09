@@ -1,9 +1,10 @@
 "use client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { motion } from "framer-motion";
+import { BoxIcon, HouseIcon, PanelsTopLeftIcon } from "lucide-react";
 import { RefObject, useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
-export function Tabs3() {
+export function Tabs4() {
     const [activeTab, setActiveTab] = useState("tab-1");
     const [dimensions, setDimensions] = useState({
         width: 0,
@@ -36,7 +37,7 @@ export function Tabs3() {
     };
 
     return (
-        <Tabs 
+        <Tabs
             className="items-center"
             defaultValue="tab-1"
             value={activeTab}
@@ -61,23 +62,26 @@ export function Tabs3() {
                 <TabsTrigger
                     ref={tab1Ref}
                     value="tab-1"
-                    className="relative rounded-none py-2 data-[state=active]:bg-transparent data-[state=active]:shadow-none transition-colors duration-500 delay-200"
+                    className="relative flex-col rounded-none px-4 py-2 text-xs data-[state=active]:bg-transparent data-[state=active]:shadow-none transition-colors duration-500 delay-200"
                 >
-                    Tab 1
+                    <HouseIcon className="mb-1.5 opacity-60" size={16} aria-hidden="true" />
+                    Overview
                 </TabsTrigger>
                 <TabsTrigger
                     ref={tab2Ref}
                     value="tab-2"
-                    className="relative rounded-none py-2 data-[state=active]:bg-transparent data-[state=active]:shadow-none transition-colors duration-500 delay-200"
+                    className="relative flex-col rounded-none px-4 py-2 text-xs data-[state=active]:bg-transparent data-[state=active]:shadow-none transition-colors duration-500 delay-200"
                 >
-                    Tab 2
+                    <PanelsTopLeftIcon className="mb-1.5 opacity-60" size={16} aria-hidden="true" />
+                    Projects
                 </TabsTrigger>
                 <TabsTrigger
                     ref={tab3Ref}
                     value="tab-3"
-                    className="relative rounded-none py-2 data-[state=active]:bg-transparent data-[state=active]:shadow-none transition-colors duration-500 delay-200"
+                    className="relative flex-col rounded-none px-4 py-2 text-xs data-[state=active]:bg-transparent data-[state=active]:shadow-none transition-colors duration-500 delay-200"
                 >
-                    Tab 3
+                    <BoxIcon className="mb-1.5 opacity-60" size={16} aria-hidden="true" />
+                    Packages
                 </TabsTrigger>
             </TabsList>
             <TabsContent value="tab-1">

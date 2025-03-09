@@ -6,7 +6,7 @@ import { BoxIcon, HouseIcon, PanelsTopLeftIcon } from "lucide-react";
 import { RefObject, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-export default function Tabs2() {
+export function Tabs2() {
     const [activeTab, setActiveTab] = useState("tab-1");
     const [dimensions, setDimensions] = useState({
         width: 0,
@@ -51,16 +51,20 @@ export default function Tabs2() {
                 <TabsList className="mb-3 relative">
                     <motion.div
                         className="absolute z-0 bg-background rounded-sm"
-                        transition={{
-                            type: "spring",
-                            stiffness: 100,
-                            damping: 30
+                        initial={{
+                            width: 0,
+                            left: 0,
                         }}
                         animate={{
                             width: dimensions.width,
                             height: dimensions.height,
                             left: dimensions.left,
                             top: dimensions.top,
+                        }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 100,
+                            damping: 30
                         }}
                     />
                     <TabsTrigger ref={tab1Ref} value="tab-1" className="z-10 data-[state=active]:bg-transparent transition-colors duration-500 delay-200">

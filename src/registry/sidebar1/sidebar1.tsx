@@ -85,15 +85,15 @@ export function Sidebar1({
     };
 
     return (
-        <nav {...props} className={cn(className, "w-18 min-h-screen flex flex-col items-center bg-background border-r py-8 px-4")}>
-            <div className="h-full flex flex-col justify-between gap-12">
-                <div id="sidebar-header" className="flex flex-col gap-6">
+        <nav {...props} className={cn(className, "w-18 h-screen fixed flex flex-col items-center bg-background border-r py-8 px-4")}>
+            <div className="h-full flex flex-col justify-between gap-8">
+                <div id="sidebar-header" className="flex flex-col gap-4 after:border-b after:border-b-border">
                     {headerItems.length > 0 && headerItems.map(renderSidebarItem)}
                 </div>
-                <div id="sidebar-content" className="flex flex-col flex-1 gap-6">
+                <div id="sidebar-content" className="flex flex-col flex-1 gap-4">
                     {contentItems.length > 0 && contentItems.map(renderSidebarItem)}
                 </div>
-                <div id="sidebar-footer" className="flex flex-col gap-6">
+                <div id="sidebar-footer" className="flex flex-col gap-4 before:border-t before:border-t-border">
                     {footerItems.length > 0 && footerItems.map(renderSidebarItem)}
                 </div>
             </div>

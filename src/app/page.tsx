@@ -9,14 +9,15 @@ import { Button2 } from "@/registry/button2/button2";
 import { Button3 } from "@/registry/button3/button3";
 import { Button4 } from "@/registry/button4/button4";
 import { Tabs1 } from "@/registry/tabs1/tabs1";
-import Tabs2 from "@/registry/tabs2/tabs2";
+import { Tabs2 } from "@/registry/tabs2/tabs2";
 import { Tabs3 } from "@/registry/tabs3/tabs3";
+import { Tabs4 } from "@/registry/tabs4/tabs4";
 
 export default function Home() {
   return (
-    <div className="h-screen flex flex-row justify-start">
+    <div className="flex flex-row justify-start">
       <Sidebar1Example />
-      <div className="flex-1 flex flex-col justify-center items-center gap-4">
+      <div className="flex-1 flex flex-col justify-center items-center gap-4 py-12">
         <Button1 size={"lg"} variant={"secondary"} label={<span>Sign in with Google</span>} icon={<LogosGoogleIcon />} />
         <Button1 size={"lg"} variant={"default"} label={<span>Sign in with Apple</span>} icon={<IconParkSolidApple />} />
 
@@ -33,6 +34,7 @@ export default function Home() {
         <Tabs1 />
         <Tabs2 />
         <Tabs3 />
+        <Tabs4 />
       </div>
     </div>
 

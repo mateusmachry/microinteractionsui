@@ -50,16 +50,20 @@ export function Tabs1() {
                 <TabsList className="mb-3 gap-1 bg-transparent relative">
                     <motion.div
                         className="absolute z-0 bg-primary rounded-full"
-                        transition={{
-                            type: "spring",
-                            stiffness: 100,
-                            damping: 30
+                        initial={{
+                            width: 0,
+                            left: 0,
                         }}
                         animate={{
                             width: dimensions.width,
                             height: dimensions.height,
                             left: dimensions.left,
                             top: dimensions.top,
+                        }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 100,
+                            damping: 30
                         }}
                     />
                     <TabsTrigger
