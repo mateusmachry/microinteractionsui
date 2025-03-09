@@ -10,6 +10,7 @@ import { Button3 } from "@/registry/button3/button3";
 import { Button4 } from "@/registry/button4/button4";
 import { Tabs1 } from "@/registry/tabs1/tabs1";
 import Tabs2 from "@/registry/tabs2/tabs2";
+import { Tabs3 } from "@/registry/tabs3/tabs3";
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
 
         <Tabs1 />
         <Tabs2 />
+        <Tabs3 />
       </div>
     </div>
 

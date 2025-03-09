@@ -63,11 +63,11 @@ export default function Tabs2() {
                             top: dimensions.top,
                         }}
                     />
-                    <TabsTrigger ref={tab1Ref} value="tab-1" className="z-10 data-[state=active]:bg-transparent">
+                    <TabsTrigger ref={tab1Ref} value="tab-1" className="z-10 data-[state=active]:bg-transparent transition-colors duration-500 delay-200">
                         <HouseIcon className="-ms-0.5 me-1.5 opacity-60" size={16} aria-hidden="true" />
                         Overview
                     </TabsTrigger>
-                    <TabsTrigger ref={tab2Ref} value="tab-2" className="group z-10 data-[state=active]:bg-transparent">
+                    <TabsTrigger ref={tab2Ref} value="tab-2" className="group z-10 data-[state=active]:bg-transparent transition-colors duration-500 delay-200">
                         <PanelsTopLeftIcon className="-ms-0.5 me-1.5 opacity-60" size={16} aria-hidden="true" />
                         Projects
                         <Badge
@@ -77,7 +77,7 @@ export default function Tabs2() {
                             3
                         </Badge>
                     </TabsTrigger>
-                    <TabsTrigger ref={tab3Ref} value="tab-3" className="group z-10 data-[state=active]:bg-transparent">
+                    <TabsTrigger ref={tab3Ref} value="tab-3" className="group z-10 data-[state=active]:bg-transparent transition-colors duration-500 delay-200">
                         <BoxIcon className="-ms-0.5 me-1.5 opacity-60" size={16} aria-hidden="true" />
                         Packages
                         <Badge className="ms-1.5 transition-opacity group-data-[state=inactive]:opacity-50">
