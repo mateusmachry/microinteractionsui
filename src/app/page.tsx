@@ -9,6 +9,7 @@ import { Button2 } from "@/registry/button2/button2";
 import { Button3 } from "@/registry/button3/button3";
 import { Button4 } from "@/registry/button4/button4";
 import { Tabs1 } from "@/registry/tabs1/tabs1";
+import Tabs2 from "@/registry/tabs2/tabs2";
 
 export default function Home() {
   return (
@@ -19,9 +20,8 @@ export default function Home() {
         <Button1 size={"lg"} variant={"default"} label={<span>Sign in with Apple</span>} icon={<IconParkSolidApple />} />
 
         <Button2 size={"lg"} variant={"default"} label={<span>Get started</span>} />
-        <Button2 size={"lg"} variant={"outline"} label={<span>Get started</span>} iconColor="#0A0A0A" iconColorOnHover="#0A0A0A" iconBgColorOnHover="#F59E0B" />
 
-        <Button3 animationDirection={'from-top'} size={"lg"} variant={"outline"} bgColorOnHover={"#262626"} label={<span>Try for free</span>} icon={<MaterialSymbolsChevronRight />} />
+        <Button3 animationDirection={'from-top'} size={"lg"} variant={"outline"} label={<span>Try for free</span>} icon={<MaterialSymbolsChevronRight />} />
 
         <Button4 className="text-base" label={<span>Get started</span>} />
 
@@ -30,6 +30,7 @@ export default function Home() {
         <ThemeToggle1Example />
 
         <Tabs1 />
+        <Tabs2 />
       </div>
     </div>
 
