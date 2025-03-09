@@ -9,7 +9,7 @@ export type AnimationDirection = 'from-top' | 'from-bottom';
 
 export type ButtonProps = {
     label: React.ReactNode,
-    bgColorOnHover: string,
+    bgColorOnHover?: string,
     textColorOnHover?: string,
     icon?: React.ReactNode,
     animationDirection?: AnimationDirection,
@@ -175,9 +175,9 @@ const animationTransition = {
 
 export const Button3 = forwardRef<HTMLButtonElement, ButtonProps>(({
     label,
-    bgColorOnHover,
     icon,
     animationDirection = "from-top",
+    bgColorOnHover = "var(--primary)",
     textColorOnHover = "var(--primary-foreground)",
     variant = "default",
     size = "lg",
