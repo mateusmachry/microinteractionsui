@@ -1,4 +1,3 @@
-import { AnimationSequenceExample } from "@/examples/animation-sequence";
 import ProgressButton from "@/examples/buttons/progress-button";
 import { Sidebar1Example } from "@/examples/sidebar/sidebar1";
 import { ThemeToggle1Example } from "@/examples/theme-toggle/theme-toggle1";
@@ -9,6 +8,7 @@ import { Button1 } from "@/registry/button1/button1";
 import { Button2 } from "@/registry/button2/button2";
 import { Button3 } from "@/registry/button3/button3";
 import { Button4 } from "@/registry/button4/button4";
+import { Tabs1 } from "@/registry/tabs1/tabs1";
 
 export default function Home() {
   return (
@@ -28,6 +28,8 @@ export default function Home() {
         <ProgressButton />
 
         <ThemeToggle1Example />
+
+        <Tabs1 />
       </div>
     </div>
 
