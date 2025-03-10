@@ -8,6 +8,7 @@ import { Button1 } from "@/registry/button1/button1";
 import { Button2 } from "@/registry/button2/button2";
 import { Button3 } from "@/registry/button3/button3";
 import { Button4 } from "@/registry/button4/button4";
+import { Button6 } from "@/registry/button6/button6";
 import { Tabs1 } from "@/registry/tabs1/tabs1";
 import { Tabs2 } from "@/registry/tabs2/tabs2";
 import { Tabs3 } from "@/registry/tabs3/tabs3";
@@ -25,6 +26,7 @@ export default function Home() {
         <Button3 animationDirection={'from-top'} size={"lg"} variant={"outline"} label={<span>Try for free</span>} icon={<MaterialSymbolsChevronRight />} />
         <Button4 className="text-base" label={<span>Get started</span>} />
         <ProgressButton />
+        <Button6>Get Started</Button6>
 
         <ThemeToggle1Example />
 
