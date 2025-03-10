@@ -4,7 +4,7 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BoxIcon, HouseIcon, PanelsTopLeftIcon } from "lucide-react";
 import { RefObject, useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 export function Tabs2() {
     const [activeTab, setActiveTab] = useState("tab-1");
@@ -91,15 +91,25 @@ export function Tabs2() {
                 </TabsList>
                 <ScrollBar orientation="horizontal" />
             </ScrollArea>
-            <TabsContent value="tab-1">
-                <p className="text-muted-foreground p-4 pt-1 text-center text-xs">Content for Tab 1</p>
-            </TabsContent>
-            <TabsContent value="tab-2">
-                <p className="text-muted-foreground p-4 pt-1 text-center text-xs">Content for Tab 2</p>
-            </TabsContent>
-            <TabsContent value="tab-3">
-                <p className="text-muted-foreground p-4 pt-1 text-center text-xs">Content for Tab 3</p>
-            </TabsContent>
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={activeTab}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    transition={{ duration: 0.3 }}
+                >
+                    <TabsContent value="tab-1">
+                        <p className="text-muted-foreground p-4 pt-1 text-center text-xs">Content for Tab 1</p>
+                    </TabsContent>
+                    <TabsContent value="tab-2">
+                        <p className="text-muted-foreground p-4 pt-1 text-center text-xs">Content for Tab 2</p>
+                    </TabsContent>
+                    <TabsContent value="tab-3">
+                        <p className="text-muted-foreground p-4 pt-1 text-center text-xs">Content for Tab 3</p>
+                    </TabsContent>
+                </motion.div>
+            </AnimatePresence>
         </Tabs>
     );
 }

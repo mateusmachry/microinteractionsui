@@ -1,6 +1,6 @@
 "use client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { RefObject, useEffect, useRef, useState } from "react";
 
 export function Tabs3() {
@@ -80,15 +80,25 @@ export function Tabs3() {
                     Tab 3
                 </TabsTrigger>
             </TabsList>
-            <TabsContent value="tab-1">
-                <p className="text-muted-foreground p-4 text-center text-xs">Content for Tab 1</p>
-            </TabsContent>
-            <TabsContent value="tab-2">
-                <p className="text-muted-foreground p-4 text-center text-xs">Content for Tab 2</p>
-            </TabsContent>
-            <TabsContent value="tab-3">
-                <p className="text-muted-foreground p-4 text-center text-xs">Content for Tab 3</p>
-            </TabsContent>
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={activeTab}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    transition={{ duration: 0.3 }}
+                >
+                    <TabsContent value="tab-1">
+                        <p className="text-muted-foreground p-4 pt-1 text-center text-xs">Content for Tab 1</p>
+                    </TabsContent>
+                    <TabsContent value="tab-2">
+                        <p className="text-muted-foreground p-4 pt-1 text-center text-xs">Content for Tab 2</p>
+                    </TabsContent>
+                    <TabsContent value="tab-3">
+                        <p className="text-muted-foreground p-4 pt-1 text-center text-xs">Content for Tab 3</p>
+                    </TabsContent>
+                </motion.div>
+            </AnimatePresence>
         </Tabs>
     );
 }

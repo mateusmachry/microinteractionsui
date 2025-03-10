@@ -12,6 +12,7 @@ import { Tabs1 } from "@/registry/tabs1/tabs1";
 import { Tabs2 } from "@/registry/tabs2/tabs2";
 import { Tabs3 } from "@/registry/tabs3/tabs3";
 import { Tabs4 } from "@/registry/tabs4/tabs4";
+import { Tabs5 } from "@/registry/tabs5/tabs5";
 
 export default function Home() {
   return (
@@ -20,13 +21,9 @@ export default function Home() {
       <div className="flex-1 flex flex-col justify-center items-center gap-4 py-12">
         <Button1 size={"lg"} variant={"secondary"} label={<span>Sign in with Google</span>} icon={<LogosGoogleIcon />} />
         <Button1 size={"lg"} variant={"default"} label={<span>Sign in with Apple</span>} icon={<IconParkSolidApple />} />
-
         <Button2 size={"lg"} variant={"default"} label={<span>Get started</span>} />
-
         <Button3 animationDirection={'from-top'} size={"lg"} variant={"outline"} label={<span>Try for free</span>} icon={<MaterialSymbolsChevronRight />} />
-
         <Button4 className="text-base" label={<span>Get started</span>} />
-
         <ProgressButton />
 
         <ThemeToggle1Example />
@@ -35,8 +32,8 @@ export default function Home() {
         <Tabs2 />
         <Tabs3 />
         <Tabs4 />
+        <Tabs5 />
       </div>
     </div>
-
   );
 }
