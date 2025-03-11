@@ -22,7 +22,7 @@ export const Button6 = forwardRef<HTMLButtonElement, ButtonProps>(({
     children,
     radialGradientBackground = { r: 250, g: 250, b: 250 },
     solidColorBackground = { r: 15, g: 15, b: 15 },
-    overlayColor = { r: 255, g: 255, b: 255},
+    overlayColor = { r: 255, g: 255, b: 255 },
     ...props }, ref) => {
     return (
         <motion.button
