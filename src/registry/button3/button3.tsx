@@ -2,21 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
-import React, { forwardRef, useState } from "react";
-import { cn } from "@/lib/utils";
+import React, { SVGProps, useState } from "react";
 
-export type AnimationDirection = 'from-top' | 'from-bottom';
-
-export type ButtonProps = {
-    label: React.ReactNode,
-    bgColorOnHover?: string,
-    textColorOnHover?: string,
-    icon?: React.ReactNode,
-    animationDirection?: AnimationDirection,
-    variant?: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost",
-    size?: "default" | "sm" | "lg" | "icon",
-    className?: string
-} & Omit<React.ComponentProps<"button">, "onMouseEnter" | "onMouseLeave">;
+type AnimationDirection = 'from-top' | 'from-bottom';
 
 const animationDirectionMap = {
     'from-top': {
@@ -173,26 +161,21 @@ const animationTransition = {
     duration: 0.5
 };
 
-export const Button3 = forwardRef<HTMLButtonElement, ButtonProps>(({
-    label,
-    icon,
-    animationDirection = "from-top",
-    bgColorOnHover = "var(--primary)",
-    textColorOnHover = "var(--primary-foreground)",
-    variant = "default",
-    size = "lg",
-    className,
-    ...props
-}, ref) => {
+const MaterialSymbolsChevronRight = (props: SVGProps<SVGSVGElement>) => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}><path fill="currentColor" d="M12.6 12L8 7.4L9.4 6l6 6l-6 6L8 16.6z"></path></svg>
+    )
+}
+
+export function Button3() {
     const [isHovered, setIsHovered] = useState(false);
+    const animationDirection: AnimationDirection = "from-top";
 
     return (
         <Button
-            {...props}
-            ref={ref}
-            variant={variant}
-            size={size}
-            className={cn(className, "cursor-pointer overflow-hidden relative")}
+            variant="outline"
+            size="lg"
+            className="cursor-pointer overflow-hidden relative"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
@@ -201,7 +184,7 @@ export const Button3 = forwardRef<HTMLButtonElement, ButtonProps>(({
                 initial="initial"
                 animate={isHovered ? "hover" : "initial"}
                 variants={animationVariants.background}
-                custom={{ bgColorOnHover: bgColorOnHover, animationDirection: animationDirection }}
+                custom={{ bgColorOnHover: "var(--primary)", animationDirection: animationDirection }}
                 transition={animationTransition}
             />
 
@@ -211,11 +194,11 @@ export const Button3 = forwardRef<HTMLButtonElement, ButtonProps>(({
                     initial="initial"
                     animate={isHovered ? "hover" : "initial"}
                     variants={animationVariants.hoverContent}
-                    custom={{ textColorOnHover: textColorOnHover, animationDirection: animationDirection }}
+                    custom={{ textColorOnHover: "var(--primary-foreground)", animationDirection: animationDirection }}
                     transition={animationTransition}
                 >
-                    {label}
-                    {icon}
+                    <span>Try for free</span>
+                    <MaterialSymbolsChevronRight />
                 </motion.div>
 
                 <motion.div
@@ -226,12 +209,10 @@ export const Button3 = forwardRef<HTMLButtonElement, ButtonProps>(({
                     custom={{ animationDirection: animationDirection }}
                     transition={animationTransition}
                 >
-                    {label}
-                    {icon}
+                    <span>Try for free</span>
+                    <MaterialSymbolsChevronRight />
                 </motion.div>
             </div>
         </Button>
     );
-});
-
-Button3.displayName = 'Button3';
+};

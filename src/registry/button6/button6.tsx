@@ -1,34 +1,15 @@
 'use client';
 
-import { HTMLMotionProps, motion } from 'framer-motion';
-import React, { forwardRef } from "react";
-import { cn } from "@/lib/utils";
+import { motion } from 'framer-motion';
 
-export type RGB = {
-    r: number,
-    g: number,
-    b: number
-};
+export function Button6() {
+    const radialGradientBackground = { r: 250, g: 250, b: 250 };
+    const solidColorBackground = { r: 15, g: 15, b: 15 };
+    const overlayColor = { r: 255, g: 255, b: 255 };
 
-export type ButtonProps = {
-    className?: string,
-    radialGradientBackground?: RGB,
-    solidColorBackground?: RGB,
-    overlayColor?: RGB,
-} & HTMLMotionProps<"button">;
-
-export const Button6 = forwardRef<HTMLButtonElement, ButtonProps>(({
-    className,
-    children,
-    radialGradientBackground = { r: 250, g: 250, b: 250 },
-    solidColorBackground = { r: 15, g: 15, b: 15 },
-    overlayColor = { r: 255, g: 255, b: 255 },
-    ...props }, ref) => {
     return (
         <motion.button
-            ref={ref}
-            {...props}
-            className={cn("px-6 py-2 rounded-md relative cursor-pointer", className)}
+            className="px-6 py-2 rounded-md relative cursor-pointer"
             style={{
                 background: `radial-gradient(circle at 50% 0%, rgba(${radialGradientBackground.r}, ${radialGradientBackground.g}, ${radialGradientBackground.b}, 0.05) 0%, transparent 60%), rgba(${solidColorBackground.r}, ${solidColorBackground.g}, ${solidColorBackground.b}, 1)`
             }}
@@ -65,7 +46,7 @@ export const Button6 = forwardRef<HTMLButtonElement, ButtonProps>(({
                     WebkitMaskImage: "linear-gradient(-75deg, white calc(var(--x) + 20%), transparent calc(var(--x) + 30%), white calc(var(--x) + 100%))"
                 }}
             >
-                {children as React.ReactNode}
+                Subscribe
             </div>
             <span
                 className="block absolute inset-0 rounded-md p-px"
@@ -79,6 +60,4 @@ export const Button6 = forwardRef<HTMLButtonElement, ButtonProps>(({
             />
         </motion.button>
     );
-});
-
-Button6.displayName = 'Button6';
+};

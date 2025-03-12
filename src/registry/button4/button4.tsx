@@ -2,32 +2,20 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
-import React, { forwardRef, useState } from "react";
-import { cn } from "@/lib/utils";
+import React, { useState } from "react";
 
-export type ButtonProps = {
-    label: React.ReactNode,
-    className?: string
-} & Omit<React.ComponentProps<"button">, "onMouseEnter" | "onMouseLeave">;
-
-export const Button4 = forwardRef<HTMLButtonElement, ButtonProps>(({
-    label,
-    className,
-    ...props
-}, ref) => {
+export function Button4() {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
         <Button
-            {...props}
-            ref={ref}
             variant={"link"}
-            className={cn(className, "cursor-pointer relative overflow-hidden hover:no-underline")}
+            className="text-base cursor-pointer relative overflow-hidden hover:no-underline"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
             <div className="relative inline-block">
-                {label}
+                Get started
                 <motion.div
                     className="absolute bottom-0 left-0 mb-[-4px] h-[2px] bg-primary"
                     initial={{ width: "0%" }}
@@ -37,6 +25,4 @@ export const Button4 = forwardRef<HTMLButtonElement, ButtonProps>(({
             </div>
         </Button>
     );
-});
-
-Button4.displayName = 'Button4';
+};

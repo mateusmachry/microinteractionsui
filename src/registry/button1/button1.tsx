@@ -2,16 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
-import React, { SVGProps, useEffect, useRef, useState, forwardRef } from "react";
-import { cn } from "@/lib/utils";
-
-export type ButtonProps = {
-  label: React.ReactNode,
-  icon?: React.ReactNode,
-  variant?: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost",
-  size?: "default" | "sm" | "lg" | "icon",
-  className?: string
-} & Omit<React.ComponentProps<"button">, "onMouseEnter" | "onMouseLeave">;
+import React, { SVGProps, useEffect, useRef, useState } from "react";
 
 const ArrowForwardIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}>
@@ -50,18 +41,16 @@ const animationTransition = {
   damping: 20,
 };
 
-export const Button1 = forwardRef<HTMLButtonElement, ButtonProps>(({
-  label,
-  icon,
-  variant = "default",
-  size = "lg",
-  className,
-  ...props
-}, ref) => {
+const LogosGoogleIcon = (props: SVGProps<SVGSVGElement>) => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="0.98em" height="1em" viewBox="0 0 256 262" {...props}><path fill="#4285F4" d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622l38.755 30.023l2.685.268c24.659-22.774 38.875-56.282 38.875-96.027"></path><path fill="#34A853" d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055c-34.523 0-63.824-22.773-74.269-54.25l-1.531.13l-40.298 31.187l-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1"></path><path fill="#FBBC05" d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82c0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602z"></path><path fill="#EB4335" d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0C79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251"></path></svg>
+  )
+};
+
+export function Button1() {
   const [isHovered, setIsHovered] = useState(false);
   const [buttonWidth, setButtonWidth] = useState(0);
-  const internalRef = useRef<HTMLButtonElement>(null);
-  const buttonRef = (ref || internalRef) as React.RefObject<HTMLButtonElement>;
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const currentRef = buttonRef.current;
@@ -72,22 +61,21 @@ export const Button1 = forwardRef<HTMLButtonElement, ButtonProps>(({
 
   return (
     <Button
-      {...props}
       ref={buttonRef}
-      variant={variant}
-      size={size}
-      className={cn(className, "cursor-pointer relative overflow-hidden")}
+      variant="secondary"
+      size="lg"
+      className="cursor-pointer relative overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}>
-      {icon && <motion.div
+      <motion.div
         initial="initial"
         animate={isHovered ? "hover" : "initial"}
         variants={animationVariants.icon}
         custom={buttonWidth}
         transition={animationTransition}
       >
-        {icon}
-      </motion.div>}
+        <LogosGoogleIcon />
+      </motion.div>
 
       <motion.div
         initial="initial"
@@ -95,7 +83,7 @@ export const Button1 = forwardRef<HTMLButtonElement, ButtonProps>(({
         variants={animationVariants.label}
         transition={animationTransition}
       >
-        {label}
+        <span>Sign in with Google</span>
       </motion.div>
 
       <motion.div
@@ -114,6 +102,4 @@ export const Button1 = forwardRef<HTMLButtonElement, ButtonProps>(({
       </motion.div>
     </Button>
   );
-});
-
-Button1.displayName = 'Button1';
+};

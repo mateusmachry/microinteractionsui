@@ -2,19 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
-import React, { useState, forwardRef } from "react";
-import { cn } from "@/lib/utils";
-
-export type ButtonProps = {
-    label: React.ReactNode,
-    variant?: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost",
-    size?: "default" | "sm" | "lg" | "icon",
-    iconColor?: string,
-    iconColorOnHover?: string,
-    iconBgColorOnHover?: string,
-    className?: string
-} & Omit<React.ComponentProps<"button">, "onMouseEnter" | "onMouseLeave">;
-
+import React, { useState } from "react";
 
 const animationVariants = {
     getIconContainerVariants: (iconColor: string, iconColorOnHover: string, iconBgColorOnHover: string) => ({
@@ -40,29 +28,21 @@ const animationTransition = {
     duration: 0.3
 };
 
-export const Button2 = forwardRef<HTMLButtonElement, ButtonProps>(({
-    label,
-    variant = "default",
-    size = "lg",
-    iconColor = "var(--primary-foreground)",
-    iconColorOnHover = "var(--accent-foreground)",
-    iconBgColorOnHover = "var(--accent)",
-    className,
-    ...props
-}, ref) => {
+export function Button2() {
+    const iconColor = "var(--primary-foreground)";
+    const iconColorOnHover = "var(--accent-foreground)";
+    const iconBgColorOnHover = "var(--accent)";
     const [isHovered, setIsHovered] = useState(false);
 
     return (
         <Button
-            {...props}
-            ref={ref}
-            variant={variant}
-            size={size}
-            className={cn(className, "cursor-pointer relative overflow-hidden")}
+            variant="default"
+            size="lg"
+            className="cursor-pointer relative overflow-hidden"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            {label}
+            <span>Get started</span>
             <motion.div
                 variants={animationVariants.getIconContainerVariants(iconColor, iconColorOnHover, iconBgColorOnHover)}
                 animate={isHovered ? "hover" : "default"}
@@ -85,6 +65,4 @@ export const Button2 = forwardRef<HTMLButtonElement, ButtonProps>(({
             </motion.div>
         </Button>
     );
-});
-
-Button2.displayName = 'Button2';
+};
