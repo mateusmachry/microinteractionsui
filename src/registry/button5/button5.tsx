@@ -11,11 +11,13 @@ const LucideCheck = (props: SVGProps<SVGSVGElement>) => {
     )
 };
 
-const IcBaselinePayments = (props: SVGProps<SVGSVGElement>) => {
+const CreditCardIcon = (props: SVGProps<SVGSVGElement>) => {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}><path fill="currentColor" d="M19 14V6c0-1.1-.9-2-2-2H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2m-9-1c-1.66 0-3-1.34-3-3s1.34-3 3-3s3 1.34 3 3s-1.34 3-3 3m13-6v11c0 1.1-.9 2-2 2H4v-2h17V7z"></path></svg>
+        <svg {...props} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
+        </svg>
     )
-}
+};
 
 const animationVariants = {
     containerVariants: {
@@ -159,7 +161,7 @@ export function Button5() {
                     animate={isShowingCheckmarkAnimation ? 'hidden' : 'visible'}
                 >
                     <span>Pay with credit card</span>
-                    <IcBaselinePayments />
+                    <CreditCardIcon width={16} height={16} />
                 </motion.div>
 
                 {/* Complete Checkmark */}
