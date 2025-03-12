@@ -1,5 +1,4 @@
 import { Sidebar1Example } from "@/examples/sidebar/sidebar1";
-import { ThemeToggle1Example } from "@/examples/theme-toggle/theme-toggle1";
 import { Button1 } from "@/registry/button1/button1";
 import { Button2 } from "@/registry/button2/button2";
 import { Button3 } from "@/registry/button3/button3";
@@ -13,6 +12,7 @@ import { Tabs2 } from "@/registry/tabs2/tabs2";
 import { Tabs3 } from "@/registry/tabs3/tabs3";
 import { Tabs4 } from "@/registry/tabs4/tabs4";
 import { Tabs5 } from "@/registry/tabs5/tabs5";
+import { ThemeToggle1 } from "@/registry/theme-toggle1/theme-toggle1";
 
 export default function Home() {
   return (
@@ -28,7 +28,7 @@ export default function Home() {
         <Button6 />
         <Button7 />
 
-        <ThemeToggle1Example />
+        <ThemeToggle1 />
 
         <Tabs1 />
         <Tabs2 />

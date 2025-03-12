@@ -1,16 +1,11 @@
 'use client';
 
-import React, { SVGProps, useEffect, useState } from "react";
+import React, { SVGProps } from "react";
 import { cn } from "@/lib/utils";
 import { motion } from 'framer-motion';
+import { useTheme } from "next-themes";
 
-export type Theme = 'light' | 'dark';
-
-export type ThemeToggleProps = {
-    initialTheme: string | undefined,
-    size?: 'default' | 'lg' | 'xl';
-    onChange?: (theme: Theme) => void;
-};
+type ToggleSize = 'default' | 'lg' | 'xl';
 
 const Moon = (props: SVGProps<SVGSVGElement>) => {
     return (
@@ -106,30 +101,24 @@ const springTransition = {
     damping: 30
 };
 
-export function ThemeToggle1({ initialTheme, onChange, size = 'default' }: ThemeToggleProps) {
-    const [theme, setTheme] = useState<Theme | null>(null);
-
-    useEffect(() => {
-        if (initialTheme) {
-            setTheme(initialTheme as Theme);
-        }
-    }, [initialTheme]);
+export function ThemeToggle1() {
+    const { resolvedTheme, setTheme } = useTheme();
 
     const handleToggle = () => {
-        const newState = theme === 'light' ? 'dark' : 'light';
+        const newState = resolvedTheme === 'light' ? 'dark' : 'light';
         setTheme(newState);
-        onChange?.(newState);
     };
 
-    const isDark = theme === 'dark';
-    const currentSize = toggleSizeMap[size];
+    const isDark = resolvedTheme === 'dark';
+    const toggleSize: ToggleSize = 'lg';
+    const selectedSize = toggleSizeMap[toggleSize];
 
     return (
         <div className="flex items-center justify-center">
             <div
                 className={cn(
                     "relative rounded-full cursor-pointer",
-                    currentSize.container,
+                    selectedSize.container,
                     isDark ? "bg-gray-800" : "bg-gray-100"
                 )}
                 onClick={handleToggle}
@@ -142,7 +131,7 @@ export function ThemeToggle1({ initialTheme, onChange, size = 'default' }: Theme
                 />
                 <motion.div
                     className={cn(
-                        currentSize.checkbox,
+                        selectedSize.checkbox,
                         "absolute rounded-full flex items-center justify-center overflow-hidden",
                         isDark ?
                             "bg-gray-900 right-0 shadow-lg shadow-black/50" :
@@ -150,7 +139,7 @@ export function ThemeToggle1({ initialTheme, onChange, size = 'default' }: Theme
                     )}
                     animate={isDark ? 'dark' : 'light'}
                     variants={animationVariants.toggle}
-                    custom={currentSize.offset}
+                    custom={selectedSize.offset}
                     transition={springTransition}
                 >
                     <motion.div
@@ -160,7 +149,7 @@ export function ThemeToggle1({ initialTheme, onChange, size = 'default' }: Theme
                         variants={animationVariants.sun}
                         transition={springTransition}
                     >
-                        <Sun className={currentSize.icon} />
+                        <Sun className={selectedSize.icon} />
                     </motion.div>
                     <motion.div
                         className="absolute"
@@ -171,7 +160,7 @@ export function ThemeToggle1({ initialTheme, onChange, size = 'default' }: Theme
                     >
                         <Moon
                             className={cn(
-                                currentSize.icon
+                                selectedSize.icon
                             )}
                         />
                     </motion.div>
