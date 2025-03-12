@@ -1,4 +1,3 @@
-import { Sidebar1Example } from "@/examples/sidebar/sidebar1";
 import { Button1 } from "@/registry/button1/button1";
 import { Button2 } from "@/registry/button2/button2";
 import { Button3 } from "@/registry/button3/button3";
@@ -7,6 +6,7 @@ import { Button5 } from "@/registry/button5/button5";
 import { Button6 } from "@/registry/button6/button6";
 import { Button7 } from "@/registry/button7/button7";
 import { Button8 } from "@/registry/button8/button8";
+import { Sidebar1 } from "@/registry/sidebar1/sidebar1";
 import { Tabs1 } from "@/registry/tabs1/tabs1";
 import { Tabs2 } from "@/registry/tabs2/tabs2";
 import { Tabs3 } from "@/registry/tabs3/tabs3";
@@ -17,7 +17,7 @@ import { ThemeToggle1 } from "@/registry/theme-toggle1/theme-toggle1";
 export default function Home() {
   return (
     <div className="flex flex-row justify-start">
-      <Sidebar1Example />
+      <Sidebar1 />
       <div className="flex-1 flex flex-col justify-center items-center gap-4 py-12">
         <Button1 />
         <Button8 />
