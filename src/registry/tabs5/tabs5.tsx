@@ -3,13 +3,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SVGProps, useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 
-export type TabItem = {
-    id: string,
-    label: string,
-    icon: React.ReactNode,
-    content: React.ReactNode
-};
-
 const tabLabelVariants: Variants = {
     hidden: { width: 0, opacity: 0, x: -10 },
     visible: { width: "auto", opacity: 1, x: 0 },
@@ -20,14 +13,6 @@ const tabContentVariants: Variants = {
     hidden: { opacity: 0, x: -20 },
     visible: { opacity: 1, x: 0 },
     exit: { opacity: 0, x: 20 }
-};
-
-const TabContentPlaceholder = ({ text }: { text: string }) => {
-    return (
-        <div className="flex justify-center items-center">
-            <span className="text-xs text-gray-600 dark:text-gray-400">{text}</span>
-        </div>
-    )
 };
 
 const UsersIcon = (props: SVGProps<SVGSVGElement>) => {
@@ -54,12 +39,6 @@ const StarIcon = (props: SVGProps<SVGSVGElement>) => {
     )
 };
 
-const tabItems: TabItem[] = [
-    { id: "tab-1", label: "Followers", icon: <UsersIcon className="opacity-60" width={16} height={16} aria-hidden="true" />, content: <TabContentPlaceholder text="Tab1 content" /> },
-    { id: "tab-2", label: "Likes", icon: <ThumbsUpIcon className="opacity-60" width={16} height={16} aria-hidden="true" />, content: <TabContentPlaceholder text="Tab2 content" /> },
-    { id: "tab-3", label: "Favorites", icon: <StarIcon className="opacity-60" width={16} height={16} aria-hidden="true" />, content: <TabContentPlaceholder text="Tab3 content" /> }
-];
-
 export function Tabs5() {
     const [activeTab, setActiveTab] = useState("tab-1");
 
@@ -70,28 +49,63 @@ export function Tabs5() {
             onValueChange={setActiveTab}
         >
             <TabsList className="mb-3 gap-1 bg-transparent relative">
-                {tabItems.map(({ id, label, icon }) => (
-                    <TabsTrigger
-                        key={`tab-trigger-${id}`}
-                        value={id}
-                        className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-full data-[state=active]:shadow-none flex flex-row items-center gap-1.5"
-                    >
-                        {icon}
-                        <AnimatePresence>
-                            {activeTab === id && (
-                                <motion.span
-                                    variants={tabLabelVariants}
-                                    initial="hidden"
-                                    animate="visible"
-                                    exit="exit"
-                                    transition={{ duration: 0.4, ease: "easeOut" }}
-                                >
-                                    {label}
-                                </motion.span>
-                            )}
-                        </AnimatePresence>
-                    </TabsTrigger>
-                ))}
+                <TabsTrigger
+                    value="tab-1"
+                    className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-full data-[state=active]:shadow-none flex flex-row items-center gap-1.5"
+                >
+                    <UsersIcon className="opacity-60" width={16} height={16} aria-hidden="true" />
+                    <AnimatePresence>
+                        {activeTab === "tab-1" && (
+                            <motion.span
+                                variants={tabLabelVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit="exit"
+                                transition={{ duration: 0.4, ease: "easeOut" }}
+                            >
+                                Followers
+                            </motion.span>
+                        )}
+                    </AnimatePresence>
+                </TabsTrigger>
+                <TabsTrigger
+                    value="tab-2"
+                    className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-full data-[state=active]:shadow-none flex flex-row items-center gap-1.5"
+                >
+                    <ThumbsUpIcon className="opacity-60" width={16} height={16} aria-hidden="true" />
+                    <AnimatePresence>
+                        {activeTab === "tab-2" && (
+                            <motion.span
+                                variants={tabLabelVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit="exit"
+                                transition={{ duration: 0.4, ease: "easeOut" }}
+                            >
+                                Likes
+                            </motion.span>
+                        )}
+                    </AnimatePresence>
+                </TabsTrigger>
+                <TabsTrigger
+                    value="tab-3"
+                    className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground rounded-full data-[state=active]:shadow-none flex flex-row items-center gap-1.5"
+                >
+                    <StarIcon className="opacity-60" width={16} height={16} aria-hidden="true" />
+                    <AnimatePresence>
+                        {activeTab === "tab-3" && (
+                            <motion.span
+                                variants={tabLabelVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit="exit"
+                                transition={{ duration: 0.4, ease: "easeOut" }}
+                            >
+                                Favorites
+                            </motion.span>
+                        )}
+                    </AnimatePresence>
+                </TabsTrigger>
             </TabsList>
 
             <AnimatePresence mode="wait">
@@ -103,11 +117,21 @@ export function Tabs5() {
                     exit="exit"
                     transition={{ duration: 0.4 }}
                 >
-                    {tabItems.map(({ id, content }) => (
-                        <TabsContent key={`tab-content-${id}`} value={id}>
-                            {content}
-                        </TabsContent>
-                    ))}
+                    <TabsContent value="tab-1">
+                        <div className="flex justify-center items-center">
+                            <span className="text-xs text-gray-600 dark:text-gray-400">Tab1 content</span>
+                        </div>
+                    </TabsContent>
+                    <TabsContent value="tab-2">
+                        <div className="flex justify-center items-center">
+                            <span className="text-xs text-gray-600 dark:text-gray-400">Tab2 content</span>
+                        </div>
+                    </TabsContent>
+                    <TabsContent value="tab-3">
+                        <div className="flex justify-center items-center">
+                            <span className="text-xs text-gray-600 dark:text-gray-400">Tab3 content</span>
+                        </div>
+                    </TabsContent>
                 </motion.div>
             </AnimatePresence>
         </Tabs>
