@@ -7,6 +7,7 @@ import { Button6 } from "@/registry/button6/button6";
 import { Button7 } from "@/registry/button7/button7";
 import { Button8 } from "@/registry/button8/button8";
 import { Input1 } from "@/registry/input1/input1";
+import { Input2 } from "@/registry/input2/input2";
 import { Sidebar1 } from "@/registry/sidebar1/sidebar1";
 import { Tabs1 } from "@/registry/tabs1/tabs1";
 import { Tabs2 } from "@/registry/tabs2/tabs2";
@@ -38,6 +39,7 @@ export default function Home() {
         <Tabs5 />
 
         <Input1 />
+        <Input2 />
       </div>
     </div>
   );
