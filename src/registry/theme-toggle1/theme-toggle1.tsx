@@ -109,7 +109,7 @@ export function ThemeToggle1() {
         setTheme(newState);
     };
 
-    const isDark = resolvedTheme === 'dark';
+    const isDark = resolvedTheme ? resolvedTheme === 'dark' : false;
     const toggleSize: ToggleSize = 'lg';
     const selectedSize = toggleSizeMap[toggleSize];
 

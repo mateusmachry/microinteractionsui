@@ -8,7 +8,7 @@ import { Button7 } from "@/registry/button7/button7";
 import { Button8 } from "@/registry/button8/button8";
 import { Input1 } from "@/registry/input1/input1";
 import { Input2 } from "@/registry/input2/input2";
-import { Sidebar1 } from "@/registry/sidebar1/sidebar1";
+import { Navbar1 } from "@/registry/navbar1/navbar1";
 import { Tabs1 } from "@/registry/tabs1/tabs1";
 import { Tabs2 } from "@/registry/tabs2/tabs2";
 import { Tabs3 } from "@/registry/tabs3/tabs3";
@@ -19,7 +19,7 @@ import { ThemeToggle1 } from "@/registry/theme-toggle1/theme-toggle1";
 export default function Home() {
   return (
     <div className="flex flex-row justify-start">
-      <Sidebar1 />
+      <Navbar1 />
       <div className="flex-1 flex flex-col justify-center items-center gap-4 py-12">
         <Button1 />
         <Button8 />

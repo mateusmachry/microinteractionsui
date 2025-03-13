@@ -34,7 +34,7 @@ const AvatarDemo = () => {
     )
 };
 
-export function Sidebar1() {
+export function Navbar1() {
     const [selectedItemKey, setSelectedItemKey] = React.useState('charts');
     
     const contextValue = React.useMemo(() => ({
@@ -77,7 +77,7 @@ export function Sidebar1() {
     );
 };
 
-Sidebar1.displayName = "Sidebar1";
+Navbar1.displayName = "Sidebar1";
 
 type SidebarHeaderProps = React.ComponentProps<"div">;
 
