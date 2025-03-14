@@ -5,17 +5,18 @@ import { registryItemSchema } from "shadcn/registry"
 
 // This route shows an example for serving a component using a route handler.
 export async function GET(
-    request,
-    { params }
+    request: Request,
+    { params }: { params: Promise<{ name: string }> }
 ) {
     try {
-        const { name } = params
+        const { name } = await params
         // Cache the registry import
+        //@ts-ignore
         const registryData = await import("@/registry.json")
         const registry = registryData.default
 
         // Find the component from the registry.
-        const component = registry.items.find((c) => c.name === name)
+        const component = registry.items.find((c: any) => c.name === name)
 
         // If the component is not found, return a 404 error.
         if (!component) {

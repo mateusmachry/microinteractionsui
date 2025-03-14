@@ -60,9 +60,9 @@ export function Input1() {
             <input
                 ref={inputRef}
                 type="text"
-                className="w-auto min-w-0 outline-0 border-transparent text-muted-foreground focus-visible:text-foreground text-base md:text-sm"
+                className="w-auto min-w-16 outline-0 border-transparent text-muted-foreground focus-visible:text-foreground text-base md:text-sm"
                 value={text}
-                size={text.length}
+                size={text.length === 0 ? 1 : text.length}
                 disabled={!isEditing}
                 onChange={(event) => setText(event.target.value)}
             />
