@@ -56,7 +56,7 @@ export function Input1() {
     };
 
     return (
-        <Badge variant="outline" className={`rounded-full px-2 py-1 flex flex-row items-center ${isInputFocused ? 'border-primary' : ''} transition-all duration-400 ease-in-out`}>
+        <Badge variant="outline" className={`rounded-md px-2 py-1 flex flex-row items-center ${isInputFocused ? 'border-primary' : ''} transition-all duration-400 ease-in-out`}>
             <input
                 ref={inputRef}
                 type="text"

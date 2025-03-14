@@ -1,6 +1,6 @@
 'use client';
 
-import React, { SVGProps } from "react";
+import React, { SVGProps, useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { motion } from 'framer-motion';
 import { useTheme } from "next-themes";
@@ -103,11 +103,20 @@ const springTransition = {
 
 export function ThemeToggle1() {
     const { resolvedTheme, setTheme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     const handleToggle = () => {
         const newState = resolvedTheme === 'light' ? 'dark' : 'light';
         setTheme(newState);
     };
+
+    if (!mounted) {
+        return null;
+    }
 
     const isDark = resolvedTheme ? resolvedTheme === 'dark' : false;
     const toggleSize: ToggleSize = 'lg';
