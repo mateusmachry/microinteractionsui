@@ -119,7 +119,7 @@ export function ThemeToggle1() {
     }
 
     const isDark = resolvedTheme ? resolvedTheme === 'dark' : false;
-    const toggleSize: ToggleSize = 'lg';
+    const toggleSize: ToggleSize = 'default';
     const selectedSize = toggleSizeMap[toggleSize];
 
     return (
@@ -128,7 +128,7 @@ export function ThemeToggle1() {
                 className={cn(
                     "relative rounded-full cursor-pointer",
                     selectedSize.container,
-                    isDark ? "bg-gray-800" : "bg-gray-100"
+                    isDark ? "bg-gray-800" : "bg-gray-200",
                 )}
                 onClick={handleToggle}
             >
@@ -143,7 +143,7 @@ export function ThemeToggle1() {
                         selectedSize.checkbox,
                         "absolute rounded-full flex items-center justify-center overflow-hidden",
                         isDark ?
-                            "bg-gray-900 right-0 shadow-lg shadow-black/50" :
+                            "bg-black right-0 shadow-lg shadow-black/50" :
                             "bg-white left-0 shadow-lg shadow-white/50",
                     )}
                     animate={isDark ? 'dark' : 'light'}

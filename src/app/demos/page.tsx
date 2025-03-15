@@ -16,7 +16,7 @@ import { Tabs4 } from "@/registry/tabs4/tabs4";
 import { Tabs5 } from "@/registry/tabs5/tabs5";
 import { ThemeToggle1 } from "@/registry/theme-toggle1/theme-toggle1";
 
-export default function Home() {
+export default function Demos() {
   return (
     <div className="flex flex-row justify-start">
       <Navbar1 />
