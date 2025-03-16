@@ -12,15 +12,15 @@ export type ComponentTypeCardProps = {
 export function ComponentTypeCard({ icon, label, href, className, ...props }: ComponentTypeCardProps) {
     return (
         <div {...props} className={cn("flex flex-col items-center justify-center gap-4", className)}>
-            <Card className="w-80 rounded-md bg-neutral-100 dark:bg-neutral-900 transition-transform duration-300 hover:scale-98">
-                <Link href={href}>
+            <Link href={href}>
+                <Card className="min-w-80 h-40 flex flex-col items-center justify-center rounded-md bg-neutral-100 dark:bg-neutral-900 transition-transform duration-300 hover:scale-98">
                     <CardContent>
-                        <div className="flex flex-col items-center justify-center p-6">
+                        <div className="p-6">
                             {icon}
                         </div>
                     </CardContent>
-                </Link>
-            </Card>
+                </Card>
+            </Link>
             <label className="text-base font-medium">{label}</label>
         </div>
     )

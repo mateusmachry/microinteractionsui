@@ -4,7 +4,6 @@ import { ButtonIcon } from "@/app/(home)/components/icons/buttons";
 import { InputIcon } from "@/app/(home)/components/icons/inputs";
 import { TopNavBar } from "@/shared/components/top-navbar";
 import { ToggleIcon } from "@/app/(home)/components/icons/toggle";
-import { SidebarIcon } from "@/app/(home)/components/icons/sidebar";
 import { ComponentTypeCard } from "@/app/(home)/components/component-type-card";
 import { Footer } from "@/shared/components/footer";
 
@@ -18,11 +17,10 @@ export default function Home() {
 					<ComponentTypeCard icon={<TabsIcon />} href={"/tabs"} label={"Tabs"} />
 					<ComponentTypeCard icon={<ButtonIcon />} href={"/buttons"} label={"Buttons"} />
 					<ComponentTypeCard icon={<InputIcon />} href={"/inputs"} label={"Inputs"} />
-					<ComponentTypeCard className="row-span-3" icon={<SidebarIcon />} href={"/navbars"} label={"Navbars"} />
 					<ComponentTypeCard icon={<ToggleIcon />} href={"/toggle"} label={"Toggle"} />
 				</div>
 			</main>
 			<Footer />
-		</div>	
+		</div>
 	);
 }
