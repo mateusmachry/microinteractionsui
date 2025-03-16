@@ -6,18 +6,43 @@ import { Button5 } from "@/registry/button5/button5";
 import { Button6 } from "@/registry/button6/button6";
 import { Button7 } from "@/registry/button7/button7";
 import { Button8 } from "@/registry/button8/button8";
+import { CategoryPageGrid } from "@/shared/components/category-page-grid";
+import { CategoryPageHeader } from "@/shared/components/category-page-header";
+import { ComponentDemoCard } from "@/shared/components/component-demo-card";
 
 export default function ButtonComponents() {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-16 gap-y-16 max-w-3xl">
-            <Button1 />
-            <Button8 />
-            <Button2 />
-            <Button3 />
-            <Button4 />
-            <Button5 />
-            <Button6 />
-            <Button7 />
-        </div>
+        <>
+            <CategoryPageHeader title={"Buttons"}>
+                A growing collection of 10 buttons components built
+                with React and Tailwind CSS.
+            </CategoryPageHeader>
+            <CategoryPageGrid>
+                <ComponentDemoCard>
+                    <Button1 />
+                </ComponentDemoCard>
+                <ComponentDemoCard>
+                    <Button2 />
+                </ComponentDemoCard>
+                <ComponentDemoCard>
+                    <Button3 />
+                </ComponentDemoCard>
+                <ComponentDemoCard>
+                    <Button4 />
+                </ComponentDemoCard>
+                <ComponentDemoCard>
+                    <Button5 />
+                </ComponentDemoCard>
+                <ComponentDemoCard>
+                    <Button6 />
+                </ComponentDemoCard>
+                <ComponentDemoCard>
+                    <Button7 />
+                </ComponentDemoCard>
+                <ComponentDemoCard>
+                    <Button8 />
+                </ComponentDemoCard>
+            </CategoryPageGrid>
+        </>
     );
 }
