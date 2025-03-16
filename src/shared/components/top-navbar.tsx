@@ -19,7 +19,7 @@ export function TopNavBar() {
             <div className="flex flex-row items-center gap-6">
                 <Link href="/" className="flex items-center gap-2">
                     {mounted && <LogoIcon fillColor={isDark ? '#000000' : '#FFFFFF'} width={32} height={32} />}
-                    <span className="text-lg font-semibold">MicroInteractions UI</span>
+                    <span className="text-lg font-semibold">Micro Interactions UI</span>
                 </Link>
             </div>
             <div className="flex flex-row items-center gap-3">
