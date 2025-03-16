@@ -17,7 +17,7 @@ export default function ButtonComponents() {
                 A growing collection of 10 buttons components built
                 with React and Tailwind CSS.
             </CategoryPageHeader>
-            <CategoryPageGrid>
+            <CategoryPageGrid className="max-w-5xl mx-auto">
                 <ComponentDemoCard>
                     <Button1 />
                 </ComponentDemoCard>

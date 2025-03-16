@@ -1,5 +1,5 @@
 'use client';
-import { ThemeToggle1 } from "@/registry/theme-toggle1/theme-toggle1";
+import { ThemeToggle2 } from "@/registry/theme-toggle2/theme-toggle2";
 import { LogoIcon } from "@/shared/components/logo";
 import { useTheme } from "next-themes";
 import Link from "next/link";
@@ -19,11 +19,11 @@ export function TopNavBar() {
             <div className="flex flex-row items-center gap-6">
                 <Link href="/" className="flex items-center gap-2">
                     {mounted && <LogoIcon fillColor={isDark ? '#000000' : '#FFFFFF'} width={32} height={32} />}
-                    <span className="text-lg font-semibold">Micro Interactions UI</span>
+                    <span className="text-lg font-semibold">MicroInteractions UI</span>
                 </Link>
             </div>
             <div className="flex flex-row items-center gap-3">
-                <ThemeToggle1 />
+                <ThemeToggle2 />
             </div>
         </header>
     );
