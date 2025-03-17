@@ -9,7 +9,7 @@ import {
     AvatarFallback,
     AvatarImage,
 } from "@/components/ui/avatar";
-import { Palette, Settings, BarChart, WalletIcon } from 'lucide-react';
+import { Settings, Users, Star, ThumbsUp } from 'lucide-react';
 
 interface SidebarContextValue {
     selectedItemKey: string;
@@ -35,7 +35,7 @@ const AvatarDemo = () => {
 };
 
 export function Navbar1() {
-    const [selectedItemKey, setSelectedItemKey] = React.useState('charts');
+    const [selectedItemKey, setSelectedItemKey] = React.useState('followers');
     
     const contextValue = React.useMemo(() => ({
         selectedItemKey,
@@ -47,23 +47,23 @@ export function Navbar1() {
             value={contextValue}
         >
             <nav
-                className="w-18 h-screen fixed flex flex-col items-center bg-background border-r py-8 px-4"
+                className="w-18 flex flex-col items-center bg-background border-r py-8 px-4"
             >
                 <div className="h-full flex flex-col justify-between gap-8">
                     <SidebarHeader>
                         <SidebarItem itemKey={"profile"} showActiveState={false} tooltip={"Profile"}>
                             <AvatarDemo />
                         </SidebarItem>
-                        <SidebarItem itemKey={"themes"} showActiveState={true} tooltip={"Themes"}>
-                            <Palette />
-                        </SidebarItem>
                     </SidebarHeader>
                     <SidebarContent>
-                        <SidebarItem itemKey={"charts"} showActiveState={true} tooltip={"Charts"}>
-                            <BarChart />
+                        <SidebarItem itemKey={"followers"} showActiveState={true} tooltip={"Followers"}>
+                            <Users />
                         </SidebarItem>
-                        <SidebarItem itemKey={"payment"} showActiveState={true} tooltip={"Payment"}>
-                            <WalletIcon />
+                        <SidebarItem itemKey={"likes"} showActiveState={true} tooltip={"Likes"}>
+                            <ThumbsUp />
+                        </SidebarItem>
+                        <SidebarItem itemKey={"favorites"} showActiveState={true} tooltip={"favorites"}>
+                            <Star />
                         </SidebarItem>
                     </SidebarContent>
                     <SidebarFooter>
