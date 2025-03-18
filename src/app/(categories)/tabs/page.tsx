@@ -1,4 +1,3 @@
-import { Navbar1 } from "@/registry/navbar1/navbar1";
 import { Tabs1 } from "@/registry/tabs1/tabs1";
 import { Tabs2 } from "@/registry/tabs2/tabs2";
 import { Tabs3 } from "@/registry/tabs3/tabs3";
@@ -11,10 +10,7 @@ import { ComponentDemoCard } from "@/shared/components/component-demo-card";
 export default function TabComponents() {
     return (
         <>
-            <CategoryPageHeader title={"Tabs"}>
-                A growing collection of 10 buttons components built
-                with React and Tailwind CSS.
-            </CategoryPageHeader>
+            <CategoryPageHeader title={"Tabs"} />
             <CategoryPageGrid>
                 <ComponentDemoCard>
                     <Tabs1 />
@@ -30,9 +26,6 @@ export default function TabComponents() {
                 </ComponentDemoCard>
                 <ComponentDemoCard>
                     <Tabs5 />
-                </ComponentDemoCard>
-                <ComponentDemoCard>
-                    <Navbar1 />
                 </ComponentDemoCard>
             </CategoryPageGrid>
         </>

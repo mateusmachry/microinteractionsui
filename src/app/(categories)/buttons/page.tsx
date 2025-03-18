@@ -13,10 +13,7 @@ import { ComponentDemoCard } from "@/shared/components/component-demo-card";
 export default function ButtonComponents() {
     return (
         <>
-            <CategoryPageHeader title={"Buttons"}>
-                A growing collection of 10 buttons components built
-                with React and Tailwind CSS.
-            </CategoryPageHeader>
+            <CategoryPageHeader title={"Buttons"} />
             <CategoryPageGrid className="max-w-5xl mx-auto">
                 <ComponentDemoCard>
                     <Button1 />

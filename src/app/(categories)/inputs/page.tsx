@@ -7,10 +7,7 @@ import { ComponentDemoCard } from "@/shared/components/component-demo-card";
 export default function InputComponents() {
     return (
         <>
-            <CategoryPageHeader title={"Inputs"}>
-                A growing collection of 10 buttons components built
-                with React and Tailwind CSS.
-            </CategoryPageHeader>
+            <CategoryPageHeader title={"Inputs"} />
             <CategoryPageGrid className="max-w-5xl mx-auto">
                 <ComponentDemoCard>
                     <Input1 />
