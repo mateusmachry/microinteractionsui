@@ -6,6 +6,7 @@ import { TopNavBar } from "@/shared/components/top-navbar";
 import { ToggleIcon } from "@/app/(home)/components/icons/toggle";
 import { ComponentTypeCard } from "@/app/(home)/components/component-type-card";
 import { Footer } from "@/shared/components/footer";
+import { SideNavbarIcon } from "@/app/(home)/components/icons/side-navbar";
 
 export default function Home() {
 	return (
@@ -18,6 +19,7 @@ export default function Home() {
 					<ComponentTypeCard icon={<ButtonIcon />} href={"/buttons"} label={"Buttons"} />
 					<ComponentTypeCard icon={<InputIcon />} href={"/inputs"} label={"Inputs"} />
 					<ComponentTypeCard icon={<ToggleIcon />} href={"/toggle"} label={"Toggle"} />
+					<ComponentTypeCard icon={<SideNavbarIcon />} href={"/navbars"} label={"Navbars"} />
 				</div>
 			</main>
 			<Footer />

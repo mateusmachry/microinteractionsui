@@ -197,7 +197,7 @@ export function Button3() {
                     custom={{ textColorOnHover: "var(--primary-foreground)", animationDirection: animationDirection }}
                     transition={animationTransition}
                 >
-                    <span>Try for free</span>
+                    <span>Sign up</span>
                     <MaterialSymbolsChevronRight />
                 </motion.div>
 
@@ -209,7 +209,7 @@ export function Button3() {
                     custom={{ animationDirection: animationDirection }}
                     transition={animationTransition}
                 >
-                    <span>Try for free</span>
+                    <span>Sign up</span>
                     <MaterialSymbolsChevronRight />
                 </motion.div>
             </div>

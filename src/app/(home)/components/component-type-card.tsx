@@ -13,7 +13,7 @@ export function ComponentTypeCard({ icon, label, href, className, ...props }: Co
     return (
         <div {...props} className={cn("flex flex-col items-center justify-center gap-4", className)}>
             <Link href={href}>
-                <Card className="min-w-80 h-40 flex flex-col items-center justify-center rounded-md bg-neutral-100 dark:bg-neutral-900 transition-transform duration-300 hover:scale-98">
+                <Card className="min-w-80 min-h-40 flex flex-col items-center justify-center rounded-md bg-neutral-100 dark:bg-neutral-900 transition-transform duration-300 hover:scale-98">
                     <CardContent>
                         <div className="p-6">
                             {icon}
