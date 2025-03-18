@@ -1,5 +1,5 @@
-import { Footer } from "@/shared/components/footer";
-import { TopNavBar } from "@/shared/components/top-navbar";
+import { Footer } from "@/shared/footer";
+import { TopNavBar } from "@/shared/top-navbar";
 
 export default function CategoriesLayout({
     children,

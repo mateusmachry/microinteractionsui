@@ -28,7 +28,7 @@ const animationTransition = {
     duration: 0.3
 };
 
-export function Button2() {
+export default function Button2() {
     const iconColor = "var(--primary-foreground)";
     const iconColorOnHover = "var(--accent-foreground)";
     const iconBgColorOnHover = "var(--accent)";

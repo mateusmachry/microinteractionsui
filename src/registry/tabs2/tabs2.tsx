@@ -29,7 +29,7 @@ const StarIcon = (props: SVGProps<SVGSVGElement>) => {
     )
 };
 
-export function Tabs2() {
+export default function Tabs2() {
     const [activeTab, setActiveTab] = useState("tab-1");
     const [dimensions, setDimensions] = useState({
         width: 0,

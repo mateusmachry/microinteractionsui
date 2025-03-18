@@ -48,7 +48,7 @@ const animationTransition = {
     checkmarkTransitionDuration: 0.6
 };
 
-export function Button5() {
+export default function Button5() {
     const [progress, setProgress] = useState<number>(0);
     const clampedProgress = Math.min(Math.max(0, progress), 100);
     const [startAnimation, setStartAnimation] = useState(false);

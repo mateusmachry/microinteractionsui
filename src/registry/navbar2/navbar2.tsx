@@ -54,7 +54,7 @@ const useRange = (
     return mappedValue;
 };
 
-export function Navbar2() {
+export default function Navbar2() {
     const [activeTab, setActiveTab] = useState("tab-1");
     const [dimensions, setDimensions] = useState({
         width: 0,

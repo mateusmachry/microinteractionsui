@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 
-export function Button6() {
+export default function Button6() {
     const radialGradientBackground = { r: 250, g: 250, b: 250 };
     const solidColorBackground = { r: 15, g: 15, b: 15 };
     const overlayColor = { r: 255, g: 255, b: 255 };

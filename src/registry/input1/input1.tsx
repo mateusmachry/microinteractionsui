@@ -20,7 +20,7 @@ const CheckIcon = (props: SVGProps<SVGSVGElement>) => {
     )
 };
 
-export function Input1() {
+export default function Input1() {
     const [text, setText] = useState<string>("Javascript");
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const [isInputFocused, setIsInputFocused] = useState<boolean>(false);

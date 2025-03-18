@@ -47,7 +47,7 @@ const LogosGoogleIcon = (props: SVGProps<SVGSVGElement>) => {
   )
 };
 
-export function Button1() {
+export default function Button1() {
   const [isHovered, setIsHovered] = useState(false);
   const [buttonWidth, setButtonWidth] = useState(0);
   const buttonRef = useRef<HTMLButtonElement>(null);

@@ -101,7 +101,7 @@ const springTransition = {
     damping: 30
 };
 
-export function ThemeToggle1() {
+export default function ThemeToggle1() {
     const { resolvedTheme, setTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
 

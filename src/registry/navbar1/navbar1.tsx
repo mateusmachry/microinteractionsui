@@ -34,7 +34,7 @@ const AvatarDemo = () => {
     )
 };
 
-export function Navbar1() {
+export default function Navbar1() {
     const [selectedItemKey, setSelectedItemKey] = React.useState('followers');
     
     const contextValue = React.useMemo(() => ({

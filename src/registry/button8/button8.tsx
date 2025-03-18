@@ -47,7 +47,7 @@ const IconParkSolidApple = (props: SVGProps<SVGSVGElement>) => {
     )
 };
 
-export function Button8() {
+export default function Button8() {
     const [isHovered, setIsHovered] = useState(false);
     const [buttonWidth, setButtonWidth] = useState(0);
     const buttonRef = useRef<HTMLButtonElement>(null);

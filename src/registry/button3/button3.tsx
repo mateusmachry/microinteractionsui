@@ -167,7 +167,7 @@ const MaterialSymbolsChevronRight = (props: SVGProps<SVGSVGElement>) => {
     )
 }
 
-export function Button3() {
+export default function Button3() {
     const [isHovered, setIsHovered] = useState(false);
     const animationDirection: AnimationDirection = "from-top";
 

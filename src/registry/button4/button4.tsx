@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
 import React, { useState } from "react";
 
-export function Button4() {
+export default function Button4() {
     const [isHovered, setIsHovered] = useState(false);
 
     return (

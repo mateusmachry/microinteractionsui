@@ -20,7 +20,7 @@ const PlusCircle = (props: SVGProps<SVGSVGElement>) => {
     )
 };
 
-export function Input2() {
+export default function Input2() {
     const step = 1;
     const minValue = 0;
     const [value, setValue] = useState<number>(0);
