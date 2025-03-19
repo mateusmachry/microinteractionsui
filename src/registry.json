@@ -16,6 +16,244 @@
             "type": "registry:component"
           }
         ]
+      },
+      {
+        "name": "button2",
+        "type": "registry:component",
+        "title": "Button2",
+        "description": "Button2",
+        "registryDependencies": ["button"],
+        "dependencies": ["motion"],
+        "files": [
+          {
+            "path": "src/registry/button2/button2.tsx",
+            "type": "registry:component"
+          }
+        ]
+      },
+      {
+        "name": "button3",
+        "type": "registry:component",
+        "title": "Button3",
+        "description": "Button3",
+        "registryDependencies": ["button"],
+        "dependencies": ["motion"],
+        "files": [
+          {
+            "path": "src/registry/button3/button3.tsx",
+            "type": "registry:component"
+          }
+        ]
+      },
+      {
+        "name": "button4",
+        "type": "registry:component",
+        "title": "Button4",
+        "description": "Button4",
+        "registryDependencies": ["button"],
+        "dependencies": ["motion"],
+        "files": [
+          {
+            "path": "src/registry/button4/button4.tsx",
+            "type": "registry:component"
+          }
+        ]
+      },
+      {
+        "name": "button5",
+        "type": "registry:component",
+        "title": "Button5",
+        "description": "Button5",
+        "registryDependencies": ["button"],
+        "dependencies": ["motion"],
+        "files": [
+          {
+            "path": "src/registry/button5/button5.tsx",
+            "type": "registry:component"
+          }
+        ]
+      },
+      {
+        "name": "button6",
+        "type": "registry:component",
+        "title": "Button6",
+        "description": "Button6",
+        "registryDependencies": ["button"],
+        "dependencies": ["motion"],
+        "files": [
+          {
+            "path": "src/registry/button6/button6.tsx",
+            "type": "registry:component"
+          }
+        ]
+      },
+      {
+        "name": "button7",
+        "type": "registry:component",
+        "title": "Button7",
+        "description": "Button7",
+        "registryDependencies": ["button"],
+        "dependencies": ["motion"],
+        "files": [
+          {
+            "path": "src/registry/button7/button7.tsx",
+            "type": "registry:component"
+          }
+        ]
+      },
+      {
+        "name": "button8",
+        "type": "registry:component",
+        "title": "Button8",
+        "description": "Button8",
+        "registryDependencies": ["button"],
+        "dependencies": ["motion"],
+        "files": [
+          {
+            "path": "src/registry/button8/button8.tsx",
+            "type": "registry:component"
+          }
+        ]
+      },
+      {
+        "name": "input1",
+        "type": "registry:component",
+        "title": "Input1",
+        "description": "Input1",
+        "registryDependencies": ["button"],
+        "dependencies": ["motion"],
+        "files": [
+          {
+            "path": "src/registry/input1/input1.tsx",
+            "type": "registry:component"
+          }
+        ]
+      },
+      {
+        "name": "input2",
+        "type": "registry:component",
+        "title": "Input2",
+        "description": "Input2",
+        "registryDependencies": ["button"],
+        "dependencies": ["motion"],
+        "files": [
+          {
+            "path": "src/registry/input2/input2.tsx",
+            "type": "registry:component"
+          }
+        ]
+      },
+      {
+        "name": "navbar1",
+        "type": "registry:component",
+        "title": "Navbar1",
+        "description": "Navbar1",
+        "registryDependencies": ["button"],
+        "dependencies": ["motion"],
+        "files": [
+          {
+            "path": "src/registry/navbar1/navbar1.tsx",
+            "type": "registry:component"
+          }
+        ]
+      },
+      {
+        "name": "tabs1",
+        "type": "registry:component",
+        "title": "Tabs1",
+        "description": "Tabs1",
+        "registryDependencies": ["button"],
+        "dependencies": ["motion"],
+        "files": [
+          {
+            "path": "src/registry/tabs1/tabs1.tsx",
+            "type": "registry:component"
+          }
+        ]
+      },
+      {
+        "name": "tabs2",
+        "type": "registry:component",
+        "title": "Tabs2",
+        "description": "Tabs2",
+        "registryDependencies": ["button"],
+        "dependencies": ["motion"],
+        "files": [
+          {
+            "path": "src/registry/tabs2/tabs2.tsx",
+            "type": "registry:component"
+          }
+        ]
+      },
+      {
+        "name": "tabs3",
+        "type": "registry:component",
+        "title": "Tabs3",
+        "description": "Tabs3",
+        "registryDependencies": ["button"],
+        "dependencies": ["motion"],
+        "files": [
+          {
+            "path": "src/registry/tabs3/tabs3.tsx",
+            "type": "registry:component"
+          }
+        ]
+      },
+      {
+        "name": "tabs4",
+        "type": "registry:component",
+        "title": "Tabs4",
+        "description": "Tabs4",
+        "registryDependencies": ["button"],
+        "dependencies": ["motion"],
+        "files": [
+          {
+            "path": "src/registry/tabs4/tabs4.tsx",
+            "type": "registry:component"
+          }
+        ]
+      },
+      {
+        "name": "tabs5",
+        "type": "registry:component",
+        "title": "Tabs5",
+        "description": "Tabs5",
+        "registryDependencies": ["button"],
+        "dependencies": ["motion"],
+        "files": [
+          {
+            "path": "src/registry/tabs5/tabs5.tsx",
+            "type": "registry:component"
+          }
+        ]
+      },
+      {
+        "name": "theme-toggle1",
+        "type": "registry:component",
+        "title": "ThemeToggle1",
+        "description": "ThemeToggle1",
+        "registryDependencies": ["button"],
+        "dependencies": ["motion"],
+        "files": [
+          {
+            "path": "src/registry/theme-toggle1/theme-toggle1.tsx",
+            "type": "registry:component"
+          }
+        ]
+      },
+      {
+        "name": "theme-toggle2",
+        "type": "registry:component",
+        "title": "ThemeToggle2",
+        "description": "ThemeToggle2",
+        "registryDependencies": ["button"],
+        "dependencies": ["motion"],
+        "files": [
+          {
+            "path": "src/registry/theme-toggle2/theme-toggle2.tsx",
+            "type": "registry:component"
+          }
+        ]
       }
     ]
 }

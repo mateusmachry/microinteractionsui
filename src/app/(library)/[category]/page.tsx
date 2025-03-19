@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { cache } from "react";
 import { CategoryPageHeader } from "@/app/(library)/components/category-page-header";
 import { CategoryPageGrid } from "@/app/(library)/components/category-page-grid";
-import { ComponentDemoCard } from "@/app/(library)/components/component-demo-card";
+import { ComponentCard } from "@/app/(library)/components/component-card";
 import { ComponentLoader } from "@/shared/config/component-loader-server";
 
 export type CategoryPageProps = {
@@ -37,11 +37,11 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     return (
         <>
             <CategoryPageHeader title={componentCategory.name} />
-            <CategoryPageGrid className="max-w-5xl mx-auto">
+            <CategoryPageGrid className={`${componentCategory.slug === 'tabs' ? 'w-full' : 'max-w-5xl'} mx-auto`}>
                 {components.map((component) => (
-                    <ComponentDemoCard key={component.name}>
+                    <ComponentCard key={component.name} component={component}>
                         <ComponentLoader component={component} />
-                    </ComponentDemoCard>
+                    </ComponentCard>
                 ))}
             </CategoryPageGrid>
         </>
