@@ -53,6 +53,7 @@ export function ViewCodeSheet({ component }: { component: RegistryItem }) {
                 const codeContent = data.files[0].content;
                 setCode(codeContent);
             } catch (error) {
+                console.log("Error fetching component code", error);
                 handleEmptyCode();
             }
         };
