@@ -79,7 +79,7 @@ export function ViewCodeSheet({ component }: { component: RegistryItem }) {
             </TooltipProvider>
             <SheetContent className="min-w-xl gap-0">
                 <SheetHeader>
-                    <SheetTitle className="text-base">Install component</SheetTitle>
+                    <SheetTitle className="text-lg">Install component</SheetTitle>
                 </SheetHeader>
                 <div className="w-full flex flex-col gap-4">
                     <ScriptCopyBtn
@@ -91,7 +91,7 @@ export function ViewCodeSheet({ component }: { component: RegistryItem }) {
                         commandMap={commandsMap}
                     />
                     <div className="flex flex-col gap-4 mx-4">
-                        <label className="text-foreground font-semibold text-base">Code</label>
+                        <label className="text-foreground font-semibold text-lg">Code</label>
                         <CodeBlock
                             files={codeFiles}
                             defaultTitle={`${component.name}.tsx`}
