@@ -23,7 +23,7 @@
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/components/button1/button1.tsx",
+            "path": "src/registry/components/button1.tsx",
             "type": "registry:component"
           }
         ]
@@ -37,7 +37,7 @@
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/components/button2/button2.tsx",
+            "path": "src/registry/components/button2.tsx",
             "type": "registry:component"
           }
         ]
@@ -51,7 +51,7 @@
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/components/button3/button3.tsx",
+            "path": "src/registry/components/button3.tsx",
             "type": "registry:component"
           }
         ]
@@ -65,7 +65,7 @@
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/components/button4/button4.tsx",
+            "path": "src/registry/components/button4.tsx",
             "type": "registry:component"
           }
         ]
@@ -79,7 +79,7 @@
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/components/button5/button5.tsx",
+            "path": "src/registry/components/button5.tsx",
             "type": "registry:component"
           }
         ]
@@ -92,7 +92,7 @@
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/components/button6/button6.tsx",
+            "path": "src/registry/components/button6.tsx",
             "type": "registry:component"
           }
         ]
@@ -105,7 +105,7 @@
         "registryDependencies": ["button"],
         "files": [
           {
-            "path": "src/registry/components/button7/button7.tsx",
+            "path": "src/registry/components/button7.tsx",
             "type": "registry:component"
           }
         ]
@@ -119,7 +119,7 @@
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/components/button8/button8.tsx",
+            "path": "src/registry/components/button8.tsx",
             "type": "registry:component"
           }
         ]
@@ -133,7 +133,7 @@
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/components/input1/input1.tsx",
+            "path": "src/registry/components/input1.tsx",
             "type": "registry:component"
           }
         ]
@@ -146,7 +146,7 @@
         "dependencies": ["motion", "react-aria-components"],
         "files": [
           {
-            "path": "src/registry/components/input2/input2.tsx",
+            "path": "src/registry/components/input2.tsx",
             "type": "registry:component"
           }
         ]
@@ -160,7 +160,7 @@
         "dependencies": ["motion", "lucide-react"],
         "files": [
           {
-            "path": "src/registry/components/navbar1/navbar1.tsx",
+            "path": "src/registry/components/navbar1.tsx",
             "type": "registry:component"
           }
         ]
@@ -174,7 +174,7 @@
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/components/tabs1/tabs1.tsx",
+            "path": "src/registry/components/tabs1.tsx",
             "type": "registry:component"
           }
         ]
@@ -188,7 +188,7 @@
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/components/tabs2/tabs2.tsx",
+            "path": "src/registry/components/tabs2.tsx",
             "type": "registry:component"
           }
         ]
@@ -202,7 +202,7 @@
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/components/tabs3/tabs3.tsx",
+            "path": "src/registry/components/tabs3.tsx",
             "type": "registry:component"
           }
         ]
@@ -216,7 +216,7 @@
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/components/tabs4/tabs4.tsx",
+            "path": "src/registry/components/tabs4.tsx",
             "type": "registry:component"
           }
         ]
@@ -230,7 +230,7 @@
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/components/tabs5/tabs5.tsx",
+            "path": "src/registry/components/tabs5.tsx",
             "type": "registry:component"
           }
         ]
@@ -243,7 +243,7 @@
         "dependencies": ["motion", "next-themes"],
         "files": [
           {
-            "path": "src/registry/components/theme-toggle1/theme-toggle1.tsx",
+            "path": "src/registry/components/theme-toggle1.tsx",
             "type": "registry:component"
           }
         ]
@@ -256,7 +256,7 @@
         "dependencies": ["motion", "lucide-react", "next-themes"],
         "files": [
           {
-            "path": "src/registry/components/theme-toggle2/theme-toggle2.tsx",
+            "path": "src/registry/components/theme-toggle2.tsx",
             "type": "registry:component"
           }
         ]

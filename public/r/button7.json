@@ -4,15 +4,12 @@
   "type": "registry:component",
   "title": "Button7",
   "description": "Button7",
-  "dependencies": [
-    "motion"
-  ],
   "registryDependencies": [
     "button"
   ],
   "files": [
     {
-      "path": "src/registry/button7/button7.tsx",
+      "path": "src/registry/components/button7.tsx",
       "content": "'use client';\n\nimport { Button } from \"@/components/ui/button\";\n\nexport default function Button7() {\n    return (\n        <Button\n            className=\"rounded-full relative flex justify-center items-center cursor-pointer bg-[#161a20] text-neutral-200 border-none hover:z-0 hover:shadow-[40px_0_100px_#008cff85,-40px_0_100px_#e100ffbb] after:absolute after:w-[103%] after:h-[109%] after:rounded-full after:bg-gradient-to-br after:from-[#008cff] after:to-[#e100ff] after:z-[-1]\"\n        >\n            Gradient Button\n        </Button>\n    );\n};",
       "type": "registry:component"
     }

@@ -12,8 +12,8 @@
   ],
   "files": [
     {
-      "path": "src/registry/button4/button4.tsx",
-      "content": "'use client';\n\nimport { Button } from \"@/components/ui/button\";\nimport { motion } from 'framer-motion';\nimport React, { useState } from \"react\";\n\nexport default function Button4() {\n    const [isHovered, setIsHovered] = useState(false);\n\n    return (\n        <Button\n            variant={\"link\"}\n            className=\"text-base cursor-pointer relative overflow-hidden hover:no-underline\"\n            onMouseEnter={() => setIsHovered(true)}\n            onMouseLeave={() => setIsHovered(false)}\n        >\n            <div className=\"relative inline-block\">\n                Get started\n                <motion.div\n                    className=\"absolute bottom-0 left-0 mb-[-4px] h-[2px] bg-primary\"\n                    initial={{ width: \"0%\" }}\n                    animate={{ width: isHovered ? \"100%\" : \"0%\" }}\n                    transition={{ duration: 0.3 }}\n                />\n            </div>\n        </Button>\n    );\n};",
+      "path": "src/registry/components/button4.tsx",
+      "content": "'use client';\n\nimport { Button } from \"@/components/ui/button\";\nimport { motion } from 'motion/react';\nimport React, { useState } from \"react\";\n\nexport default function Button4() {\n    const [isHovered, setIsHovered] = useState(false);\n\n    return (\n        <Button\n            variant={\"link\"}\n            className=\"text-base cursor-pointer relative overflow-hidden hover:no-underline\"\n            onMouseEnter={() => setIsHovered(true)}\n            onMouseLeave={() => setIsHovered(false)}\n        >\n            <div className=\"relative inline-block\">\n                Get started\n                <motion.div\n                    className=\"absolute bottom-0 left-0 mb-[-4px] h-[2px] bg-primary\"\n                    initial={{ width: \"0%\" }}\n                    animate={{ width: isHovered ? \"100%\" : \"0%\" }}\n                    transition={{ duration: 0.3 }}\n                />\n            </div>\n        </Button>\n    );\n};",
       "type": "registry:component"
     }
   ]
