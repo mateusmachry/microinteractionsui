@@ -14,7 +14,7 @@ export async function ComponentLoader<TProps extends object>({
     }
 
     try {
-        const DynamicComponent = (await import(`@/registry/${component.name}/${component.name}`)).default as ComponentType<TProps>;
+        const DynamicComponent = (await import(`@/registry/components/${component.name}/${component.name}`)).default as ComponentType<TProps>;
         return <DynamicComponent {...(props as TProps)} />;
     } catch (error) {
         console.error(`Failed to load component ${component.name}:`, error);

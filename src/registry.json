@@ -4,6 +4,17 @@
     "homepage": "https://microinteractionsui.com",
     "items": [
       {
+        "name": "utils",
+        "type": "registry:lib",
+        "dependencies": ["clsx", "tailwind-merge"],
+        "files": [
+          {
+            "path": "src/registry/lib/utils.ts",
+            "type": "registry:lib"
+          }
+        ]
+      },
+      {
         "name": "button1",
         "type": "registry:component",
         "title": "Button1",
@@ -12,7 +23,7 @@
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/button1/button1.tsx",
+            "path": "src/registry/components/button1/button1.tsx",
             "type": "registry:component"
           }
         ]
@@ -26,7 +37,7 @@
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/button2/button2.tsx",
+            "path": "src/registry/components/button2/button2.tsx",
             "type": "registry:component"
           }
         ]
@@ -40,7 +51,7 @@
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/button3/button3.tsx",
+            "path": "src/registry/components/button3/button3.tsx",
             "type": "registry:component"
           }
         ]
@@ -54,7 +65,7 @@
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/button4/button4.tsx",
+            "path": "src/registry/components/button4/button4.tsx",
             "type": "registry:component"
           }
         ]
@@ -68,7 +79,7 @@
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/button5/button5.tsx",
+            "path": "src/registry/components/button5/button5.tsx",
             "type": "registry:component"
           }
         ]
@@ -78,11 +89,10 @@
         "type": "registry:component",
         "title": "Button6",
         "description": "Button6",
-        "registryDependencies": ["button"],
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/button6/button6.tsx",
+            "path": "src/registry/components/button6/button6.tsx",
             "type": "registry:component"
           }
         ]
@@ -93,10 +103,9 @@
         "title": "Button7",
         "description": "Button7",
         "registryDependencies": ["button"],
-        "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/button7/button7.tsx",
+            "path": "src/registry/components/button7/button7.tsx",
             "type": "registry:component"
           }
         ]
@@ -110,7 +119,7 @@
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/button8/button8.tsx",
+            "path": "src/registry/components/button8/button8.tsx",
             "type": "registry:component"
           }
         ]
@@ -120,11 +129,11 @@
         "type": "registry:component",
         "title": "Input1",
         "description": "Input1",
-        "registryDependencies": ["button"],
+        "registryDependencies": ["badge"],
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/input1/input1.tsx",
+            "path": "src/registry/components/input1/input1.tsx",
             "type": "registry:component"
           }
         ]
@@ -134,11 +143,10 @@
         "type": "registry:component",
         "title": "Input2",
         "description": "Input2",
-        "registryDependencies": ["button"],
-        "dependencies": ["motion"],
+        "dependencies": ["motion", "react-aria-components"],
         "files": [
           {
-            "path": "src/registry/input2/input2.tsx",
+            "path": "src/registry/components/input2/input2.tsx",
             "type": "registry:component"
           }
         ]
@@ -148,11 +156,11 @@
         "type": "registry:component",
         "title": "Navbar1",
         "description": "Navbar1",
-        "registryDependencies": ["button"],
-        "dependencies": ["motion"],
+        "registryDependencies": ["tooltip", "avatar"],
+        "dependencies": ["motion", "lucide-react"],
         "files": [
           {
-            "path": "src/registry/navbar1/navbar1.tsx",
+            "path": "src/registry/components/navbar1/navbar1.tsx",
             "type": "registry:component"
           }
         ]
@@ -162,11 +170,11 @@
         "type": "registry:component",
         "title": "Tabs1",
         "description": "Tabs1",
-        "registryDependencies": ["button"],
+        "registryDependencies": ["tabs", "scroll-area"],
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/tabs1/tabs1.tsx",
+            "path": "src/registry/components/tabs1/tabs1.tsx",
             "type": "registry:component"
           }
         ]
@@ -176,11 +184,11 @@
         "type": "registry:component",
         "title": "Tabs2",
         "description": "Tabs2",
-        "registryDependencies": ["button"],
+        "registryDependencies": ["tabs", "scroll-area", "badge"],
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/tabs2/tabs2.tsx",
+            "path": "src/registry/components/tabs2/tabs2.tsx",
             "type": "registry:component"
           }
         ]
@@ -190,11 +198,11 @@
         "type": "registry:component",
         "title": "Tabs3",
         "description": "Tabs3",
-        "registryDependencies": ["button"],
+        "registryDependencies": ["tabs"],
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/tabs3/tabs3.tsx",
+            "path": "src/registry/components/tabs3/tabs3.tsx",
             "type": "registry:component"
           }
         ]
@@ -204,11 +212,11 @@
         "type": "registry:component",
         "title": "Tabs4",
         "description": "Tabs4",
-        "registryDependencies": ["button"],
+        "registryDependencies": ["tabs"],
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/tabs4/tabs4.tsx",
+            "path": "src/registry/components/tabs4/tabs4.tsx",
             "type": "registry:component"
           }
         ]
@@ -218,11 +226,11 @@
         "type": "registry:component",
         "title": "Tabs5",
         "description": "Tabs5",
-        "registryDependencies": ["button"],
+        "registryDependencies": ["tabs"],
         "dependencies": ["motion"],
         "files": [
           {
-            "path": "src/registry/tabs5/tabs5.tsx",
+            "path": "src/registry/components/tabs5/tabs5.tsx",
             "type": "registry:component"
           }
         ]
@@ -232,11 +240,10 @@
         "type": "registry:component",
         "title": "ThemeToggle1",
         "description": "ThemeToggle1",
-        "registryDependencies": ["button"],
-        "dependencies": ["motion"],
+        "dependencies": ["motion", "next-themes"],
         "files": [
           {
-            "path": "src/registry/theme-toggle1/theme-toggle1.tsx",
+            "path": "src/registry/components/theme-toggle1/theme-toggle1.tsx",
             "type": "registry:component"
           }
         ]
@@ -246,11 +253,10 @@
         "type": "registry:component",
         "title": "ThemeToggle2",
         "description": "ThemeToggle2",
-        "registryDependencies": ["button"],
-        "dependencies": ["motion"],
+        "dependencies": ["motion", "lucide-react", "next-themes"],
         "files": [
           {
-            "path": "src/registry/theme-toggle2/theme-toggle2.tsx",
+            "path": "src/registry/components/theme-toggle2/theme-toggle2.tsx",
             "type": "registry:component"
           }
         ]

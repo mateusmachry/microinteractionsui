@@ -1,5 +1,5 @@
 'use client';
-import ThemeToggle2 from "@/registry/theme-toggle2/theme-toggle2";
+import ThemeToggle2 from "@/registry/components/theme-toggle2/theme-toggle2";
 import { LogoIcon } from "@/shared/logo";
 import { useTheme } from "next-themes";
 import Link from "next/link";
