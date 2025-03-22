@@ -1,7 +1,7 @@
 import { categories } from "@/shared/config/components-library";
 import { MetadataRoute } from "next";
 
-const baseUrl = 'https://microinteractionsui.com';
+const baseUrl = 'https://www.microinteractionsui.com';
 const lastModified = new Date().toISOString().split('T')[0];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
