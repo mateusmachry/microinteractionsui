@@ -10,11 +10,10 @@ export function Footer() {
 
                 <Button asChild className="cursor-pointer rounded-full" variant="outline" aria-label="X" size="icon">
                     <Link
-                        href="https://github.com/microinteractionsui"
+                        href="https://github.com/mateusmachry/microinteractionsui"
                         target="_blank"
                         rel="noopener noreferrer"
                     ><RiGithubFill className="text-primary" size={16} aria-hidden="true" /></Link>
-
                 </Button>
 
                 <Button asChild className="cursor-pointer rounded-full" variant="outline" aria-label="X" size="icon">
