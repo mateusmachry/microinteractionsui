@@ -13,7 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 1.0
     })) as MetadataRoute.Sitemap;
     const lpSeoPages = lpSeoTerms.map((term) => ({
-        url: `${baseUrl}/${term}`,
+        url: `${baseUrl}/lp/${term}`,
         lastModified: lastModified,
         changeFrequency: "weekly",
         priority: 1.0,

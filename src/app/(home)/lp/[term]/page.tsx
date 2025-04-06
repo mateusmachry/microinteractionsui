@@ -17,8 +17,8 @@ const seoTerms = {
 type SeoTermsKeys = keyof typeof seoTerms;
 
 export async function generateMetadata({ params }: LPPageProps): Promise<Metadata> {
-    const { lp } = await params;
-    const { title, description } = seoTerms[lp as SeoTermsKeys];
+    const { term } = await params;
+    const { title, description } = seoTerms[term as SeoTermsKeys];
     
     return {
         title: title,
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: LPPageProps): Promise<Metadat
 };
 
 export type LPPageProps = {
-    params: Promise<{ lp: SeoTermsKeys }>
+    params: Promise<{ term: SeoTermsKeys }>
 };
 
 export default function Page() {
