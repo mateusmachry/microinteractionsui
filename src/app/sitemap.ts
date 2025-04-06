@@ -4,6 +4,7 @@ import { MetadataRoute } from "next";
 const baseUrl = 'https://www.microinteractionsui.com';
 const lastModified = new Date().toISOString().split('T')[0];
 const lpSeoTerms = ["microinteractions-ui", "css-micro-animations"];
+const animationComponentsTerms = ["animated-tabs", "react-animated-tabs", "animated-buttons", "react-animated-buttons"];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const categoryPages = categories.map((category) => ({
@@ -18,6 +19,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: "weekly",
         priority: 1.0,
     })) as MetadataRoute.Sitemap;
+    const animationComponentsPages = animationComponentsTerms.map((term) => ({
+        url: `${baseUrl}/animations/${term}`,
+        lastModified: lastModified,
+        changeFrequency: "weekly",
+        priority: 1.0,
+    })) as MetadataRoute.Sitemap;
     return [
         {
             url: baseUrl,
@@ -26,6 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             priority: 1.0
         },
         ...categoryPages,
-        ...lpSeoPages
+        ...lpSeoPages,
+        ...animationComponentsPages
     ]
 };
