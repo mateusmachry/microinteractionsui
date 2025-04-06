@@ -1,4 +1,4 @@
-import { getCategory, getComponentsByNames } from "@/shared/config/components-library";
+import { categories, getCategory, getComponentsByNames } from "@/shared/config/components-library";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { cache } from "react";
@@ -25,6 +25,13 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
         title: `Animated ${componentCategory.name} components built with React, Tailwind CSS and Framer Motion - MicroInteractions UI`,
         description: `A collection of beautiful animated ${componentCategory.name.toLowerCase()} components built with React, Tailwind CSS and Framer Motion.`,
     };
+}
+
+export async function generateStaticParams() {
+    const allCategories = categories;
+    return allCategories.map((category) => ({
+        category: category.slug,
+    }));
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
