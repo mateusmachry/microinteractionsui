@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Sans, Noto_Sans_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Analytics } from "@vercel/analytics/next";
 
 const notoSans = Noto_Sans({
 	variable: "--font-noto-sans",
@@ -49,6 +50,7 @@ export default function RootLayout({
 				>
 					{children}
 				</ThemeProvider>
+				<Analytics />
 			</body>
 		</html>
 	);
