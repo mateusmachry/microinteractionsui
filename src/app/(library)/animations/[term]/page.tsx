@@ -6,6 +6,7 @@ import { CategoryPageGrid } from "@/app/(library)/components/category-page-grid"
 import { ComponentCard } from "@/app/(library)/components/component-card";
 import { ComponentLoader } from "@/shared/config/component-loader-server";
 import { cache } from "react";
+import { SITE_BASE_URL } from "@/app/sitemap";
 
 const seoTerms = {
     "animated-tabs": {
@@ -35,16 +36,36 @@ const seoTerms = {
 };
 
 type SeoTermsKeys = keyof typeof seoTerms;
+export const animationSEOTerms: string[] = Object.keys(seoTerms) as string[];
 
 const getComponentCategory = cache(getCategory);
 
 export async function generateMetadata({ params }: AnimationsPageProps): Promise<Metadata> {
     const { term } = await params;
     const { title, description } = seoTerms[term as SeoTermsKeys];
-    
+    const canonical = `${SITE_BASE_URL}/animations/${term}`;
+
     return {
         title: title,
         description: description,
+        alternates: {
+            canonical,
+        },
+        openGraph: {
+            title: "MicroInteractions UI",
+            description: "A collection of ready-to-use animated UI components built with React, Tailwind CSS, Shadcn, and Framer Motion.",
+            url: "https://www.microinteractionsui.com",
+            siteName: "MicroInteractions UI",
+            images: [
+                {
+                    url: "https://www.microinteractionsui.com/og-image.png",
+                    width: 1200,
+                    height: 630,
+                    alt: "MicrointeractionsUI OG image",
+                },
+            ],
+            type: "website",
+        },
     };
 };
 
