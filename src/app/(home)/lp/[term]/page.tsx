@@ -1,26 +1,11 @@
 import Home from "@/app/(home)/components/home";
 import { SITE_BASE_URL } from "@/app/sitemap";
 import { Metadata } from "next";
-
-const seoTerms = {
-    "microinteractions-ui": {
-        title: "Microinteractions UI - Beautiful Animated Components for React",
-        description:
-            "Explore Microinteractions UI, a collection of animated components built with React, Tailwind CSS, Shadcn and Framer Motion.",
-    },
-    "css-micro-animations": {
-        title: "CSS Micro Animations - Smooth UI Interactions",
-        description:
-            "Enhance your UI with CSS Micro Animations. Built with React, Tailwind CSS, Shadcn and Framer Motion for seamless integration.",
-    },
-};
-
-type SeoTermsKeys = keyof typeof seoTerms;
-export const lpSEOTerms: string[] = Object.keys(seoTerms) as string[];
+import { lpSEOTerms, SeoTermsKeys } from "@/app/(home)/lp/[term]/seo";
 
 export async function generateMetadata({ params }: LPPageProps): Promise<Metadata> {
     const { term } = await params;
-    const { title, description } = seoTerms[term as SeoTermsKeys];
+    const { title, description } = lpSEOTerms[term as SeoTermsKeys];
     const canonical = `${SITE_BASE_URL}/lp/${term}`;
 
     return {

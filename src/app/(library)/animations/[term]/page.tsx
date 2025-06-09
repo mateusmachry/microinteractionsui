@@ -7,42 +7,13 @@ import { ComponentCard } from "@/app/(library)/components/component-card";
 import { ComponentLoader } from "@/shared/config/component-loader-server";
 import { cache } from "react";
 import { SITE_BASE_URL } from "@/app/sitemap";
-
-const seoTerms = {
-    "animated-tabs": {
-        slug: "tabs",
-        title: "Animated Tabs - Beautiful UI Components for React",
-        description:
-            "Discover a collection of stunning tab components built with React, Tailwind CSS, Shadcn and Framer Motion.",
-    },
-    "react-animated-tabs": {
-        slug: "tabs",
-        title: "React Animated Tabs - Interactive UI Elements",
-        description:
-            "Discover a collection of interactive and customizable tab components built with React, Tailwind CSS, Framer Motion and Shadcn for seamless integration.",
-    },
-    "animated-buttons": {
-        slug: "button",
-        title: "Animated Buttons - Beautiful UI Components for React",
-        description:
-            "Discover a collection of animated button components built with React, Tailwind CSS, Framer Motion and Shadcn.",
-    },
-    "react-animated-buttons": {
-        slug: "button",
-        title: "React Animated Buttons - Interactive UI Elements",
-        description:
-            "Discover a collection of animated button components built with React, Tailwind CSS, Framer Motion and Shadcn.",
-    },
-};
-
-type SeoTermsKeys = keyof typeof seoTerms;
-export const animationSEOTerms: string[] = Object.keys(seoTerms) as string[];
+import { animationsSEOTerms, AnimationsSEOTermsKeys } from "./seo";
 
 const getComponentCategory = cache(getCategory);
 
 export async function generateMetadata({ params }: AnimationsPageProps): Promise<Metadata> {
     const { term } = await params;
-    const { title, description } = seoTerms[term as SeoTermsKeys];
+    const { title, description } = animationsSEOTerms[term as AnimationsSEOTermsKeys];
     const canonical = `${SITE_BASE_URL}/animations/${term}`;
 
     return {
@@ -70,12 +41,12 @@ export async function generateMetadata({ params }: AnimationsPageProps): Promise
 };
 
 export type AnimationsPageProps = {
-    params: Promise<{ term: SeoTermsKeys }>;
+    params: Promise<{ term: AnimationsSEOTermsKeys }>;
 };
 
 export default async function Page({ params }: AnimationsPageProps) {
     const { term } = await params;
-    const componentCategory = getComponentCategory(seoTerms[term as SeoTermsKeys].slug);
+    const componentCategory = getComponentCategory(animationsSEOTerms[term as AnimationsSEOTermsKeys].slug);
     if (!componentCategory) {
         return notFound();
     }
