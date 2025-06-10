@@ -10,9 +10,9 @@ import { SideNavbarIcon } from "@/app/(home)/components/icons/side-navbar";
 
 export default function Home() {
     return (
-        <div className="min-h-screen w-full bg-background flex flex-col max-w-5xl mx-auto">
+        <div className="min-h-screen w-full bg-background flex flex-col">
             <TopNavBar />
-            <main className="flex flex-col flex-1 items-center justify-center w-full gap-8">
+            <main className="flex flex-col flex-1 items-center justify-center w-full gap-8 mx-auto">
                 <Hero />
                 <div className="max-w-3xl grid w-full grid-cols-1 md:grid-cols-2 grid-flow-row gap-y-8 gap-x-4 pb-16">
                     <ComponentTypeCard icon={<TabsIcon />} href={"/tabs"} label={"Tabs"} />
