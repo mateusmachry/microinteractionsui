@@ -5,7 +5,7 @@ import Link from "next/link";
 export function Footer() {
     return (
         <footer className="flex flex-col w-full justify-center items-center gap-6 py-12 px-12 bg-secondary">
-            <div className="grid grid-cols-12 gap-x-6 w-full">
+            <div className="grid grid-cols-12 gap-x-8 w-full">
                 <div className="col-span-6">
                     <div className="flex flex-col items-start gap-2">
                         <div className="flex items-center gap-2">
@@ -31,7 +31,7 @@ export function Footer() {
                     </div>
                 </div>
                 <div className="col-span-3">
-                    <h4 className="font-semibold mb-3">Components</h4>
+                    <h4 className="font-semibold mb-3 text-nowrap">Components</h4>
                     <div className="grid space-y-2">
                         <Link
                             href="/tabs"
@@ -66,7 +66,7 @@ export function Footer() {
                     </div>
                 </div>
                 <div className="col-span-3">
-                    <h4 className="font-semibold mb-3">UI Libraries</h4>
+                    <h4 className="font-semibold mb-3 text-nowrap">UI Libraries</h4>
                     <div className="grid space-y-3">
                         <Link
                             href="https://originui.com/"
