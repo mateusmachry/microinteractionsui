@@ -268,7 +268,7 @@
         "description": "Base Stepper component",
         "files": [
           {
-            "path": "src/components/ui/stepper.tsx",
+            "path": "src/registry/components/stepper.tsx",
             "type": "registry:component"
           }
         ]

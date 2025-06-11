@@ -8,7 +8,7 @@ import {
     StepperSeparator,
     StepperTitle,
     StepperTrigger,
-} from "@/components/ui/stepper"
+} from "@/registry/components/stepper"
 import { useState } from "react";
 
 const steps = [
