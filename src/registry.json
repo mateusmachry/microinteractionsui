@@ -262,6 +262,18 @@
         ]
       },
       {
+        "name": "stepper",
+        "type": "registry:component",
+        "title": "Stepper",
+        "description": "Base Stepper component",
+        "files": [
+          {
+            "path": "src/components/ui/stepper.tsx",
+            "type": "registry:component"
+          }
+        ]
+      },
+      {
         "name": "stepper1",
         "type": "registry:component",
         "title": "Stepper1",
