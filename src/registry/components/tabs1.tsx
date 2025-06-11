@@ -70,9 +70,9 @@ export default function Tabs1() {
             value={activeTab}
             onValueChange={handleTabChange}>
             <ScrollArea>
-                <TabsList className="mb-3 gap-1 bg-transparent relative">
+                <TabsList className="relative mb-3">
                     <motion.div
-                        className="absolute z-0 bg-primary rounded-full"
+                        className="absolute z-0 bg-background rounded-md"
                         initial={{
                             width: 0,
                             left: 0,
@@ -92,7 +92,7 @@ export default function Tabs1() {
                     <TabsTrigger
                         ref={tab1Ref}
                         value="tab-1"
-                        className="z-10 data-[state=active]:shadow-none data-[state=active]:bg-transparent data-[state=active]:text-primary-foreground flex flex-row items-center gap-1.5 transition-colors duration-500 delay-200"
+                        className="group z-10 data-[state=active]:bg-transparent border-0 flex flex-row items-center gap-2 transition-colors duration-500 delay-200"
                     >
                         <UsersIcon className="opacity-60" width={16} height={16} aria-hidden="true" />
                         Followers
@@ -100,7 +100,7 @@ export default function Tabs1() {
                     <TabsTrigger
                         ref={tab2Ref}
                         value="tab-2"
-                        className="z-10 data-[state=active]:shadow-none data-[state=active]:bg-transparent data-[state=active]:text-primary-foreground flex flex-row items-center gap-1.5 transition-colors duration-500 delay-200"
+                        className="group z-10 data-[state=active]:bg-transparent border-0 flex flex-row items-center gap-2 transition-colors duration-500 delay-200"
                     >
                         <ThumbsUpIcon className="opacity-60" width={16} height={16} aria-hidden="true" />
                         Likes
@@ -108,7 +108,7 @@ export default function Tabs1() {
                     <TabsTrigger
                         ref={tab3Ref}
                         value="tab-3"
-                        className="z-10 data-[state=active]:shadow-none data-[state=active]:bg-transparent data-[state=active]:text-primary-foreground flex flex-row items-center gap-1.5 transition-colors duration-500 delay-200"
+                        className="group z-10 data-[state=active]:bg-transparent border-0 flex flex-row items-center gap-2 transition-colors duration-500 delay-200"
                     >
                         <StarIcon className="opacity-60" width={16} height={16} aria-hidden="true" />
                         Favorites

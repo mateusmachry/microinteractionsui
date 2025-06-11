@@ -260,6 +260,32 @@
             "type": "registry:component"
           }
         ]
+      },
+      {
+        "name": "stepper1",
+        "type": "registry:component",
+        "title": "Stepper1",
+        "description": "Stepper1",
+        "registryDependencies": ["button", "stepper"],
+        "files": [
+          {
+            "path": "src/registry/components/stepper1.tsx",
+            "type": "registry:component"
+          }
+        ]
+      },
+      {
+        "name": "stepper2",
+        "type": "registry:component",
+        "title": "Stepper2",
+        "description": "Stepper2",
+        "registryDependencies": ["button", "stepper"],
+        "files": [
+          {
+            "path": "src/registry/components/stepper2.tsx",
+            "type": "registry:component"
+          }
+        ]
       }
     ]
 }

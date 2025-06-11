@@ -64,7 +64,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     return (
         <>
             <CategoryPageHeader title={componentCategory.name} />
-            <CategoryPageGrid className={`${componentCategory.slug === 'tabs' ? 'w-full' : 'max-w-5xl'} mx-auto`}>
+            <CategoryPageGrid className={`${componentCategory.slug === 'tabs' || componentCategory.slug === 'stepper' ? 'w-full' : 'max-w-5xl'} mx-auto`}>
                 {components.map((component) => (
                     <ComponentCard key={component.name} component={component}>
                         <ComponentLoader component={component} />

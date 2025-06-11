@@ -71,9 +71,9 @@ export default function Tabs2() {
             value={activeTab}
             onValueChange={handleTabChange}>
             <ScrollArea>
-                <TabsList className="mb-3 relative">
+                <TabsList className="relative mb-3">
                     <motion.div
-                        className="absolute z-0 bg-background rounded-sm"
+                        className="absolute z-0 bg-background rounded-md"
                         initial={{
                             width: 0,
                             left: 0,
@@ -90,11 +90,11 @@ export default function Tabs2() {
                             damping: 30
                         }}
                     />
-                    <TabsTrigger ref={tab1Ref} value="tab-1" className="z-10 data-[state=active]:bg-transparent flex flex-row items-center gap-1.5 transition-colors duration-500 delay-200">
+                    <TabsTrigger ref={tab1Ref} value="tab-1" className="group z-10 data-[state=active]:bg-transparent border-0 flex flex-row items-center gap-2 transition-colors duration-500 delay-200">
                         <UsersIcon className="opacity-60" width={16} height={16} aria-hidden="true" />
                         Followers
                     </TabsTrigger>
-                    <TabsTrigger ref={tab2Ref} value="tab-2" className="group z-10 data-[state=active]:bg-transparent flex flex-row items-center gap-1.5 transition-colors duration-500 delay-200">
+                    <TabsTrigger ref={tab2Ref} value="tab-2" className="group z-10 data-[state=active]:bg-transparent border-0 flex flex-row items-center gap-2 transition-colors duration-500 delay-200">
                         <ThumbsUpIcon className="opacity-60" width={16} height={16} aria-hidden="true" />
                         Likes
                         <Badge
@@ -104,7 +104,7 @@ export default function Tabs2() {
                             5
                         </Badge>
                     </TabsTrigger>
-                    <TabsTrigger ref={tab3Ref} value="tab-3" className="group z-10 data-[state=active]:bg-transparent flex flex-row items-center gap-1.5 transition-colors duration-500 delay-200">
+                    <TabsTrigger ref={tab3Ref} value="tab-3" className="group z-10 data-[state=active]:bg-transparent border-0 flex flex-row items-center gap-2 transition-colors duration-500 delay-200">
                         <StarIcon className="opacity-60" width={16} height={16} aria-hidden="true" />
                         <span>Favorites</span>
                         <Badge className="transition-opacity group-data-[state=inactive]:opacity-50">

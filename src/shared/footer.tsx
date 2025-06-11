@@ -54,6 +54,11 @@ export function Footer() {
                             <span className="text-muted-foreground hover:text-primary text-sm">Toggle</span>
                         </Link>
                         <Link
+                            href="/stepper"
+                        >
+                            <span className="text-muted-foreground hover:text-primary text-sm">Stepper</span>
+                        </Link>
+                        <Link
                             href="/navbar"
                         >
                             <span className="text-muted-foreground hover:text-primary text-sm">Navbar</span>
@@ -61,7 +66,7 @@ export function Footer() {
                     </div>
                 </div>
                 <div className="col-span-3">
-                    <h4 className="font-semibold mb-3">Awesome Libraries</h4>
+                    <h4 className="font-semibold mb-3">UI Libraries</h4>
                     <div className="grid space-y-3">
                         <Link
                             href="https://originui.com/"

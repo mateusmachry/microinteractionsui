@@ -56,6 +56,14 @@ export const categories: ComponentCategory[] = [
             { name: "theme-toggle2" },
         ],
     },
+    {
+        slug: "stepper",
+        name: "Stepper",
+        components: [
+            { name: "stepper1" },
+            { name: "stepper2" },
+        ],
+    }
 ];
 
 export function getCategory(slug: string): ComponentCategory | undefined {

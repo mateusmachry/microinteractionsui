@@ -7,6 +7,7 @@ import { ToggleIcon } from "@/app/(home)/components/icons/toggle";
 import { ComponentTypeCard } from "@/app/(home)/components/component-type-card";
 import { Footer } from "@/shared/footer";
 import { SideNavbarIcon } from "@/app/(home)/components/icons/side-navbar";
+import { StepperIcon } from "@/app/(home)/components/icons/stepper";
 
 export default function Home() {
     return (
@@ -19,6 +20,7 @@ export default function Home() {
                     <ComponentTypeCard icon={<ButtonIcon />} href={"/button"} label={"Button"} />
                     <ComponentTypeCard icon={<InputIcon />} href={"/input"} label={"Input"} />
                     <ComponentTypeCard icon={<ToggleIcon />} href={"/theme-toggle"} label={"Toggle"} />
+                    <ComponentTypeCard icon={<StepperIcon />} href={"/stepper"} label={"Stepper"} />
                     <ComponentTypeCard icon={<SideNavbarIcon />} href={"/navbar"} label={"Navbar"} />
                 </div>
             </main>
