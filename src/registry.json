@@ -278,7 +278,7 @@
         "type": "registry:component",
         "title": "Stepper1",
         "description": "Stepper1",
-        "registryDependencies": ["button", "stepper"],
+        "registryDependencies": ["button", "https://microinteractionsui.com/r/stepper.json"],
         "files": [
           {
             "path": "src/registry/components/stepper1.tsx",
@@ -291,7 +291,7 @@
         "type": "registry:component",
         "title": "Stepper2",
         "description": "Stepper2",
-        "registryDependencies": ["button", "stepper"],
+        "registryDependencies": ["button", "https://microinteractionsui.com/r/stepper.json"],
         "files": [
           {
             "path": "src/registry/components/stepper2.tsx",
