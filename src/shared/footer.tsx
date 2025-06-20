@@ -80,6 +80,12 @@ export function Footer() {
                         >
                             <span className="text-muted-foreground hover:text-primary text-sm">Magic UI</span>
                         </Link>
+                        <Link
+                            href="https://21st.dev/components"
+                            target="_blank"
+                        >
+                            <span className="text-muted-foreground hover:text-primary text-sm">21st Dev</span>
+                        </Link>
                     </div>
                 </div>
             </div>
