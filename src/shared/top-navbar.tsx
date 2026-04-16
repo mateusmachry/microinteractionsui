@@ -3,16 +3,19 @@ import ThemeToggle2 from "@/registry/components/theme-toggle2";
 import { LogoIcon } from "@/shared/logo";
 import { useTheme } from "next-themes";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+
+const useMounted = () =>
+    useSyncExternalStore(
+        () => () => {},
+        () => true,
+        () => false,
+    );
 
 export function TopNavBar() {
     const { resolvedTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
+    const mounted = useMounted();
     const isDark = resolvedTheme === "dark";
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
 
     return (
         <header className="mt-8 bg-neutral-100 dark:bg-neutral-900 border rounded-full mx-auto flex w-full max-w-5xl items-center justify-between gap-3 px-8 py-4">

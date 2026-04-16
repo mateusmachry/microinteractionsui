@@ -2,7 +2,7 @@
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AnimatePresence, motion } from "motion/react";
-import { RefObject, SVGProps, useEffect, useRef, useState } from "react";
+import { SVGProps, useEffect, useRef, useState } from "react";
 
 const UsersIcon = (props: SVGProps<SVGSVGElement>) => {
     return (
@@ -39,21 +39,18 @@ export default function Tabs1() {
     const tab1Ref = useRef<HTMLButtonElement>(null);
     const tab2Ref = useRef<HTMLButtonElement>(null);
     const tab3Ref = useRef<HTMLButtonElement>(null);
-    const tabRefs: Record<string, RefObject<HTMLButtonElement | null>> = {
-        "tab-1": tab1Ref,
-        "tab-2": tab2Ref,
-        "tab-3": tab3Ref
-    };
 
     useEffect(() => {
+        const currentTabRef =
+            activeTab === "tab-1" ? tab1Ref : activeTab === "tab-2" ? tab2Ref : tab3Ref;
+
         const updateDimensions = () => {
-            const currentTabRef = tabRefs[activeTab].current;
-            if (currentTabRef) {
+            if (currentTabRef.current) {
                 setDimensions({
-                    width: currentTabRef.offsetWidth,
-                    height: currentTabRef.offsetHeight,
-                    left: currentTabRef.offsetLeft,
-                    top: currentTabRef.offsetTop
+                    width: currentTabRef.current.offsetWidth,
+                    height: currentTabRef.current.offsetHeight,
+                    left: currentTabRef.current.offsetLeft,
+                    top: currentTabRef.current.offsetTop
                 });
             }
         };
