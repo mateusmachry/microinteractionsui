@@ -55,8 +55,29 @@ export default function Button5() {
     const [animationState, setAnimationState] = useState<'progress' | 'showing-check' | 'complete'>('progress');
     const [buttonWidth, setButtonWidth] = useState<number | null>(null);
     const completeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const checkmarkTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
     const completeAnimationDurationMs = 2000;
+
+    const clearAnimationTimeouts = () => {
+        if (checkmarkTimeoutRef.current) {
+            clearTimeout(checkmarkTimeoutRef.current);
+            checkmarkTimeoutRef.current = null;
+        }
+
+        if (completeTimeoutRef.current) {
+            clearTimeout(completeTimeoutRef.current);
+            completeTimeoutRef.current = null;
+        }
+    };
+
+    function handleComplete() {
+        setTimeout(() => {
+            setProgress(0);
+            setStartAnimation(false);
+            setAnimationState('progress');
+        }, 200);
+    }
 
     useEffect(() => {
         if (startAnimation) {
@@ -65,6 +86,14 @@ export default function Button5() {
                     if (prev >= 100) {
                         clearInterval(interval);
                         setStartAnimation(false);
+                        clearAnimationTimeouts();
+                        checkmarkTimeoutRef.current = setTimeout(() => {
+                            setAnimationState('showing-check');
+                            completeTimeoutRef.current = setTimeout(() => {
+                                setAnimationState('complete');
+                                handleComplete();
+                            }, completeAnimationDurationMs);
+                        }, animationTransition.checkmarkTransitionDuration * 1000);
                         return 100;
                     }
                     return prev + 10;
@@ -79,13 +108,6 @@ export default function Button5() {
         setStartAnimation(true);
     };
 
-    const handleComplete = () => {
-        setTimeout(() => {
-            setProgress(0);
-            setStartAnimation(false);
-        }, 200);
-    };
-
     useEffect(() => {
         const currentRef = buttonRef.current;
         if (currentRef) {
@@ -95,30 +117,9 @@ export default function Button5() {
 
     useEffect(() => {
         return () => {
-            if (completeTimeoutRef.current) {
-                clearTimeout(completeTimeoutRef.current);
-            }
+            clearAnimationTimeouts();
         };
     }, []);
-
-    useEffect(() => {
-        if (clampedProgress >= 100 && animationState === 'progress') {
-            setTimeout(() => {
-                setAnimationState('showing-check');
-                completeTimeoutRef.current = setTimeout(() => {
-                    setAnimationState('complete');
-                    handleComplete();
-                }, completeAnimationDurationMs);
-            }, animationTransition.checkmarkTransitionDuration * 1000);
-        }
-        else if (clampedProgress < 100 && animationState !== 'progress') {
-            if (completeTimeoutRef.current) {
-                clearTimeout(completeTimeoutRef.current);
-                completeTimeoutRef.current = null;
-            }
-            setAnimationState('progress');
-        }
-    }, [clampedProgress, animationState]);
 
     const isShowingCheckmarkAnimation = animationState === 'showing-check';
 

@@ -23,12 +23,10 @@ const CheckIcon = (props: SVGProps<SVGSVGElement>) => {
 export default function Input1() {
     const [text, setText] = useState<string>("Javascript");
     const [isEditing, setIsEditing] = useState<boolean>(false);
-    const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
     const inputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         if (isEditing) {
-            setIsInputFocused(true);
             const input = inputRef.current;
             if (input) {
                 const length = input.value.length;
@@ -36,7 +34,6 @@ export default function Input1() {
                 input.focus();
             }
         } else {
-            setIsInputFocused(false);
             inputRef.current?.blur();
         }
     }, [isEditing]);
@@ -56,7 +53,7 @@ export default function Input1() {
     };
 
     return (
-        <Badge variant="outline" className={`rounded-md px-2 py-1 flex flex-row items-center ${isInputFocused ? 'border-primary' : ''} transition-all duration-400 ease-in-out`}>
+        <Badge variant="outline" className={`rounded-md px-2 py-1 flex flex-row items-center ${isEditing ? 'border-primary' : ''} transition-all duration-400 ease-in-out`}>
             <input
                 ref={inputRef}
                 type="text"

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { SVGProps, useEffect, useState } from "react";
+import React, { SVGProps, useSyncExternalStore } from "react";
 import { motion } from 'motion/react';
 import { useTheme } from "next-themes";
 import { cn } from "@/registry/lib/utils";
@@ -101,13 +101,16 @@ const springTransition = {
     damping: 30
 };
 
+const useMounted = () =>
+    useSyncExternalStore(
+        () => () => {},
+        () => true,
+        () => false,
+    );
+
 export default function ThemeToggle1() {
     const { resolvedTheme, setTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+    const mounted = useMounted();
 
     const handleToggle = () => {
         const newState = resolvedTheme === 'light' ? 'dark' : 'light';

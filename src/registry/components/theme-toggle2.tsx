@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { useSyncExternalStore } from "react";
 import { motion } from 'motion/react';
 import { useTheme } from "next-themes";
 import { MoonIcon, SunIcon } from "lucide-react";
@@ -72,13 +72,16 @@ const springTransition = {
     damping: 30
 };
 
+const useMounted = () =>
+    useSyncExternalStore(
+        () => () => {},
+        () => true,
+        () => false,
+    );
+
 export default function ThemeToggle2() {
     const { resolvedTheme, setTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+    const mounted = useMounted();
 
     const handleToggle = () => {
         const newState = resolvedTheme === 'light' ? 'dark' : 'light';
