@@ -2,31 +2,35 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from 'motion/react';
+import type { Transition, Variants } from 'motion/react';
 import React, { useState } from "react";
 
-const animationVariants = {
-    getIconContainerVariants: (iconColor: string, iconColorOnHover: string, iconBgColorOnHover: string) => ({
-        default: {
-            color: iconColor,
-            backgroundColor: "transparent",
-            scale: 1
-        },
-        hover: {
-            color: iconColorOnHover,
-            backgroundColor: iconBgColorOnHover,
-            scale: 1.15
-        }
-    }),
-    icon: {
-        default: { rotate: 0 },
-        hover: { rotate: -45 }
+const getIconContainerVariants = (
+    iconColor: string,
+    iconColorOnHover: string,
+    iconBgColorOnHover: string,
+) => ({
+    default: {
+        color: iconColor,
+        backgroundColor: "transparent",
+        scale: 1
     },
-};
+    hover: {
+        color: iconColorOnHover,
+        backgroundColor: iconBgColorOnHover,
+        scale: 1.15
+    }
+} satisfies Variants);
+
+const iconVariants = {
+    default: { rotate: 0 },
+    hover: { rotate: -45 }
+} satisfies Variants;
 
 const animationTransition = {
     ease: "linear",
     duration: 0.3
-};
+} satisfies Transition;
 
 export default function Button2() {
     const iconColor = "var(--primary-foreground)";
@@ -44,13 +48,13 @@ export default function Button2() {
         >
             <span>Get started</span>
             <motion.div
-                variants={animationVariants.getIconContainerVariants(iconColor, iconColorOnHover, iconBgColorOnHover)}
+                variants={getIconContainerVariants(iconColor, iconColorOnHover, iconBgColorOnHover)}
                 animate={isHovered ? "hover" : "default"}
                 transition={animationTransition}
                 className="flex justify-center items-center rounded-full p-0.5"
             >
                 <motion.svg
-                    variants={animationVariants.icon}
+                    variants={iconVariants}
                     animate={isHovered ? "hover" : "default"}
                     transition={animationTransition}
                     width="1em"

@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from 'motion/react';
+import type { Transition, Variants } from 'motion/react';
 import React, { SVGProps, useEffect, useRef, useState } from "react";
 
 const ArrowForwardIcon = (props: SVGProps<SVGSVGElement>) => (
@@ -10,36 +11,36 @@ const ArrowForwardIcon = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const animationVariants = {
-  icon: {
-    initial: { opacity: 1 },
-    hover: (buttonWidth: number) => ({
-      x: -1 * buttonWidth,
-      opacity: 0,
-    }),
+const iconVariants = {
+  initial: { opacity: 1 },
+  hover: (buttonWidth: number) => ({
+    x: -1 * buttonWidth,
+    opacity: 0,
+  }),
+} satisfies Variants;
+
+const labelVariants = {
+  initial: { x: '0%' },
+  hover: { x: '-20%' },
+} satisfies Variants;
+
+const arrowVariants = {
+  initial: {
+    position: 'absolute',
+    x: '100%',
+    opacity: 0
   },
-  label: {
-    initial: { x: '0%' },
-    hover: { x: '-20%' },
+  hover: {
+    x: 0,
+    opacity: 1
   },
-  arrow: {
-    initial: {
-      position: 'absolute' as const,
-      x: '100%',
-      opacity: 0
-    },
-    hover: {
-      x: 0,
-      opacity: 1
-    },
-  }
-};
+} satisfies Variants;
 
 const animationTransition = {
   type: 'spring',
   stiffness: 100,
   damping: 20,
-};
+} satisfies Transition;
 
 const LogosGoogleIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
@@ -70,7 +71,7 @@ export default function Button1() {
       <motion.div
         initial="initial"
         animate={isHovered ? "hover" : "initial"}
-        variants={animationVariants.icon}
+        variants={iconVariants}
         custom={buttonWidth}
         transition={animationTransition}
       >
@@ -80,7 +81,7 @@ export default function Button1() {
       <motion.div
         initial="initial"
         animate={isHovered ? "hover" : "initial"}
-        variants={animationVariants.label}
+        variants={labelVariants}
         transition={animationTransition}
       >
         <span>Sign in with Google</span>
@@ -89,7 +90,7 @@ export default function Button1() {
       <motion.div
         initial="initial"
         animate={isHovered ? "hover" : "initial"}
-        variants={animationVariants.arrow}
+        variants={arrowVariants}
         transition={{
           ...animationTransition,
           delay: 0.1

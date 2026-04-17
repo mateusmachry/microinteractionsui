@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from 'motion/react';
+import type { Transition, Variants } from 'motion/react';
 import React, { SVGProps, useState } from "react";
 
 type AnimationDirection = 'from-top' | 'from-bottom';
@@ -97,69 +98,69 @@ const animationDirectionMap = {
     },
 };
 
-const animationVariants = {
-    background: {
-        initial: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
-            y: animationDirectionMap[animationDirection].background.initial.y,
-            x: animationDirectionMap[animationDirection].background.initial.x,
-            opacity: 0,
-            backgroundColor: 'transparent'
-        }),
-        hover: ({ bgColorOnHover, animationDirection }: { bgColorOnHover: string, animationDirection: AnimationDirection }) => ({
-            y: animationDirectionMap[animationDirection].background.hover.y,
-            x: animationDirectionMap[animationDirection].background.hover.x,
-            opacity: 1,
-            backgroundColor: bgColorOnHover
-        }),
-        exit: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
-            y: animationDirectionMap[animationDirection].background.exit.y,
-            x: animationDirectionMap[animationDirection].background.exit.x,
-            opacity: 0,
-            backgroundColor: 'transparent'
-        })
-    },
-    hoverContent: {
-        initial: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
-            y: animationDirectionMap[animationDirection].hoverContent.initial.y,
-            x: animationDirectionMap[animationDirection].hoverContent.initial.x,
-            opacity: 0
-        }),
-        hover: ({ textColorOnHover, animationDirection }: { textColorOnHover: string, animationDirection: AnimationDirection }) => ({
-            y: animationDirectionMap[animationDirection].hoverContent.hover.y,
-            x: animationDirectionMap[animationDirection].hoverContent.hover.x,
-            opacity: 1,
-            color: textColorOnHover
-        }),
-        exit: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
-            y: animationDirectionMap[animationDirection].hoverContent.exit.y,
-            x: animationDirectionMap[animationDirection].hoverContent.exit.x,
-            opacity: 0
-        })
-    },
-    defaultContent: {
-        initial: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
-            y: animationDirectionMap[animationDirection].defaultContent.initial.y,
-            x: animationDirectionMap[animationDirection].defaultContent.initial.x,
-            opacity: 1
-        }),
-        hover: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
-            y: animationDirectionMap[animationDirection].defaultContent.hover.y,
-            x: animationDirectionMap[animationDirection].defaultContent.hover.x,
-            opacity: 0
-        }),
-        exit: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
-            y: animationDirectionMap[animationDirection].defaultContent.exit.y,
-            x: animationDirectionMap[animationDirection].defaultContent.exit.x,
-            opacity: 1
-        })
-    }
-};
+const backgroundVariants = {
+    initial: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
+        y: animationDirectionMap[animationDirection].background.initial.y,
+        x: animationDirectionMap[animationDirection].background.initial.x,
+        opacity: 0,
+        backgroundColor: 'transparent'
+    }),
+    hover: ({ bgColorOnHover, animationDirection }: { bgColorOnHover: string, animationDirection: AnimationDirection }) => ({
+        y: animationDirectionMap[animationDirection].background.hover.y,
+        x: animationDirectionMap[animationDirection].background.hover.x,
+        opacity: 1,
+        backgroundColor: bgColorOnHover
+    }),
+    exit: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
+        y: animationDirectionMap[animationDirection].background.exit.y,
+        x: animationDirectionMap[animationDirection].background.exit.x,
+        opacity: 0,
+        backgroundColor: 'transparent'
+    })
+} satisfies Variants;
+
+const hoverContentVariants = {
+    initial: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
+        y: animationDirectionMap[animationDirection].hoverContent.initial.y,
+        x: animationDirectionMap[animationDirection].hoverContent.initial.x,
+        opacity: 0
+    }),
+    hover: ({ textColorOnHover, animationDirection }: { textColorOnHover: string, animationDirection: AnimationDirection }) => ({
+        y: animationDirectionMap[animationDirection].hoverContent.hover.y,
+        x: animationDirectionMap[animationDirection].hoverContent.hover.x,
+        opacity: 1,
+        color: textColorOnHover
+    }),
+    exit: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
+        y: animationDirectionMap[animationDirection].hoverContent.exit.y,
+        x: animationDirectionMap[animationDirection].hoverContent.exit.x,
+        opacity: 0
+    })
+} satisfies Variants;
+
+const defaultContentVariants = {
+    initial: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
+        y: animationDirectionMap[animationDirection].defaultContent.initial.y,
+        x: animationDirectionMap[animationDirection].defaultContent.initial.x,
+        opacity: 1
+    }),
+    hover: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
+        y: animationDirectionMap[animationDirection].defaultContent.hover.y,
+        x: animationDirectionMap[animationDirection].defaultContent.hover.x,
+        opacity: 0
+    }),
+    exit: ({ animationDirection }: { animationDirection: AnimationDirection }) => ({
+        y: animationDirectionMap[animationDirection].defaultContent.exit.y,
+        x: animationDirectionMap[animationDirection].defaultContent.exit.x,
+        opacity: 1
+    })
+} satisfies Variants;
 
 const animationTransition = {
     type: 'tween',
     ease: 'easeInOut',
     duration: 0.5
-};
+} satisfies Transition;
 
 const MaterialSymbolsChevronRight = (props: SVGProps<SVGSVGElement>) => {
     return (
@@ -183,7 +184,7 @@ export default function Button3() {
                 className="absolute inset-0 w-full h-full rounded-md"
                 initial="initial"
                 animate={isHovered ? "hover" : "initial"}
-                variants={animationVariants.background}
+                variants={backgroundVariants}
                 custom={{ bgColorOnHover: "var(--primary)", animationDirection: animationDirection }}
                 transition={animationTransition}
             />
@@ -193,7 +194,7 @@ export default function Button3() {
                     className="flex flex-row justify-center items-center gap-3 absolute inset-0 w-full"
                     initial="initial"
                     animate={isHovered ? "hover" : "initial"}
-                    variants={animationVariants.hoverContent}
+                    variants={hoverContentVariants}
                     custom={{ textColorOnHover: "var(--primary-foreground)", animationDirection: animationDirection }}
                     transition={animationTransition}
                 >
@@ -205,7 +206,7 @@ export default function Button3() {
                     className="flex flex-row justify-center items-center gap-3 w-full"
                     initial="initial"
                     animate={isHovered ? "hover" : "initial"}
-                    variants={animationVariants.defaultContent}
+                    variants={defaultContentVariants}
                     custom={{ animationDirection: animationDirection }}
                     transition={animationTransition}
                 >

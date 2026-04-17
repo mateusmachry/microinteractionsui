@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/registry/lib/utils";
 import { motion } from 'motion/react';
+import type { Variants } from 'motion/react';
 import React, { useEffect, useState, useRef, SVGProps } from "react";
 
 const LucideCheck = (props: SVGProps<SVGSVGElement>) => {
@@ -19,30 +20,31 @@ const CreditCardIcon = (props: SVGProps<SVGSVGElement>) => {
     )
 };
 
-const animationVariants = {
-    containerVariants: {
-        normal: (width: number | null) => ({
-            width: width ? width : 'auto',
-        }),
-        compact: {
-            width: 'fit-content',
-        }
-    },
-    progressVariants: {
-        initial: { width: "0%" },
-        animate: (progress: number) => ({
-            width: `${progress}%`,
-        })
-    },
-    contentVariants: {
-        visible: { opacity: 1 },
-        hidden: { opacity: 0 }
-    },
-    checkmarkVariants: {
-        hidden: { scale: 0 },
-        visible: { scale: 1.0 }
+const containerVariants = {
+    normal: (width: number | null) => ({
+        width: width ? width : 'auto',
+    }),
+    compact: {
+        width: 'fit-content',
     }
-};
+} satisfies Variants;
+
+const progressVariants = {
+    initial: { width: "0%" },
+    animate: (progress: number) => ({
+        width: `${progress}%`,
+    })
+} satisfies Variants;
+
+const contentVariants = {
+    visible: { opacity: 1 },
+    hidden: { opacity: 0 }
+} satisfies Variants;
+
+const checkmarkVariants = {
+    hidden: { scale: 0 },
+    visible: { scale: 1.0 }
+} satisfies Variants;
 
 const animationTransition = {
     checkmarkTransitionDuration: 0.6
@@ -126,7 +128,7 @@ export default function Button5() {
     return (
         <motion.div
             className="inline-block"
-            variants={animationVariants.containerVariants}
+            variants={containerVariants}
             custom={buttonWidth}
             animate={isShowingCheckmarkAnimation ? 'compact' : 'normal'}
             transition={{ duration: animationTransition.checkmarkTransitionDuration, ease: "easeInOut" }}
@@ -148,7 +150,7 @@ export default function Button5() {
                     style={{
                         backgroundColor: "#10B981",
                     }}
-                    variants={animationVariants.progressVariants}
+                    variants={progressVariants}
                     custom={clampedProgress}
                     initial="initial"
                     animate="animate"
@@ -158,7 +160,7 @@ export default function Button5() {
                 {/* Content container */}
                 <motion.div
                     className="relative z-20 flex items-center justify-center gap-3 w-full h-full"
-                    variants={animationVariants.contentVariants}
+                    variants={contentVariants}
                     animate={isShowingCheckmarkAnimation ? 'hidden' : 'visible'}
                 >
                     <span>Pay with credit card</span>
@@ -168,7 +170,7 @@ export default function Button5() {
                 {/* Complete Checkmark */}
                 <motion.div
                     className="absolute inset-0 z-30 flex items-center justify-center gap-3"
-                    variants={animationVariants.checkmarkVariants}
+                    variants={checkmarkVariants}
                     initial="hidden"
                     animate={isShowingCheckmarkAnimation ? 'visible' : 'hidden'}
                     transition={{ duration: 0.6, delay: 0.3 }}

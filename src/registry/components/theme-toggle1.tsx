@@ -2,6 +2,7 @@
 
 import React, { SVGProps, useSyncExternalStore } from "react";
 import { motion } from 'motion/react';
+import type { Transition, Variants } from 'motion/react';
 import { useTheme } from "next-themes";
 import { cn } from "@/registry/lib/utils";
 
@@ -58,48 +59,48 @@ const toggleSizeMap = {
     },
 };
 
-const animationVariants = {
-    toggle: {
-        light: (offset: string) => ({
-            left: '0px',
-            right: offset,
-        }),
-        dark: (offset: string) => ({
-            left: offset,
-            right: '0px',
-        })
+const toggleVariants = {
+    light: (offset: string) => ({
+        left: '0px',
+        right: offset,
+    }),
+    dark: (offset: string) => ({
+        left: offset,
+        right: '0px',
+    })
+} satisfies Variants;
+
+const sunVariants = {
+    light: {
+        y: '0%',
+        x: '0%',
+        opacity: 1
     },
-    sun: {
-        light: {
-            y: '0%',
-            x: '0%',
-            opacity: 1
-        },
-        dark: {
-            y: '-100%',
-            x: '100%',
-            opacity: 0
-        }
-    },
-    moon: {
-        light: {
-            y: '-100%',
-            x: '-100%',
-            opacity: 0
-        },
-        dark: {
-            y: '0%',
-            x: '0%',
-            opacity: 1
-        }
+    dark: {
+        y: '-100%',
+        x: '100%',
+        opacity: 0
     }
-};
+} satisfies Variants;
+
+const moonVariants = {
+    light: {
+        y: '-100%',
+        x: '-100%',
+        opacity: 0
+    },
+    dark: {
+        y: '0%',
+        x: '0%',
+        opacity: 1
+    }
+} satisfies Variants;
 
 const springTransition = {
     type: "spring",
     stiffness: 100,
     damping: 30
-};
+} satisfies Transition;
 
 const useMounted = () =>
     useSyncExternalStore(
@@ -150,7 +151,7 @@ export default function ThemeToggle1() {
                             "bg-white left-0 shadow-lg shadow-white/50",
                     )}
                     animate={isDark ? 'dark' : 'light'}
-                    variants={animationVariants.toggle}
+                    variants={toggleVariants}
                     custom={selectedSize.offset}
                     transition={springTransition}
                 >
@@ -158,7 +159,7 @@ export default function ThemeToggle1() {
                         className="absolute"
                         initial="light"
                         animate={isDark ? 'dark' : 'light'}
-                        variants={animationVariants.sun}
+                        variants={sunVariants}
                         transition={springTransition}
                     >
                         <Sun className={selectedSize.icon} />
@@ -167,7 +168,7 @@ export default function ThemeToggle1() {
                         className="absolute"
                         initial="light"
                         animate={isDark ? 'dark' : 'light'}
-                        variants={animationVariants.moon}
+                        variants={moonVariants}
                         transition={springTransition}
                     >
                         <Moon
