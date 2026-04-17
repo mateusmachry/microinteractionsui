@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { SVGProps, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import type { Transition, Variants } from "motion/react";
 
 const EditIcon = (props: SVGProps<SVGSVGElement>) => {
     return (
@@ -50,7 +51,12 @@ export default function Input1() {
         initial: { rotate: -90, opacity: 0 },
         animate: { rotate: 0, opacity: 1 },
         exit: { rotate: 90, opacity: 0 }
-    };
+    } satisfies Variants;
+
+    const buttonTransition = {
+        duration: 0.4,
+        ease: "easeInOut",
+    } satisfies Transition;
 
     return (
         <Badge variant="outline" className={`rounded-md px-2 py-1 flex flex-row items-center ${isEditing ? 'border-primary' : ''} transition-all duration-400 ease-in-out`}>
@@ -74,10 +80,7 @@ export default function Input1() {
                             animate="animate"
                             exit="exit"
                             variants={buttonVariants}
-                            transition={{
-                                duration: 0.4,
-                                ease: "easeInOut",
-                            }}
+                            transition={buttonTransition}
                         >
                             <EditIcon width={12} height={12} />
                         </motion.button>
@@ -90,10 +93,7 @@ export default function Input1() {
                             animate="animate"
                             exit="exit"
                             variants={buttonVariants}
-                            transition={{
-                                duration: 0.4,
-                                ease: "easeInOut",
-                            }}
+                            transition={buttonTransition}
                         >
                             <CheckIcon width={12} height={12} />
                         </motion.button>
