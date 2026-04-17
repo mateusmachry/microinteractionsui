@@ -1,6 +1,11 @@
 {
   "version": 1,
   "skills": {
+    "create-pull-request": {
+      "source": "cline/cline",
+      "sourceType": "github",
+      "computedHash": "d2a0ecdf51b25a15e794156dd2acd179f09783fe92a2ee4f354621fe81ea7313"
+    },
     "frontend-design": {
       "source": "anthropics/skills",
       "sourceType": "github",
