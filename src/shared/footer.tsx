@@ -34,10 +34,10 @@ export function Footer() {
                                 MicroInteractions UI
                             </p>
                             <h2 className="max-w-sm text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                                Component index and source links.
+                                Expressive UI Components.
                             </h2>
                             <p className="max-w-md text-sm leading-6 text-muted-foreground">
-                                Browse the component sections and the libraries behind them.
+                                Smooth, reusable React components for fluid, interactive UIs.
                             </p>
                         </div>
 
