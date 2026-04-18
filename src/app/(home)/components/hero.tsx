@@ -3,7 +3,7 @@ import { AnimatedGradientText } from "@/components/magicui/animated-gradient-tex
 
 export function Hero() {
     return (
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-16">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-16 font-sans">
             <div className="mt-5 max-w-3xl text-center mx-auto">
                 <h1 className="block text-pretty font-semibold tracking-tight text-4xl md:text-5xl lg:text-6xl bg-gradient-to-b from-foreground to-foreground/75 bg-clip-text text-transparent">
                     Build Engaging UIs with <AnimatedGradientText colorFrom="#D4D4D4" colorTo="#737373" className="text-4xl md:text-5xl lg:text-6xl font-semibold">
