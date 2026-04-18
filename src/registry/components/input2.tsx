@@ -27,14 +27,14 @@ export default function Input2() {
     const [direction, setDirection] = useState<"up" | "down">("up");
 
     const handleValueChange = (newValue: number) => {
-        const direction = newValue > value ? "up" : "down";
-        setDirection(direction);
-        setValue(newValue);
+        setValue((currentValue) => {
+            setDirection(newValue > currentValue ? "up" : "down");
+            return newValue;
+        });
     };
 
     return (
         <NumberField
-            defaultValue={value}
             minValue={minValue}
             step={step}
             value={value}

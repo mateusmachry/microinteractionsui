@@ -2,14 +2,15 @@
 
 import { motion } from 'motion/react';
 
-export default function Button6() {
-    const radialGradientBackground = { r: 250, g: 250, b: 250 };
-    const solidColorBackground = { r: 15, g: 15, b: 15 };
-    const overlayColor = { r: 255, g: 255, b: 255 };
+const radialGradientBackground = { r: 250, g: 250, b: 250 };
+const solidColorBackground = { r: 15, g: 15, b: 15 };
+const overlayColor = { r: 255, g: 255, b: 255 };
 
+export default function Button6() {
     return (
         <motion.button
-            className="px-6 py-2 rounded-md relative cursor-pointer"
+            type="button"
+            className="px-6 py-2 rounded-md relative cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             style={{
                 background: `radial-gradient(circle at 50% 0%, rgba(${radialGradientBackground.r}, ${radialGradientBackground.g}, ${radialGradientBackground.b}, 0.05) 0%, transparent 60%), rgba(${solidColorBackground.r}, ${solidColorBackground.g}, ${solidColorBackground.b}, 1)`
             }}

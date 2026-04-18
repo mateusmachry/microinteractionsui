@@ -56,8 +56,9 @@ export default function Button5() {
     const [startAnimation, setStartAnimation] = useState(false);
     const [animationState, setAnimationState] = useState<'progress' | 'showing-check' | 'complete'>('progress');
     const [buttonWidth, setButtonWidth] = useState<number | null>(null);
-    const completeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-    const checkmarkTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const completeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const checkmarkTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const resetTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
     const completeAnimationDurationMs = 2000;
 
@@ -71,10 +72,20 @@ export default function Button5() {
             clearTimeout(completeTimeoutRef.current);
             completeTimeoutRef.current = null;
         }
+
+        if (resetTimeoutRef.current) {
+            clearTimeout(resetTimeoutRef.current);
+            resetTimeoutRef.current = null;
+        }
     };
 
     function handleComplete() {
-        setTimeout(() => {
+        if (resetTimeoutRef.current) {
+            clearTimeout(resetTimeoutRef.current);
+        }
+
+        resetTimeoutRef.current = setTimeout(() => {
+            resetTimeoutRef.current = null;
             setProgress(0);
             setStartAnimation(false);
             setAnimationState('progress');
@@ -106,6 +117,8 @@ export default function Button5() {
     }, [startAnimation]);
 
     const runAnimation = () => {
+        clearAnimationTimeouts();
+        setAnimationState('progress');
         setProgress(0);
         setStartAnimation(true);
     };
@@ -115,7 +128,7 @@ export default function Button5() {
         if (currentRef) {
             setButtonWidth(currentRef.offsetWidth);
         }
-    }, [buttonRef]);
+    }, []);
 
     useEffect(() => {
         return () => {
@@ -135,11 +148,12 @@ export default function Button5() {
         >
             <Button
                 ref={buttonRef}
+                type="button"
                 onClick={() => runAnimation()}
                 variant="default"
                 size="lg"
                 className={cn(
-                    "cursor-pointer relative overflow-hidden w-full transition-all",
+                    "cursor-pointer relative overflow-hidden w-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                     isShowingCheckmarkAnimation ? "aspect-square rounded-full p-0 disabled:opacity-100" : ''
                 )}
                 disabled={isShowingCheckmarkAnimation}

@@ -150,34 +150,41 @@ interface StepperTriggerProps
 function StepperTrigger({
     asChild = false,
     className,
+    onClick,
     children,
     ...props
 }: StepperTriggerProps) {
     const { setActiveStep } = useStepper()
     const { step, isDisabled } = useStepItem()
 
-    if (asChild) {
-        const Comp = asChild ? Slot : "span"
-        return (
-            <Comp data-slot="stepper-trigger" className={className}>
-                {children}
-            </Comp>
-        )
+    const Comp = asChild ? Slot : "button"
+
+    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+        if (isDisabled) {
+            event.preventDefault()
+            return
+        }
+
+        onClick?.(event as React.MouseEvent<HTMLButtonElement>)
+
+        if (!event.defaultPrevented) {
+            setActiveStep(step)
+        }
     }
 
     return (
-        <button
+        <Comp
             data-slot="stepper-trigger"
             className={cn(
                 "focus-visible:border-ring focus-visible:ring-ring/50 inline-flex items-center gap-3 rounded-full outline-none focus-visible:z-10 focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50",
                 className
             )}
-            onClick={() => setActiveStep(step)}
-            disabled={isDisabled}
+            onClick={handleClick}
+            {...(!asChild ? { disabled: isDisabled } : { "aria-disabled": isDisabled, "data-disabled": isDisabled })}
             {...props}
         >
             {children}
-        </button>
+        </Comp>
     )
 }
 

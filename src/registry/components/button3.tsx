@@ -174,11 +174,14 @@ export default function Button3() {
 
     return (
         <Button
+            type="button"
             variant="outline"
             size="lg"
-            className="cursor-pointer overflow-hidden relative"
+            className="cursor-pointer overflow-hidden relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            onFocus={() => setIsHovered(true)}
+            onBlur={() => setIsHovered(false)}
         >
             <motion.div
                 className="absolute inset-0 w-full h-full rounded-md"
