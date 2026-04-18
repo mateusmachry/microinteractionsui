@@ -2,22 +2,24 @@ import { ComponentType } from "react";
 import type { RegistryItem } from "shadcn/registry";
 
 export type ComponentLoaderProps = {
-    component: RegistryItem;
-}
+  component: RegistryItem;
+};
 
 export async function ComponentLoader<TProps extends object>({
-    component,
-    ...props
+  component,
+  ...props
 }: ComponentLoaderProps & TProps) {
-    if (!component?.files?.length) {
-        return null;
-    }
+  if (!component?.files?.length) {
+    return null;
+  }
 
-    try {
-        const DynamicComponent = (await import(`@/registry/components/${component.name}`)).default as ComponentType<TProps>;
-        return <DynamicComponent {...(props as TProps)} />;
-    } catch (error) {
-        console.error(`Failed to load component ${component.name}:`, error);
-        return null;
-    }
+  try {
+    const DynamicComponent = (
+      await import(`@/registry/components/${component.name}`)
+    ).default as ComponentType<TProps>;
+    return <DynamicComponent {...(props as TProps)} />;
+  } catch (error) {
+    console.error(`Failed to load component ${component.name}:`, error);
+    return null;
+  }
 }

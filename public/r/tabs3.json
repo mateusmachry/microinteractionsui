@@ -4,12 +4,8 @@
   "type": "registry:component",
   "title": "Tabs3",
   "description": "Tabs3",
-  "dependencies": [
-    "motion"
-  ],
-  "registryDependencies": [
-    "tabs"
-  ],
+  "dependencies": ["motion"],
+  "registryDependencies": ["tabs"],
   "files": [
     {
       "path": "src/registry/components/tabs3.tsx",

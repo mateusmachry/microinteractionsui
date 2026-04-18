@@ -80,7 +80,7 @@ const darkTheme = {
 
 export function CodeBlock({ files, defaultTitle, className }: CodeBlockProps) {
   const [activeTitle, setActiveTitle] = useState(
-    defaultTitle || files[0]?.title
+    defaultTitle || files[0]?.title,
   );
   const [copied, setCopied] = useState(false);
 
@@ -104,7 +104,7 @@ export function CodeBlock({ files, defaultTitle, className }: CodeBlockProps) {
       className={cn(
         "relative rounded-lg border bg-card text-card-foreground",
         "backdrop-blur-md",
-        className
+        className,
       )}
     >
       <div className="flex items-center justify-between border-b px-4 py-2">

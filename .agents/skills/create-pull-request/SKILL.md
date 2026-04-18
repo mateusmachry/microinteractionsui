@@ -18,7 +18,9 @@ gh --version
 ```
 
 If not installed, inform the user:
+
 > The GitHub CLI (`gh`) is required but not installed. Please install it:
+>
 > - macOS: `brew install gh`
 > - Other: https://cli.github.com/
 
@@ -37,6 +39,7 @@ git status
 ```
 
 If there are uncommitted changes, ask the user whether to:
+
 - Commit them as part of this PR
 - Stash them temporarily
 - Discard them (with caution)
@@ -66,6 +69,7 @@ git log origin/main..HEAD --oneline --no-decorate
 ```
 
 Review these commits to understand:
+
 - What changes are being introduced
 - The scope of the PR (single feature/fix or multiple changes)
 - Whether commits should be squashed or reorganized
@@ -81,6 +85,7 @@ This shows which files changed and helps identify the type of change.
 ## Information Gathering
 
 Before creating the PR, you need the following information. Check if it can be inferred from:
+
 - Commit messages
 - Branch name (e.g., `fix/issue-123`, `feature/new-login`)
 - Changed files and their content
@@ -97,6 +102,7 @@ If any critical information is missing, use `ask_followup_question` to ask the u
 ### Example clarifying question
 
 If the issue number is not found:
+
 > I couldn't find a related issue number in the commit messages or branch name. What GitHub issue does this PR address? (Enter the issue number, e.g., "123" or "N/A" for small fixes)
 
 ## Git Best Practices
@@ -112,6 +118,7 @@ Before creating the PR, consider these best practices:
 ### Branch Management
 
 1. **Rebase on latest main** (if needed):
+
    ```bash
    git fetch origin
    git rebase origin/main
@@ -126,11 +133,13 @@ Before creating the PR, consider these best practices:
 ### Push Changes
 
 Ensure all commits are pushed:
+
 ```bash
 git push origin HEAD
 ```
 
 If the branch was rebased, you may need:
+
 ```bash
 git push origin HEAD --force-with-lease
 ```
@@ -140,6 +149,7 @@ git push origin HEAD --force-with-lease
 **IMPORTANT**: Read and use the PR template at `.github/pull_request_template.md`. The PR body format must **strictly match** the template structure. Do not deviate from the template format.
 
 When filling out the template:
+
 - Replace `#XXXX` with the actual issue number, or keep as `#XXXX` if no issue exists (for small fixes)
 - Fill in all sections with relevant information gathered from commits and context
 - Mark the appropriate "Type of Change" checkbox(es)
@@ -150,11 +160,13 @@ When filling out the template:
 **Use a temporary file for the PR body** to avoid shell escaping issues, newline problems, and other command-line flakiness:
 
 1. Write the PR body to a temporary file:
+
    ```
    /tmp/pr-body.md
    ```
 
 2. Create the PR using the file:
+
    ```bash
    gh pr create --title "PR_TITLE" --body-file /tmp/pr-body.md --base main
    ```
@@ -165,6 +177,7 @@ When filling out the template:
    ```
 
 For draft PRs:
+
 ```bash
 gh pr create --title "PR_TITLE" --body-file /tmp/pr-body.md --base main --draft
 ```
@@ -201,6 +214,7 @@ After creating the PR:
 ## Summary Checklist
 
 Before finalizing, ensure:
+
 - [ ] `gh` CLI is installed and authenticated
 - [ ] Working directory is clean
 - [ ] All commits are pushed

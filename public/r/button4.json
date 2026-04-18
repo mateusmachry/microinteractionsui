@@ -4,12 +4,8 @@
   "type": "registry:component",
   "title": "Button4",
   "description": "Button4",
-  "dependencies": [
-    "motion"
-  ],
-  "registryDependencies": [
-    "button"
-  ],
+  "dependencies": ["motion"],
+  "registryDependencies": ["button"],
   "files": [
     {
       "path": "src/registry/components/button4.tsx",

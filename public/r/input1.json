@@ -4,12 +4,8 @@
   "type": "registry:component",
   "title": "Input1",
   "description": "Input1",
-  "dependencies": [
-    "motion"
-  ],
-  "registryDependencies": [
-    "badge"
-  ],
+  "dependencies": ["motion"],
+  "registryDependencies": ["badge"],
   "files": [
     {
       "path": "src/registry/components/input1.tsx",
