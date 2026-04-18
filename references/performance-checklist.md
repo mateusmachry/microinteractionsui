@@ -13,11 +13,11 @@ Quick reference checklist for web application performance. Use alongside the `pe
 
 ## Core Web Vitals Targets
 
-| Metric | Good | Needs Work | Poor |
-|--------|------|------------|------|
-| LCP (Largest Contentful Paint) | ≤ 2.5s | ≤ 4.0s | > 4.0s |
-| INP (Interaction to Next Paint) | ≤ 200ms | ≤ 500ms | > 500ms |
-| CLS (Cumulative Layout Shift) | ≤ 0.1 | ≤ 0.25 | > 0.25 |
+| Metric                          | Good    | Needs Work | Poor    |
+| ------------------------------- | ------- | ---------- | ------- |
+| LCP (Largest Contentful Paint)  | ≤ 2.5s  | ≤ 4.0s     | > 4.0s  |
+| INP (Interaction to Next Paint) | ≤ 200ms | ≤ 500ms    | > 500ms |
+| CLS (Cumulative Layout Shift)   | ≤ 0.1   | ≤ 0.25     | > 0.25  |
 
 ## TTFB Diagnosis
 
@@ -30,6 +30,7 @@ When TTFB is slow (> 800ms), check each component in DevTools Network waterfall:
 ## Frontend Checklist
 
 ### Images
+
 - [ ] Images use modern formats (WebP, AVIF)
 - [ ] Images are responsively sized (`srcset` and `sizes`)
 - [ ] Images and `<source>` elements have explicit `width` and `height` (prevents CLS in art direction)
@@ -37,6 +38,7 @@ When TTFB is slow (> 800ms), check each component in DevTools Network waterfall:
 - [ ] Hero/LCP images use `fetchpriority="high"` and no lazy loading
 
 ### JavaScript
+
 - [ ] Bundle size under 200KB gzipped (initial load)
 - [ ] Code splitting with dynamic `import()` for routes and heavy features
 - [ ] Tree shaking enabled (verify dependency ships ESM and marks `sideEffects: false`)
@@ -51,11 +53,13 @@ When TTFB is slow (> 800ms), check each component in DevTools Network waterfall:
 - [ ] Third-party scripts loaded with `async` / `defer`, audited for size, and fronted by a facade when heavy (chat widgets, embeds)
 
 ### CSS
+
 - [ ] Critical CSS inlined or preloaded
 - [ ] No render-blocking CSS for non-critical styles
 - [ ] No CSS-in-JS runtime cost in production (use extraction)
 
 ### Fonts
+
 - [ ] Limited to 2–3 font families, 2–3 weights each (every additional weight is another request)
 - [ ] WOFF2 format only (smallest, universal support — skip WOFF/TTF/EOT)
 - [ ] Self-hosted when possible (third-party font CDNs add DNS + TCP + TLS round-trips)
@@ -67,6 +71,7 @@ When TTFB is slow (> 800ms), check each component in DevTools Network waterfall:
 - [ ] System font stack considered before any custom font
 
 ### Network
+
 - [ ] Static assets cached with long `max-age` + content hashing
 - [ ] API responses cached where appropriate (`Cache-Control`)
 - [ ] HTTP/2 or HTTP/3 enabled
@@ -75,6 +80,7 @@ When TTFB is slow (> 800ms), check each component in DevTools Network waterfall:
 - [ ] No unnecessary redirects
 
 ### Rendering
+
 - [ ] No layout thrashing (forced synchronous layouts)
 - [ ] Animations use `transform` and `opacity` (GPU-accelerated)
 - [ ] Long lists use virtualization (e.g., `react-window`)
@@ -85,6 +91,7 @@ When TTFB is slow (> 800ms), check each component in DevTools Network waterfall:
 ## Backend Checklist
 
 ### Database
+
 - [ ] No N+1 query patterns (use eager loading / joins)
 - [ ] Queries have appropriate indexes
 - [ ] List endpoints paginated (never `SELECT * FROM table`)
@@ -92,6 +99,7 @@ When TTFB is slow (> 800ms), check each component in DevTools Network waterfall:
 - [ ] Slow query logging enabled
 
 ### API
+
 - [ ] Response times < 200ms (p95)
 - [ ] No synchronous heavy computation in request handlers
 - [ ] Bulk operations instead of loops of individual calls
@@ -99,6 +107,7 @@ When TTFB is slow (> 800ms), check each component in DevTools Network waterfall:
 - [ ] Appropriate caching (in-memory, Redis, CDN)
 
 ### Infrastructure
+
 - [ ] CDN for static assets
 - [ ] Server located close to users (or edge deployment)
 - [ ] Horizontal scaling configured (if needed)
@@ -127,13 +136,13 @@ onCLS(console.log);
 
 ## Common Anti-Patterns
 
-| Anti-Pattern | Impact | Fix |
-|---|---|---|
-| N+1 queries | Linear DB load growth | Use joins, includes, or batch loading |
-| Unbounded queries | Memory exhaustion, timeouts | Always paginate, add LIMIT |
-| Missing indexes | Slow reads as data grows | Add indexes for filtered/sorted columns |
-| Layout thrashing | Jank, dropped frames | Batch DOM reads, then batch writes |
-| Unoptimized images | Slow LCP, wasted bandwidth | Use WebP, responsive sizes, lazy load |
-| Large bundles | Slow Time to Interactive | Code split, tree shake, audit deps |
-| Blocking main thread | Poor INP, unresponsive UI | Chunk long tasks with `scheduler.yield()` / `yieldToMain`, offload to Web Workers |
-| Memory leaks | Growing memory, eventual crash | Clean up listeners, intervals, refs |
+| Anti-Pattern         | Impact                         | Fix                                                                               |
+| -------------------- | ------------------------------ | --------------------------------------------------------------------------------- |
+| N+1 queries          | Linear DB load growth          | Use joins, includes, or batch loading                                             |
+| Unbounded queries    | Memory exhaustion, timeouts    | Always paginate, add LIMIT                                                        |
+| Missing indexes      | Slow reads as data grows       | Add indexes for filtered/sorted columns                                           |
+| Layout thrashing     | Jank, dropped frames           | Batch DOM reads, then batch writes                                                |
+| Unoptimized images   | Slow LCP, wasted bandwidth     | Use WebP, responsive sizes, lazy load                                             |
+| Large bundles        | Slow Time to Interactive       | Code split, tree shake, audit deps                                                |
+| Blocking main thread | Poor INP, unresponsive UI      | Chunk long tasks with `scheduler.yield()` / `yieldToMain`, offload to Web Workers |
+| Memory leaks         | Growing memory, eventual crash | Clean up listeners, intervals, refs                                               |

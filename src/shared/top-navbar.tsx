@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import ThemeToggle2 from "@/registry/components/theme-toggle2";
 import { LogoIcon } from "@/shared/logo";
 import { useTheme } from "next-themes";
@@ -6,28 +6,36 @@ import Link from "next/link";
 import { useSyncExternalStore } from "react";
 
 const useMounted = () =>
-    useSyncExternalStore(
-        () => () => {},
-        () => true,
-        () => false,
-    );
+  useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
 
 export function TopNavBar() {
-    const { resolvedTheme } = useTheme();
-    const mounted = useMounted();
-    const isDark = resolvedTheme === "dark";
+  const { resolvedTheme } = useTheme();
+  const mounted = useMounted();
+  const isDark = resolvedTheme === "dark";
 
-    return (
-        <header className="mt-8 bg-neutral-100 dark:bg-neutral-900 border rounded-full mx-auto flex w-full max-w-5xl items-center justify-between gap-3 px-8 py-4">
-            <div className="flex flex-row items-center gap-6">
-                <Link href="/" className="flex items-center gap-2">
-                    {mounted && <LogoIcon fillColor={isDark ? '#000000' : '#FFFFFF'} width={32} height={32} />}
-                    <span className="text-lg font-semibold tracking-tight font-sans">MicroInteractions UI</span>
-                </Link>
-            </div>
-            <div className="flex flex-row items-center gap-3">
-                <ThemeToggle2 />
-            </div>
-        </header>
-    );
+  return (
+    <header className="mt-8 bg-neutral-100 dark:bg-neutral-900 border rounded-full mx-auto flex w-full max-w-5xl items-center justify-between gap-3 px-8 py-4">
+      <div className="flex flex-row items-center gap-6">
+        <Link href="/" className="flex items-center gap-2">
+          {mounted && (
+            <LogoIcon
+              fillColor={isDark ? "#000000" : "#FFFFFF"}
+              width={32}
+              height={32}
+            />
+          )}
+          <span className="text-lg font-semibold tracking-tight font-sans">
+            MicroInteractions UI
+          </span>
+        </Link>
+      </div>
+      <div className="flex flex-row items-center gap-3">
+        <ThemeToggle2 />
+      </div>
+    </header>
+  );
 }

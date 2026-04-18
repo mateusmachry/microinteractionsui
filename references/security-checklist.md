@@ -68,14 +68,14 @@ Permissions-Policy: camera=(), microphone=(), geolocation=()
 ```typescript
 // Restrictive (recommended)
 cors({
-  origin: ['https://yourdomain.com', 'https://app.yourdomain.com'],
+  origin: ["https://yourdomain.com", "https://app.yourdomain.com"],
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-})
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+});
 
 // NEVER use in production:
-cors({ origin: '*' })  // Allows any origin
+cors({ origin: "*" }); // Allows any origin
 ```
 
 ## Data Protection
@@ -107,28 +107,28 @@ npx npm-check-updates
 ```typescript
 // Production: generic error, no internals
 res.status(500).json({
-  error: { code: 'INTERNAL_ERROR', message: 'Something went wrong' }
+  error: { code: "INTERNAL_ERROR", message: "Something went wrong" },
 });
 
 // NEVER in production:
 res.status(500).json({
   error: err.message,
-  stack: err.stack,         // Exposes internals
-  query: err.sql,           // Exposes database details
+  stack: err.stack, // Exposes internals
+  query: err.sql, // Exposes database details
 });
 ```
 
 ## OWASP Top 10 Quick Reference
 
-| # | Vulnerability | Prevention |
-|---|---|---|
-| 1 | Broken Access Control | Auth checks on every endpoint, ownership verification |
-| 2 | Cryptographic Failures | HTTPS, strong hashing, no secrets in code |
-| 3 | Injection | Parameterized queries, input validation |
-| 4 | Insecure Design | Threat modeling, spec-driven development |
-| 5 | Security Misconfiguration | Security headers, minimal permissions, audit deps |
-| 6 | Vulnerable Components | `npm audit`, keep deps updated, minimal deps |
-| 7 | Auth Failures | Strong passwords, rate limiting, session management |
-| 8 | Data Integrity Failures | Verify updates/dependencies, signed artifacts |
-| 9 | Logging Failures | Log security events, don't log secrets |
-| 10 | SSRF | Validate/allowlist URLs, restrict outbound requests |
+| #   | Vulnerability             | Prevention                                            |
+| --- | ------------------------- | ----------------------------------------------------- |
+| 1   | Broken Access Control     | Auth checks on every endpoint, ownership verification |
+| 2   | Cryptographic Failures    | HTTPS, strong hashing, no secrets in code             |
+| 3   | Injection                 | Parameterized queries, input validation               |
+| 4   | Insecure Design           | Threat modeling, spec-driven development              |
+| 5   | Security Misconfiguration | Security headers, minimal permissions, audit deps     |
+| 6   | Vulnerable Components     | `npm audit`, keep deps updated, minimal deps          |
+| 7   | Auth Failures             | Strong passwords, rate limiting, session management   |
+| 8   | Data Integrity Failures   | Verify updates/dependencies, signed artifacts         |
+| 9   | Logging Failures          | Log security events, don't log secrets                |
+| 10  | SSRF                      | Validate/allowlist URLs, restrict outbound requests   |
