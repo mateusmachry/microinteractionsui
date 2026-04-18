@@ -53,21 +53,24 @@ export default function Button1() {
   const [buttonWidth, setButtonWidth] = useState(0);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => {
-    const currentRef = buttonRef.current;
-    if (currentRef) {
-      setButtonWidth(currentRef.offsetWidth);
-    }
-  }, [buttonRef]);
+    useEffect(() => {
+        const currentRef = buttonRef.current;
+        if (currentRef) {
+            setButtonWidth(currentRef.offsetWidth);
+        }
+    }, []);
 
   return (
     <Button
       ref={buttonRef}
+      type="button"
       variant="secondary"
       size="lg"
-      className="cursor-pointer relative overflow-hidden"
+      className="cursor-pointer relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}>
+      onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsHovered(true)}
+      onBlur={() => setIsHovered(false)}>
       <motion.div
         initial="initial"
         animate={isHovered ? "hover" : "initial"}

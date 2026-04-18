@@ -46,33 +46,35 @@ export default function Navbar1() {
         <SidebarContext.Provider
             value={contextValue}
         >
-            <nav
-                className="w-18 flex flex-col items-center bg-background border-r py-8 px-4"
-            >
-                <div className="h-full flex flex-col justify-between gap-8">
-                    <SidebarHeader>
-                        <SidebarItem itemKey={"profile"} showActiveState={false} tooltip={"Profile"}>
-                            <AvatarDemo />
-                        </SidebarItem>
-                    </SidebarHeader>
-                    <SidebarContent>
-                        <SidebarItem itemKey={"followers"} showActiveState={true} tooltip={"Followers"}>
-                            <Users />
-                        </SidebarItem>
-                        <SidebarItem itemKey={"likes"} showActiveState={true} tooltip={"Likes"}>
-                            <ThumbsUp />
-                        </SidebarItem>
-                        <SidebarItem itemKey={"favorites"} showActiveState={true} tooltip={"favorites"}>
-                            <Star />
-                        </SidebarItem>
-                    </SidebarContent>
-                    <SidebarFooter>
-                        <SidebarItem itemKey={"settings"} showActiveState={true} tooltip={"Settings"}>
-                            <Settings />
-                        </SidebarItem>
-                    </SidebarFooter>
-                </div>
-            </nav>
+            <TooltipProvider>
+                <nav
+                    className="w-18 flex flex-col items-center bg-background border-r py-8 px-4"
+                >
+                    <div className="h-full flex flex-col justify-between gap-8">
+                        <SidebarHeader>
+                            <SidebarItem itemKey={"profile"} showActiveState={false} tooltip={"Profile"}>
+                                <AvatarDemo />
+                            </SidebarItem>
+                        </SidebarHeader>
+                        <SidebarContent>
+                            <SidebarItem itemKey={"followers"} showActiveState={true} tooltip={"Followers"}>
+                                <Users />
+                            </SidebarItem>
+                            <SidebarItem itemKey={"likes"} showActiveState={true} tooltip={"Likes"}>
+                                <ThumbsUp />
+                            </SidebarItem>
+                            <SidebarItem itemKey={"favorites"} showActiveState={true} tooltip={"favorites"}>
+                                <Star />
+                            </SidebarItem>
+                        </SidebarContent>
+                        <SidebarFooter>
+                            <SidebarItem itemKey={"settings"} showActiveState={true} tooltip={"Settings"}>
+                                <Settings />
+                            </SidebarItem>
+                        </SidebarFooter>
+                    </div>
+                </nav>
+            </TooltipProvider>
         </SidebarContext.Provider>
     );
 };
@@ -129,13 +131,13 @@ const SidebarFooter = React.forwardRef<HTMLDivElement, SidebarFooterProps>(
 
 SidebarFooter.displayName = "SidebarFooter";
 
-type SidebarItemProps = React.ComponentProps<"div"> & {
+type SidebarItemProps = React.ComponentProps<"button"> & {
     itemKey: string;
     showActiveState?: boolean;
     tooltip?: React.ReactNode;
 };
 
-const SidebarItem = React.forwardRef<HTMLDivElement, SidebarItemProps>(
+const SidebarItem = React.forwardRef<HTMLButtonElement, SidebarItemProps>(
     ({
         itemKey,
         showActiveState = true,
@@ -148,9 +150,15 @@ const SidebarItem = React.forwardRef<HTMLDivElement, SidebarItemProps>(
         const isSelected = itemKey === selectedItemKey && showActiveState;
 
         const content = (
-            <div
+            <button
                 ref={ref}
-                className={cn("relative cursor-pointer", className)}
+                type="button"
+                aria-pressed={showActiveState ? isSelected : undefined}
+                className={cn(
+                    "relative inline-flex cursor-pointer items-center justify-center rounded-lg outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                    className,
+                    isSelected ? "text-white" : "text-[#707070] hover:text-black hover:dark:text-white"
+                )}
                 onClick={() => onItemSelected(itemKey)}
                 {...props}
             >
@@ -181,21 +189,19 @@ const SidebarItem = React.forwardRef<HTMLDivElement, SidebarItemProps>(
                 >
                     {children}
                 </motion.div>
-            </div>
+            </button>
         );
 
         if (tooltip) {
             return (
-                <TooltipProvider>
-                    <Tooltip>
-                        <TooltipTrigger asChild>
-                            {content}
-                        </TooltipTrigger>
-                        <TooltipContent side="right">
-                            {tooltip}
-                        </TooltipContent>
-                    </Tooltip>
-                </TooltipProvider>
+                <Tooltip>
+                    <TooltipTrigger asChild>
+                        {content}
+                    </TooltipTrigger>
+                    <TooltipContent side="right">
+                        {tooltip}
+                    </TooltipContent>
+                </Tooltip>
             );
         }
 

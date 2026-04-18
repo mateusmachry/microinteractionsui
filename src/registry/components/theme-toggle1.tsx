@@ -128,24 +128,21 @@ export default function ThemeToggle1() {
 
     return (
         <div className="flex items-center justify-center">
-            <div
-                className={cn(
-                    "relative rounded-full cursor-pointer",
+                <button
+                    type="button"
+                    aria-pressed={isDark}
+                    aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
+                    className={cn(
+                    "relative inline-flex shrink-0 items-center justify-start overflow-hidden rounded-full border-0 p-0 align-middle leading-none appearance-none cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
                     selectedSize.container,
                     isDark ? "bg-gray-800" : "bg-gray-200",
                 )}
                 onClick={handleToggle}
             >
-                <input
-                    type="checkbox"
-                    className="hidden"
-                    checked={isDark}
-                    onChange={handleToggle}
-                />
                 <motion.div
                     className={cn(
                         selectedSize.checkbox,
-                        "absolute rounded-full flex items-center justify-center overflow-hidden",
+                        "absolute top-0 rounded-full flex items-center justify-center overflow-hidden",
                         isDark ?
                             "bg-black right-0 shadow-lg shadow-black/50" :
                             "bg-white left-0 shadow-lg shadow-white/50",
@@ -178,7 +175,7 @@ export default function ThemeToggle1() {
                         />
                     </motion.div>
                 </motion.div>
-            </div>
+            </button>
         </div>
     );
 };

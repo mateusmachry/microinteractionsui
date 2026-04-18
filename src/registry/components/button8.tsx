@@ -58,16 +58,19 @@ export default function Button8() {
         if (currentRef) {
             setButtonWidth(currentRef.offsetWidth);
         }
-    }, [buttonRef]);
+    }, []);
 
     return (
         <Button
+            type="button"
             ref={buttonRef}
             variant="default"
             size="lg"
-            className="cursor-pointer relative overflow-hidden"
+            className="cursor-pointer relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}>
+            onMouseLeave={() => setIsHovered(false)}
+            onFocus={() => setIsHovered(true)}
+            onBlur={() => setIsHovered(false)}>
             <motion.div
                 initial="initial"
                 animate={isHovered ? "hover" : "initial"}

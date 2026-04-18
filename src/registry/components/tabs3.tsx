@@ -1,7 +1,7 @@
 "use client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AnimatePresence, motion } from "motion/react";
-import { SVGProps, useEffect, useRef, useState } from "react";
+import { SVGProps, useLayoutEffect, useRef, useState } from "react";
 
 const UsersIcon = (props: SVGProps<SVGSVGElement>) => {
     return (
@@ -37,7 +37,7 @@ export default function Tabs3() {
     const tab2Ref = useRef<HTMLButtonElement>(null);
     const tab3Ref = useRef<HTMLButtonElement>(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const currentTabRef =
             activeTab === "tab-1" ? tab1Ref : activeTab === "tab-2" ? tab2Ref : tab3Ref;
 
@@ -49,7 +49,30 @@ export default function Tabs3() {
                 });
             }
         };
+
+        const currentTabElement = currentTabRef.current;
+
         updateDimensions();
+
+        if (!currentTabElement) {
+            return;
+        }
+
+        const parentElement = currentTabElement.parentElement;
+        const resizeObserver = new ResizeObserver(updateDimensions);
+
+        resizeObserver.observe(currentTabElement);
+
+        if (parentElement) {
+            resizeObserver.observe(parentElement);
+        }
+
+        window.addEventListener("resize", updateDimensions);
+
+        return () => {
+            resizeObserver.disconnect();
+            window.removeEventListener("resize", updateDimensions);
+        };
     }, [activeTab]);
 
     const handleTabChange = (value: string) => {

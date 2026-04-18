@@ -21,6 +21,17 @@ const CheckIcon = (props: SVGProps<SVGSVGElement>) => {
     )
 };
 
+const buttonVariants = {
+    initial: { rotate: -90, opacity: 0 },
+    animate: { rotate: 0, opacity: 1 },
+    exit: { rotate: 90, opacity: 0 }
+} satisfies Variants;
+
+const buttonTransition = {
+    duration: 0.4,
+    ease: "easeInOut",
+} satisfies Transition;
+
 export default function Input1() {
     const [text, setText] = useState<string>("Javascript");
     const [isEditing, setIsEditing] = useState<boolean>(false);
@@ -47,17 +58,6 @@ export default function Input1() {
         setIsEditing(false);
     };
 
-    const buttonVariants = {
-        initial: { rotate: -90, opacity: 0 },
-        animate: { rotate: 0, opacity: 1 },
-        exit: { rotate: 90, opacity: 0 }
-    } satisfies Variants;
-
-    const buttonTransition = {
-        duration: 0.4,
-        ease: "easeInOut",
-    } satisfies Transition;
-
     return (
         <Badge variant="outline" className={`rounded-md px-2 py-1 flex flex-row items-center ${isEditing ? 'border-primary' : ''} transition-all duration-400 ease-in-out`}>
             <input
@@ -74,7 +74,8 @@ export default function Input1() {
                     {!isEditing ? (
                         <motion.button
                             key="edit"
-                            className="cursor-pointer rounded-full bg-secondary text-muted-foreground hover:text-primary p-2 absolute"
+                            type="button"
+                            className="cursor-pointer rounded-full bg-secondary text-muted-foreground hover:text-primary p-2 absolute focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                             onClick={() => onEditTextClicked()}
                             initial="initial"
                             animate="animate"
@@ -87,7 +88,8 @@ export default function Input1() {
                     ) : (
                         <motion.button
                             key="save"
-                            className="cursor-pointer rounded-full bg-primary hover:bg-primary/80 text-primary-foreground p-2 absolute"
+                            type="button"
+                            className="cursor-pointer rounded-full bg-primary hover:bg-primary/80 text-primary-foreground p-2 absolute focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                             onClick={() => onSaveTextClicked()}
                             initial="initial"
                             animate="animate"

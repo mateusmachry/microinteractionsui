@@ -9,10 +9,13 @@ export default function Button4() {
 
     return (
         <Button
+            type="button"
             variant={"link"}
-            className="text-base cursor-pointer relative overflow-hidden hover:no-underline"
+            className="text-base cursor-pointer relative overflow-hidden hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            onFocus={() => setIsHovered(true)}
+            onBlur={() => setIsHovered(false)}
         >
             <div className="relative inline-block">
                 Get started
