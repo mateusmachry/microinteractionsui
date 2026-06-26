@@ -4,7 +4,10 @@
   "type": "registry:component",
   "title": "Input2",
   "description": "Input2",
-  "dependencies": ["motion", "react-aria-components"],
+  "dependencies": [
+    "motion",
+    "react-aria-components"
+  ],
   "files": [
     {
       "path": "src/registry/components/input2.tsx",

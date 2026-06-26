@@ -4,7 +4,11 @@
   "type": "registry:component",
   "title": "ThemeToggle2",
   "description": "ThemeToggle2",
-  "dependencies": ["motion", "lucide-react", "next-themes"],
+  "dependencies": [
+    "motion",
+    "lucide-react",
+    "next-themes"
+  ],
   "files": [
     {
       "path": "src/registry/components/theme-toggle2.tsx",
