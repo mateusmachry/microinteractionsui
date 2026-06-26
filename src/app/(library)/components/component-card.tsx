@@ -6,9 +6,11 @@ import { OpenInV0Button } from "@/app/(library)/components/open-in-v0";
 export function ComponentCard({
   children,
   component,
+  categorySlug,
 }: {
   children: React.ReactNode;
   component: RegistryItem;
+  categorySlug: string;
 }) {
   return (
     <div
@@ -20,8 +22,10 @@ export function ComponentCard({
       <div className="absolute bottom-2 right-2 flex flex-row items-center gap-0.5">
         <OpenInV0Button
           url={`https://microinteractionsui.com/r/${component.name}.json`}
+          componentName={component.name}
+          categorySlug={categorySlug}
         />
-        <ViewCodeSheet component={component} />
+        <ViewCodeSheet component={component} categorySlug={categorySlug} />
       </div>
     </div>
   );

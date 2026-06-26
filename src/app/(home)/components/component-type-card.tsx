@@ -1,4 +1,7 @@
+"use client";
+
 import { Card, CardContent } from "@/components/ui/card";
+import { trackEvent } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -24,7 +27,15 @@ export function ComponentTypeCard({
         className,
       )}
     >
-      <Link href={href}>
+      <Link
+        href={href}
+        onClick={() =>
+          trackEvent("component_type_clicked", {
+            category_slug: href.slice(1),
+            category_name: label,
+          })
+        }
+      >
         <Card className="min-w-80 min-h-40 flex flex-col items-center justify-center rounded-md bg-neutral-100 dark:bg-neutral-900 transition-transform duration-300 hover:scale-98">
           <CardContent>
             <div className="p-6">{icon}</div>

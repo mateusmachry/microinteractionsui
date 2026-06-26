@@ -4,13 +4,8 @@
   "type": "registry:component",
   "title": "Tabs1",
   "description": "Tabs1",
-  "dependencies": [
-    "motion"
-  ],
-  "registryDependencies": [
-    "tabs",
-    "scroll-area"
-  ],
+  "dependencies": ["motion"],
+  "registryDependencies": ["tabs", "scroll-area"],
   "files": [
     {
       "path": "src/registry/components/tabs1.tsx",

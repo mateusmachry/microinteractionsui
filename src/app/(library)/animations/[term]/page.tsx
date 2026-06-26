@@ -69,7 +69,11 @@ export default async function Page({ params }: AnimationsPageProps) {
         className={`${componentCategory.slug === "tabs" ? "w-full" : "max-w-5xl"} mx-auto`}
       >
         {components.map((component) => (
-          <ComponentCard key={component.name} component={component}>
+          <ComponentCard
+            key={component.name}
+            component={component}
+            categorySlug={componentCategory.slug}
+          >
             <ComponentLoader component={component} />
           </ComponentCard>
         ))}

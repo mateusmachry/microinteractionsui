@@ -7,13 +7,17 @@ import { motion } from "motion/react";
 import { useTheme } from "next-themes";
 import { HTMLAttributes, useEffect, useState } from "react";
 
-interface ScriptCopyBtnProps extends HTMLAttributes<HTMLDivElement> {
+interface ScriptCopyBtnProps extends Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "onCopy"
+> {
   showMultiplePackageOptions?: boolean;
   codeLanguage: string;
   lightTheme: string;
   darkTheme: string;
   commandMap: Record<string, string>;
   className?: string;
+  onCopy?: (packageManager: string) => void;
 }
 
 export function ScriptCopyBtn({
@@ -23,6 +27,7 @@ export function ScriptCopyBtn({
   darkTheme,
   commandMap,
   className,
+  onCopy,
 }: ScriptCopyBtnProps) {
   const packageManagers = Object.keys(commandMap);
   const [packageManager, setPackageManager] = useState(packageManagers[0]);
@@ -53,10 +58,15 @@ export function ScriptCopyBtn({
     loadHighlightedCode();
   }, [command, theme, codeLanguage, lightTheme, darkTheme]);
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(command);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(command);
+      setCopied(true);
+      onCopy?.(packageManager);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (error) {
+      console.error("Failed to copy to clipboard", error);
+    }
   };
 
   return (

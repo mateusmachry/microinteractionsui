@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -6,11 +7,11 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { SVGProps } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 const IconV0 = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
-      {...props}
       xmlns="http://www.w3.org/2000/svg"
       width="1em"
       height="1em"
@@ -25,7 +26,15 @@ const IconV0 = (props: SVGProps<SVGSVGElement>) => {
   );
 };
 
-export function OpenInV0Button({ url }: { url: string }) {
+export function OpenInV0Button({
+  url,
+  componentName,
+  categorySlug,
+}: {
+  url: string;
+  componentName: string;
+  categorySlug: string;
+}) {
   return (
     <TooltipProvider delayDuration={0}>
       <Tooltip>
@@ -37,9 +46,15 @@ export function OpenInV0Button({ url }: { url: string }) {
             className="cursor-pointer"
           >
             <a
-              href={`https://v0.dev/chat/api/open?url=${url}`}
+              href={`https://v0.dev/chat/api/open?url=${encodeURIComponent(url)}`}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
+              onClick={() =>
+                trackEvent("component_open_in_v0_clicked", {
+                  component_name: componentName,
+                  category_slug: categorySlug,
+                })
+              }
             >
               <IconV0 width={16} height={16} />
             </a>

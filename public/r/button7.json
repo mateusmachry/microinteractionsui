@@ -4,9 +4,7 @@
   "type": "registry:component",
   "title": "Button7",
   "description": "Button7",
-  "registryDependencies": [
-    "button"
-  ],
+  "registryDependencies": ["button"],
   "files": [
     {
       "path": "src/registry/components/button7.tsx",
