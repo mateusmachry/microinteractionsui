@@ -4,10 +4,7 @@
   "type": "registry:component",
   "title": "ThemeToggle1",
   "description": "ThemeToggle1",
-  "dependencies": [
-    "motion",
-    "next-themes"
-  ],
+  "dependencies": ["motion", "next-themes"],
   "files": [
     {
       "path": "src/registry/components/theme-toggle1.tsx",
