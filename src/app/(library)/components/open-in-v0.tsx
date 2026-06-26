@@ -46,9 +46,9 @@ export function OpenInV0Button({
             className="cursor-pointer"
           >
             <a
-              href={`https://v0.dev/chat/api/open?url=${url}`}
+              href={`https://v0.dev/chat/api/open?url=${encodeURIComponent(url)}`}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               onClick={() =>
                 trackEvent("component_open_in_v0_clicked", {
                   component_name: componentName,
