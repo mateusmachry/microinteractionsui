@@ -111,6 +111,13 @@ export function ViewCodeSheet({
             lightTheme="vitesse-dark"
             darkTheme="vitesse-dark"
             commandMap={commandsMap}
+            onCopy={(packageManager) =>
+              trackEvent("component_install_copied", {
+                component_name: component.name,
+                category_slug: categorySlug,
+                package_manager: packageManager,
+              })
+            }
           />
           <div className="flex flex-col gap-4 mx-4">
             <label className="text-foreground font-semibold text-lg">
