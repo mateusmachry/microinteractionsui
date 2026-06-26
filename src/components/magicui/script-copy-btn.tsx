@@ -58,11 +58,15 @@ export function ScriptCopyBtn({
     loadHighlightedCode();
   }, [command, theme, codeLanguage, lightTheme, darkTheme]);
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(command);
-    setCopied(true);
-    onCopy?.(packageManager);
-    setTimeout(() => setCopied(false), 2000);
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(command);
+      setCopied(true);
+      onCopy?.(packageManager);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (error) {
+      console.error("Failed to copy to clipboard", error);
+    }
   };
 
   return (
