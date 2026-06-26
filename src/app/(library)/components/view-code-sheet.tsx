@@ -18,8 +18,15 @@ import {
 import { CodeIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 
-export function ViewCodeSheet({ component }: { component: RegistryItem }) {
+export function ViewCodeSheet({
+  component,
+  categorySlug,
+}: {
+  component: RegistryItem;
+  categorySlug: string;
+}) {
   const [code, setCode] = useState<string>("");
   const commandsMap = {
     npm: `npx shadcn@latest add https://microinteractionsui.com/r/${component.name}.json`,
@@ -72,7 +79,17 @@ export function ViewCodeSheet({ component }: { component: RegistryItem }) {
         <Tooltip>
           <TooltipTrigger asChild>
             <SheetTrigger asChild>
-              <Button size={"sm"} variant={"ghost"} className="cursor-pointer">
+              <Button
+                size={"sm"}
+                variant={"ghost"}
+                className="cursor-pointer"
+                onClick={() =>
+                  trackEvent("component_view_code_opened", {
+                    component_name: component.name,
+                    category_slug: categorySlug,
+                  })
+                }
+              >
                 <CodeIcon size={16} />
               </Button>
             </SheetTrigger>

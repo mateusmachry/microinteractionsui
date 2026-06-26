@@ -77,7 +77,11 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         className={`${componentCategory.slug === "tabs" || componentCategory.slug === "stepper" ? "w-full" : "max-w-5xl"} mx-auto`}
       >
         {components.map((component) => (
-          <ComponentCard key={component.name} component={component}>
+          <ComponentCard
+            key={component.name}
+            component={component}
+            categorySlug={componentCategory.slug}
+          >
             <ComponentLoader component={component} />
           </ComponentCard>
         ))}
