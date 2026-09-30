@@ -4,14 +4,8 @@
   "type": "registry:component",
   "title": "Navbar1",
   "description": "Navbar1",
-  "dependencies": [
-    "motion",
-    "lucide-react"
-  ],
-  "registryDependencies": [
-    "tooltip",
-    "avatar"
-  ],
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["tooltip", "avatar"],
   "files": [
     {
       "path": "src/registry/components/navbar1.tsx",
