@@ -4,14 +4,8 @@
   "type": "registry:component",
   "title": "Tabs2",
   "description": "Tabs2",
-  "dependencies": [
-    "motion"
-  ],
-  "registryDependencies": [
-    "tabs",
-    "scroll-area",
-    "badge"
-  ],
+  "dependencies": ["motion"],
+  "registryDependencies": ["tabs", "scroll-area", "badge"],
   "files": [
     {
       "path": "src/registry/components/tabs2.tsx",
