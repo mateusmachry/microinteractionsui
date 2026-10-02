@@ -266,6 +266,7 @@
       "type": "registry:component",
       "title": "Stepper",
       "description": "Base Stepper component",
+      "dependencies": ["radix-ui", "lucide-react"],
       "files": [
         {
           "path": "src/registry/components/stepper.tsx",
