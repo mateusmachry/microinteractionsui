@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { createContext, useContext } from "react";
-import { Slot } from "@radix-ui/react-slot";
+import { Slot as SlotPrimitive } from "radix-ui";
 import { CheckIcon, LoaderCircleIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -158,7 +158,7 @@ function StepperTrigger({
   const { setActiveStep } = useStepper();
   const { step, isDisabled } = useStepItem();
 
-  const Comp = asChild ? Slot : "button";
+  const Comp = asChild ? SlotPrimitive.Slot : "button";
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     if (isDisabled) {
