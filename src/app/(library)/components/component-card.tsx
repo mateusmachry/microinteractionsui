@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { RegistryItem } from "shadcn/registry";
+import { RegistryItem } from "shadcn/schema";
 import { ViewCodeSheet } from "@/app/(library)/components/view-code-sheet";
 import { OpenInV0Button } from "@/app/(library)/components/open-in-v0";
 

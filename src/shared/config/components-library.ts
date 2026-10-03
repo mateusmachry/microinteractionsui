@@ -1,4 +1,4 @@
-import { RegistryItem } from "shadcn/registry";
+import { RegistryItem } from "shadcn/schema";
 import registry from "@/registry.json";
 
 export type ComponentCategory = {

@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/sheet";
 import { ScriptCopyBtn } from "@/components/magicui/script-copy-btn";
 import { CodeBlock } from "@/components/ui/code-block";
-import { RegistryItem } from "shadcn/registry";
+import { RegistryItem } from "shadcn/schema";
 import {
   Tooltip,
   TooltipContent,
