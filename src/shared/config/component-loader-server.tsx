@@ -1,5 +1,5 @@
 import { ComponentType } from "react";
-import type { RegistryItem } from "shadcn/registry";
+import type { RegistryItem } from "shadcn/schema";
 
 export type ComponentLoaderProps = {
   component: RegistryItem;
